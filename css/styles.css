@@ -6,8 +6,19 @@
   --basic-font: 'Roboto Flex', sans-serif;
 
   /* colors */
+  --white-color: #ffffff;
+  --light-color: #c9c9c9;
+  --inactive-color: #696969;
+  --dark-grey-color: #323036;
+  --accent-color: #fba200;
+  --page-bg-color: #3a353f;
+  --block-bg-color: #27252b;
+  --dark-color: #141017;
+  --active-color: #1a7302;
 
   /* other */
+  --border-radius: 10px;
+  --medium-indent: 25px;
 }
 
 
@@ -32,9 +43,9 @@ body {
   align-content: start;
   min-height: 100%;
   margin: 0;
-  font: ;
-  color: ;
-  background-color: ;
+  font: 400 14px/18px var(--basic-font);
+  color: var(--light-color);
+  background-color: var(--page-bg-color);
   overflow-x: hidden;
 }
 
@@ -81,9 +92,9 @@ textarea {
 }
 
 .container {
-  max-width: ;
+  max-width: 1190px;
   margin: 0 auto;
-  padding: ;
+  padding: 0 15px;
 }
 
 
