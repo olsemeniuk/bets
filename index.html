@@ -29,33 +29,76 @@
   <header class="header">
     <h1 class="visually-hidden">===================</h1>
     <div class="container">
-      <div class="header__inner">
+      <div class="header__inner page-block">
 
         <!-- header logo -->
-        <a class="logo header__logo">
-          <img class="logo__img" src="" alt="Bets logo">
+        <a class="logo header__logo" href="#">
+          <img
+            class="logo__img"
+            src="images/logo.png"
+            width="120"
+            height="53"
+            alt="Bets logo.">
         </a>
 
         <!-- main navigation -->
         <nav class="menu">
           <ul class="menu__list">
             <li class="menu__item">
-              <a class="menu__link" href="#"></a>
+              <a class="menu__link icon icon--bets" href="#">
+                <span class="menu__link-text">My bets</span>
+              </a>
+              and
+              <a class="menu__link icon icon--investment" href="#">
+                <span class="menu__link-text">Investments</span>
+              </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="#"></a>
+              <a class="menu__link icon icon--items" href="#">
+                <span class="menu__link-text">My items</span>
+              </a>
+              and
+              <a class="menu__link icon icon--coins" href="#">
+                <span class="menu__link-text">Payments</span>
+              </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="#"></a>
+              <a class="menu__link icon icon--scales" href="#">
+                <span class="menu__link-text">Market</span>
+              </a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="#"></a>
+              <a class="menu__link icon icon--support" href="#">
+                <span class="menu__link-text">Support</span>
+              </a>
             </li>
           </ul>
         </nav>
 
         <!-- user info -->
-        <div class="user"></div>
+        <div class="user">
+          <button class="user__login-button icon icon--login" type="button">Login</button>
+          <div class="user__menu">
+            <ul class="user__resources">
+              <li class="user__resources-item">
+                <a class="user__resources-link icon icon--coins" href="#">$15.03</a>
+              </li>
+              <li class="user__resources-item">
+                <a class="user__resources-link icon icon--steam" href="#">$12.24</a>
+              </li>
+            </ul>
+            <div class="user__options">
+              <a class="user__profile" href="#">
+                <span>[Im]mortal</span>
+                profile
+              </a>
+              <button class="user__logout-button icon icon--logout" type="button">
+                <span class="visually-hidden">Logout profile</span>
+              </button>
+            </div>
+            <img class="user__avatar" src="images/user-avatar.png" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -113,22 +156,22 @@
             <form class="permissions" action="#">
               <label class="permissions__item" for="small-coef-checkbox">
                 <input
-                    class="permissions__checkbox visually-hidden"
-                    type="checkbox"
-                    id="small-coef-checkbox"
-                    name="smallCoef"
-                    checked>
+                  class="permissions__checkbox visually-hidden"
+                  type="checkbox"
+                  id="small-coef-checkbox"
+                  name="smallCoef"
+                  checked>
                 <span class="permissions__toggle" aria-hidden="true"></span>
-                <p class="permissions__text">Allow small coefficient change (up to 0.05)</p>
+                <span class="permissions__text">Allow small coefficient change (up to 0.05)</span>
               </label>
               <label class="permissions__item" for="any-coef-checkbox">
                 <input
-                    class="permissions__checkbox visually-hidden"
-                    type="checkbox"
-                    id="any-coef-checkbox"
-                    name="anyCoef">
+                  class="permissions__checkbox visually-hidden"
+                  type="checkbox"
+                  id="any-coef-checkbox"
+                  name="anyCoef">
                 <span class="permissions__toggle" aria-hidden="true"></span>
-                <p class="permissions__text">Allow any coefficient change</p>
+                <span class="permissions__text">Allow any coefficient change</span>
               </label>
             </form>
 
@@ -138,7 +181,7 @@
               <div class="user-bet__header">
                 <p class="user-bet__info">
                   You placed
-                  <a class="user-bet__info-link href="#"">bet</a>
+                  <a class="user-bet__info-link href=" #"">bet</a>
                   at 12.06.2017 12:38
                 </p>
                 <button class="user-bet__cancel-button" type="button">Cancel</button>
@@ -166,21 +209,21 @@
                 <form class="user-bet__betcoin-amount betcoin-range" action="#">
                   <label class="betcoin-range__label" for="betcoin-range-slider">BetCoin:</label>
                   <input
-                      class="betcoin-range__slider"
-                      type="range"
-                      id="betcoin-range-slider"
-                      name="betcoinRangeSlider"
-                      value="0.0"
-                      min="0"
-                      max="100"
-                      step="0.1">
+                    class="betcoin-range__slider"
+                    type="range"
+                    id="betcoin-range-slider"
+                    name="betcoinRangeSlider"
+                    value="0.0"
+                    min="0"
+                    max="100"
+                    step="0.1">
                   <input
-                      class="betcoin-range__num"
-                      type="number"
-                      id="betcoin-range-number"
-                      name="betcoinRangeNumber"
-                      value="0.0"
-                      readonly>
+                    class="betcoin-range__num"
+                    type="number"
+                    id="betcoin-range-number"
+                    name="betcoinRangeNumber"
+                    value="0.0"
+                    readonly>
                 </form>
                 <button class="user-bet__submit" type="button">Place Bet</button>
               </div>
@@ -266,9 +309,7 @@
 
         <!-- page side block (last bets) -->
         <aside class="last-bets page-block">
-          <h2 class="title last-bets__title">
-            Last bets
-          </h2>
+          <h2 class="title last-bets__title">Last bets</h2>
           <ul class="last-bets__list bets-list">
             <li class="bets-list__item bets-item">
 
@@ -284,11 +325,16 @@
   <footer class="footer">
     <h2 class="visually-hidden">===================</h2>
     <div class="container">
-      <div class="footer__inner">
+      <div class="footer__inner page-block">
 
         <!-- footer logo -->
-        <a class="logo footer__logo">
-          <img class="logo__img" src="#" alt="Bets logo">
+        <a class="logo footer__logo" href="#">
+          <img
+            class="logo__img"
+            src="images/logo.png"
+            width="120"
+            height="53"
+            alt="Bets logo.">
         </a>
 
         <div class="footer__info">
@@ -342,6 +388,31 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- svg color filters -->
+  <div class="svg-filters" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+      <!-- #ffffff -->
+      <filter id="white-filter">
+        <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 1
+                  0 0 0 0 1
+                  0 0 0 0 1
+                  0 0 0 1 0">
+        </fecolormatrix>
+      </filter>
+
+      <!-- #000000 -->
+      <filter id="black-filter">
+        <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 1 0">
+        </fecolormatrix>
+      </filter>
+    </svg>
+  </div>
 
   <!-- scripts and js libs -->
   <script src="js/main.js"></script>
