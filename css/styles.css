@@ -12,9 +12,11 @@
   --inactive-color: #696969;
   --dark-grey-color: #323036;
   --accent-color: #fba200;
+  --accent-light-color: #e4ae39;
   --page-bg-color: #3a353f;
   --block-bg-color: #27252b;
   --dark-color: #141017;
+  --dark-color-90: rgba(20, 16, 23, 0.9);
   --active-color: #1a7302;
 
   /* other */
@@ -452,9 +454,54 @@ textarea {
 /* page content end */
 
 
-/* footer start */
-.footer {
+/* game item start */
+.game-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 105px;
+  height: 70px;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
 }
+
+.game-item__info {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0 10px;
+  background-color: var(--dark-color-90);
+}
+
+.game-item__price {
+  color: var(--white-color);
+}
+
+.game-item__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.game-item__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--accent-light-color);
+}
+/* game item end */
+
+
+/* footer start */
 
 .footer__inner {
   display: flex;
@@ -547,9 +594,6 @@ textarea {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-.info-links__item {
 }
 
 .info-links__item + .info-links__item {
