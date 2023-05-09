@@ -178,6 +178,36 @@ textarea {
   background-image: url("../images/icons/steam-icon.png");
 }
 
+.icon--mail::before {
+  width: 13px;
+  height: 10px;
+  background-image: url("../images/icons/mail-icon.svg");
+}
+
+.icon--facebook::before {
+  width: 8px;
+  height: 15px;
+  background-image: url("../images/icons/facebook-icon.png");
+}
+
+.icon--vkontakte::before {
+  width: 19px;
+  height: 10px;
+  background-image: url("../images/icons/vk-icon.png");
+}
+
+.icon--info::before {
+  width: 13px;
+  height: 11px;
+  background-image: url("../images/icons/info-icon.svg");
+}
+
+.icon--link::before {
+  width: 8px;
+  height: 8px;
+  background-image: url("../images/icons/link-icon.png");
+}
+
 /* icons end */
 
 /*====================
@@ -331,8 +361,6 @@ textarea {
   background-color: var(--light-color);
 }
 
-.user__resources-item {}
-
 .user__resources-item + .user__resources-item {
   margin-top: 5px;
 }
@@ -348,6 +376,14 @@ textarea {
   top: 50%;
   right: 3px;
   transform: translateY(-50%);
+}
+
+.user__resources-link--betcoins::before {
+  filter: url('#accent-filter');
+}
+
+.user__resources-link--steam::before {
+  filter: url('#white-filter');
 }
 
 .user__options {
@@ -380,6 +416,7 @@ textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  filter: url('#white-filter')
 }
 
 .user__avatar {
@@ -393,6 +430,151 @@ textarea {
 }
 
 /* header end */
+
+
+/* page content start */
+
+.page-content__inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.main {
+  flex: 1;
+  margin-right: var(--medium-indent);
+}
+
+.last-bets {
+  flex-shrink: 0;
+  width: 390px;
+}
+
+/* page content end */
+
+
+/* footer start */
+.footer {
+}
+
+.footer__inner {
+  display: flex;
+  align-items: flex-start;
+  padding: 40px 54px 20px 77px;
+}
+
+.footer__logo {
+  margin-right: 105px;
+}
+
+.footer__info {
+  flex: 1;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.links-block {
+  display: flex;
+  font-size: 12px;
+}
+
+.links-block__title {
+  margin: 0 10px 0 0;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.links-block__title.icon--info {
+  padding-left: 16px;
+}
+
+.links-block__title.icon--info::before {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  filter: url('#light-filter');
+}
+
+.footer__mail-link {
+  padding-left: 16px;
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.footer__mail-link::before {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  filter: url('#white-filter');
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  line-height: 0;
+}
+
+.socials__item + .socials__item{
+  margin-left: 10px;
+}
+
+.socials__link {
+  width: 30px;
+  height: 20px;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius);
+}
+
+.socials__link::before {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: url('#black-filter');
+}
+
+.info-links {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.info-links__item {
+}
+
+.info-links__item + .info-links__item {
+  margin-left: 18px;
+}
+
+.info-links__link {
+  padding-right: 14px;
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.info-links__link::before {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  filter: url('#white-filter');
+}
+
+.footer__copy {
+  margin: 0;
+  text-align: center;
+}
+
+/* footer end */
 
 
 /*====================

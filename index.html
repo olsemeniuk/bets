@@ -26,7 +26,7 @@
 <body>
 
   <!-- header -->
-  <header class="header">
+  <header class="header authorized">
     <h1 class="visually-hidden">===================</h1>
     <div class="container">
       <div class="header__inner page-block">
@@ -81,10 +81,10 @@
           <div class="user__menu">
             <ul class="user__resources">
               <li class="user__resources-item">
-                <a class="user__resources-link icon icon--coins" href="#">$15.03</a>
+                <a class="user__resources-link user__resources-link--betcoins icon icon--coins" href="#">$15.03</a>
               </li>
               <li class="user__resources-item">
-                <a class="user__resources-link icon icon--steam" href="#">$12.24</a>
+                <a class="user__resources-link user__resources-link--steam icon icon--steam" href="#">$12.24</a>
               </li>
             </ul>
             <div class="user__options">
@@ -344,7 +344,7 @@
             <!-- support -->
             <li class="footer__links-block links-block">
               <h3 class="links-block__title">Support (RU/EN):</h3>
-              <a class="footer__link" href="mailto:#"></a>
+              <a class="footer__mail-link icon icon--mail" href="mailto:support@bets4.pro">support@bets4.pro</a>
             </li>
 
             <!-- socials -->
@@ -352,30 +352,30 @@
               <h3 class="links-block__title">Our social pages:</h3>
               <ul class="socials">
                 <li class="socials__item">
-                  <a class="socials__link" href="#">
+                  <a class="socials__link icon icon--facebook" href="#">
                     <span class="visually-hidden">facebook link</span>
                   </a>
                 </li>
                 <li class="socials__item">
-                  <a class="socials__link" href="#">
+                  <a class="socials__link icon icon--vkontakte" href="#">
                     <span class="visually-hidden">Vkontakte link</span>
                   </a>
                 </li>
               </ul>
             </li>
 
-            <!-- info -->
+            <!-- info links -->
             <li class="footer__links-block links-block">
-              <h3 class="links-block__title">Info</h3>
-              <ul class="info">
-                <li class="info__item">
-                  <a class="info__link" href="#">Rules</a>
+              <h3 class="links-block__title icon icon--info">Info:</h3>
+              <ul class="info-links">
+                <li class="info-links__item">
+                  <a class="info-links__link icon icon--link" href="#">Rules</a>
                 </li>
-                <li class="info__item">
-                  <a class="info__link" href="#">News</a>
+                <li class="info-links__item">
+                  <a class="info-links__link icon icon--link" href="#">News</a>
                 </li>
-                <li class="info__item">
-                  <a class="info__link" href="#">Agreement</a>
+                <li class="info-links__item">
+                  <a class="info-links__link icon icon--link" href="#">Agreement</a>
                 </li>
               </ul>
             </li>
@@ -383,7 +383,7 @@
           </ul>
 
           <!-- footer copy -->
-          <p class="footer__copy"></p>
+          <p class="footer__copy">© 2016-2023 Bets4.pro beta v.2.0.0 | Powered by Steam | Managed by MAAK LLC</p>
         </div>
       </div>
     </div>
@@ -396,7 +396,10 @@
 
       <!-- #ffffff -->
       <filter id="white-filter">
-        <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 1
+        <fecolormatrix
+          color-interpolation-filters="sRGB"
+          type="matrix"
+          values="0 0 0 0 1
                   0 0 0 0 1
                   0 0 0 0 1
                   0 0 0 1 0">
@@ -405,10 +408,37 @@
 
       <!-- #000000 -->
       <filter id="black-filter">
-        <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 0
-                  0 0 0 0 0
-                  0 0 0 0 0
-                  0 0 0 1 0">
+        <fecolormatrix
+        color-interpolation-filters="sRGB"
+        type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 1 0">
+        </fecolormatrix>
+      </filter>
+
+      <!-- #fba200 (accent) -->
+      <filter id="accent-filter">
+        <fecolormatrix
+        color-interpolation-filters="sRGB"
+        type="matrix"
+        values="0 0 0 0 0.98
+                0 0 0 0 0.64
+                0 0 0 0 0
+                0 0 0 1 0">
+        </fecolormatrix>
+      </filter>
+
+      <!-- #c9c9c9 (light) -->
+      <filter id="light-filter">
+        <fecolormatrix
+        color-interpolation-filters="sRGB"
+        type="matrix"
+        values="0 0 0 0 0.79
+                0 0 0 0 0.79
+                0 0 0 0 0.79
+                0 0 0 1 0">
         </fecolormatrix>
       </filter>
     </svg>
