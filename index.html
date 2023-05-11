@@ -89,7 +89,7 @@
             </ul>
             <div class="user__options">
               <a class="user__profile" href="#">
-                <span>[Im]mortal</span>
+                <span class="user__profile-name">[Im]mortal</span>
                 profile
               </a>
               <button class="user__logout-button icon icon--logout" type="button">
@@ -327,6 +327,39 @@
     <div class="container">
       <div class="footer__inner page-block">
 
+        <!-- languages toggle -->
+        <div class="languages footer__languages custom-select" id="footer_languages_toggle">
+          <button class="languages__button custom-select__button" type="button">
+            <span class="languages__button-text custom-select__text"></span>
+          </button>
+          <div class="labguages__list-wrapper custom-select__list-wrapper">
+            <ul class="languages__list custom-select__list">
+              <li class="languages__item custom-select__item">
+                <button
+                  class="languages__item-button custom-select__list-button icon icon--english"
+                  type="button">
+                  English
+                </button>
+              </li>
+              <li class="languages__item custom-select__item">
+                <button
+                  class="languages__item-button custom-select__list-button icon icon--spanish"
+                  type="button">
+                  Spanish
+                </button>
+              </li>
+            </ul>
+          </div>
+          <form class="custom-select__form" action="#" method="get">
+            <input
+              class="custom-select__input"
+              id="footer_language_input"
+              type="text"
+              name="laguageInput"
+              aria-hidden="true">
+          </form>
+        </div>
+
         <!-- footer logo -->
         <a class="logo footer__logo" href="#">
           <img
@@ -459,7 +492,7 @@
   </div>
 
   <!-- scripts and js libs -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js" type="module"></script>
 </body>
 
 </html>

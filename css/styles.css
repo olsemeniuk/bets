@@ -30,7 +30,7 @@
   --active-color: #1a7302;
 
   /* other */
-  --border-radius-small: 8px;
+  --border-radius-small: 10px;
   --border-radius-medium: 15px;
   --medium-indent: 20px;
 }
@@ -135,6 +135,7 @@ textarea {
   position: absolute;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 
 .icon--bets::before {
@@ -219,6 +220,18 @@ textarea {
   width: 8px;
   height: 8px;
   background-image: url("../images/icons/link-icon.png");
+}
+
+.icon--english::before {
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icons/english-flag-icon.png");
+}
+
+.icon--spanish::before {
+  width: 18px;
+  height: 18px;
+  background-image: url('https://stuffedeyes.files.wordpress.com/2018/06/spain-2906824_960_720.png');
 }
 
 /* icons end */
@@ -413,7 +426,7 @@ textarea {
   color: var(--main-text-color);
 }
 
-.user__profile span {
+.user__profile-name {
   display: block;
   font-size: 18px;
   color: var(--important-color);
@@ -518,9 +531,145 @@ textarea {
 /* game item end */
 
 
+/* custom select start */
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select__button {
+  position: relative;
+  z-index: 1;
+  padding: 2px 0 2px;
+  text-align: left;
+  background-color: var(--main-bg-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+}
+
+.custom-select__text {
+  padding: 0 10px 0 0;
+  font-size: 14px;
+}
+
+.custom-select__list-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  min-width: min-content;
+  height: 0;
+  overflow: hidden;
+}
+
+.custom-select__list {
+  margin: 0;
+  padding: 5px 0 2px 0;
+  list-style-type: none;
+  border-radius: var(--border-radius-small);
+}
+
+.custom-select__item:not([hidden]) + .custom-select__item:not([hidden]) {
+  margin-top: 5px;
+}
+
+.custom-select__list-button {
+  display: block;
+  padding: 0 10px 0 0;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--main-text-color);
+  background-color: transparent;
+  border: none;
+}
+
+.custom-select__input {
+  display: none;
+}
+
+.custom-select--open-top *,
+.custom-select--open-bottom * {
+  transition: all 0.3s;
+}
+
+.custom-select--open-top .custom-select__button,
+.custom-select--open-bottom .custom-select__list {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.custom-select--open-top .custom-select__list,
+.custom-select--open-bottom .custom-select__button {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.custom-select--open-top .custom-select__list-wrapper {
+  bottom: calc(100% - 2px) !important;
+}
+
+.custom-select--open-top .custom-select__list {
+  padding: 2px 0 5px 0;
+}
+
+.custom-select--open-bottom .custom-select__list-wrapper {
+  top: calc(100% - 2px) !important;
+}
+
+.custom-select--open-bottom .custom-select__list {
+  padding: 5px 0 2px 0;
+}
+
+/* custom select end */
+
+
+/* languages toggle start */
+
+.languages {
+}
+
+.languages__button {
+  background-color: var(--accent-color);
+}
+
+
+.languages__button-text {
+  padding-left: 24px;
+}
+
+.languages__button-text::before {
+  left: 2px;
+  top: 50%;
+  overflow: hidden;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.languages__list {
+  background-color: var(--accent-color);
+}
+
+.languages__item {}
+
+.languages__item-button {
+  padding-left: 24px;
+}
+
+.languages__item-button::before {
+  left: 2px;
+  top: 50%;
+  overflow: hidden;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* languages toggle end */
+
+
 /* footer start */
 
 .footer__inner {
+  position: relative;
   display: flex;
   align-items: flex-start;
   padding: 42px 54px 20px 77px;
@@ -692,6 +841,12 @@ textarea {
 .copyright__years {
   text-decoration: none;
   color: var(--main-text-color);
+}
+
+.footer__languages {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
 }
 
 /* footer end */
