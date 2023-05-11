@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #4e4e4e;
+        stroke-width: 1px;
+      }
+
+      .cls-3 {
+        fill: #4e4e4e;
+        fill-rule: evenodd;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#fff"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="icon" class="cls-1">
+    <circle id="Эллипс_3" data-name="Эллипс 3" class="cls-2" cx="6" cy="6" r="5.5"/>
+    <path id="Фигура_7" data-name="Фигура 7" class="cls-3" d="M430,188h1v4h-1v-4" transform="translate(-424.5 -185.5)"/>
+    <path id="Фигура_8" data-name="Фигура 8" class="cls-3" d="M430,191.572l0.572-.572L433,193.427l-0.573.572L430,191.572" transform="translate(-424.5 -185.5)"/>
+  </g>
+</svg>
