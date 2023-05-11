@@ -106,7 +106,7 @@ textarea {
   border: 0;
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(100%);
-  clip-path: inset(100%);
+          clip-path: inset(100%);
 }
 
 .container {
@@ -120,6 +120,8 @@ textarea {
 }
 
 .page-block {
+  margin-bottom: var(--medium-indent);
+  padding: 25px;
   background-color: var(--main-bg-color);
   border-radius: var(--border-radius-medium);
 }
@@ -259,6 +261,12 @@ textarea {
   background-image: url("../images/icons/chevron-icon.png");
 }
 
+.icon--triangle-dots::before {
+  width: 11px;
+  height: 13px;
+  background-image: url("../images/icons/triangle-dots-icon.svg");
+}
+
 /* icons end */
 
 /*====================
@@ -266,11 +274,6 @@ textarea {
   ====================*/
 
 /* header start */
-
-.header {
-  margin-bottom: var(--medium-indent);
-}
-
 .header__inner {
   position: relative;
   display: flex;
@@ -498,6 +501,7 @@ textarea {
 .last-bets {
   flex-shrink: 0;
   width: 390px;
+  padding: 0;
 }
 
 /* page content end */
@@ -762,6 +766,7 @@ textarea {
 
 /* title start */
 .title {
+  margin: 0;
   font-weight: 400;
   font-size: 18px;
   color: var(--important-color);
@@ -770,12 +775,8 @@ textarea {
 
 
 /* last bets start */
-.last-bets {
-}
-
 .last-bets__title {
   position: relative;
-  margin: 0;
   padding: 20px 0 15px 40px;
 }
 
@@ -1009,12 +1010,142 @@ textarea {
 /* last bets end */
 
 
+/* tabs start */
+.tabs__content-item {
+  display: none;
+}
+
+.tabs__content-item--active {
+  display: block;
+}
+/* tabs end */
+
+
+/* streams start */
+.streams {
+}
+
+.streams__title {
+  margin-bottom: 25px;
+  padding-left: 28px;
+}
+
+.streams__title::before {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  filter: url("#white-filter");
+}
+
+.streams__inner {
+  padding-top: 7px;
+  border-radius: var(--border-radius-medium);
+  background-color: var(--accent-color);
+}
+
+.streams__tabs-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.streams__tabs-button {
+  position: relative;
+  padding: 10px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  border-top-left-radius: var(--border-radius-normal);
+  border-top-right-radius: var(--border-radius-normal);
+  transition: all 0.3s;
+}
+
+.streams__tabs-button:hover {
+  color: var(--important-color);
+  background-color: var(--main-bg-color);
+}
+
+.streams__tabs-button::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 50%;
+  font-weight: 400;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+}
+
+.streams__tabs-button-text {
+  opacity: 0;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.streams__tabs-button.tabs__button--active {
+  position: relative;
+  color: var(--important-color);
+  background-color: var(--contrast-color);
+}
+
+.streams__tabs-button.tabs__button--active::after {
+  opacity: 0;
+}
+
+.streams__tabs-button.tabs__button--active .streams__tabs-button-text {
+  opacity: 1;
+}
+
+.streams__video-block {
+  position: relative;
+  height: 337px;
+  background-color: var(--contrast-color);
+  background-image: url("../images/streams-video-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--contrast-color);
+  border-radius: var(--border-radius-medium);
+}
+
+.streams__video-play {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.streams__video-play::before {
+  content: "";
+  display: block;
+  width: 139px;
+  height: 153px;
+  background-image: url("../images/icons/play-icon.svg");
+  filter: url("#text-color-filter");
+}
+
+.streams__video-text {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: var(--important-color);
+}
+/* streams end */
+
+
 /* footer start */
 
 .footer__inner {
   position: relative;
   display: flex;
   align-items: flex-start;
+  margin-bottom: 0;
   padding: 42px 54px 20px 77px;
 }
 

@@ -1,0 +1,12 @@
+<svg id="icon" xmlns="http://www.w3.org/2000/svg" width="11" height="13" viewBox="0 0 11 13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <circle id="Эллипс_6" data-name="Эллипс 6" class="cls-1" cx="1.5" cy="1.5" r="1.5"/>
+  <circle id="Эллипс_6_копия" data-name="Эллипс 6 копия" class="cls-1" cx="9.5" cy="6.5" r="1.5"/>
+  <circle id="Эллипс_6_копия_2" data-name="Эллипс 6 копия 2" class="cls-1" cx="1.5" cy="11.5" r="1.5"/>
+</svg>

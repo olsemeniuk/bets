@@ -1,7 +1,19 @@
+// imports
+import { Tabs } from "./Tabs.js";
+
+// variables
 const lastBetsList = document.querySelector('.bets-list');
 
+
+// events
 lastBetsList.onclick = toggleBetItems;
 
+
+// components
+new Tabs('#streams_tabs').startEvents();
+
+
+// functions
 function toggleBetItems(event) {
   const { target } = event;
   const toggleButton = target.closest('.bets-item__show-content');

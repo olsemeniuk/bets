@@ -97,7 +97,7 @@ export class Select {
     const activeItemText = activeItem.textContent.trim();
 
     this.buttonText.textContent = activeItemText;
-    this.#addItemValueToInput(activeItemText);
+    if (this.input) this.#addItemValueToInput(activeItemText);
     this.#removeActiveItemFromList();
 
     const hasIcon = activeItem.classList.contains('icon');

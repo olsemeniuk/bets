@@ -1,7 +1,8 @@
 // imports
 import { Select } from "./Select.js";
 
-// footer languages toggle
+
+// components
 new Select('#footer_languages_toggle').startEvents();
 
 

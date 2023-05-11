@@ -308,7 +308,57 @@
 
           <!-- streams -->
           <section class="streams page-block">
-            <h2 class="title streams__title">Streams</h2>
+            <h2 class="title streams__title icon icon--triangle-dots">Streams</h2>
+            <div class="streams__inner">
+              <div class="tabs streams__tabs" id="streams_tabs">
+                <div class="tabs__buttons streams__tabs-buttons">
+                  <button
+                    class="tabs__button streams__tabs-button"
+                    type="button"
+                    data-button="1"
+                    data-text="ru">
+                    <span class="streams__tabs-button-text">ru</span>
+                  </button>
+                  <button
+                    class="tabs__button streams__tabs-button tabs__button--active"
+                    type="button"
+                    data-button="2"
+                    data-text="en">
+                    <span class="streams__tabs-button-text">en</span>
+                  </button>
+                  <button
+                    class="tabs__button streams__tabs-button"
+                    type="button"
+                    data-button="3"
+                    data-text="sp">
+                    <span class="streams__tabs-button-text">sp</span>
+                  </button>
+                </div>
+                <div class="tabs__content streams__tabs-content">
+                  <div class="tabs__content-item streams__tabs-content-item" data-content="1">
+                    <div class="streams__video-block">
+                      <button class="streams__video-play" type="button">
+                        <span class="streams__video-text">Click to watch</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="tabs__content-item streams__tabs-content-item tabs__content-item--active" data-content="2">
+                    <div class="streams__video-block">
+                      <button class="streams__video-play" type="button">
+                        <span class="streams__video-text">Click to watch</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="tabs__content-item streams__tabs-content-item" data-content="3">
+                    <div class="streams__video-block">
+                      <button class="streams__video-play" type="button">
+                        <span class="streams__video-text">Click to watch</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
         </main>
@@ -916,7 +966,7 @@
 
   <!-- scripts and js libs -->
   <script src="js/main.js" type="module"></script>
-  <script src="js/bet.js"></script>
+  <script src="js/bet.js" type="module"></script>
 </body>
 
 </html>
