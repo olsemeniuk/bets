@@ -30,7 +30,8 @@
   --active-color: #1a7302;
 
   /* other */
-  --border-radius-small: 10px;
+  --border-radius-small: 5px;
+  --border-radius-normal: 10px;
   --border-radius-medium: 15px;
   --medium-indent: 20px;
 }
@@ -246,6 +247,18 @@ textarea {
   background-image: url("../images/icons/time-icon.svg");
 }
 
+.icon--vertical-dots::before {
+  width: 3px;
+  height: 13px;
+  background-image: url("../images/icons/vertical-dots-icon.svg");
+}
+
+.icon--chevron::before {
+  width: 7px;
+  height: 6px;
+  background-image: url("../images/icons/chevron-icon.png");
+}
+
 /* icons end */
 
 /*====================
@@ -417,7 +430,7 @@ textarea {
 }
 
 .user__resources-link--betcoins::before {
-  filter: url('#accent-filter');
+  filter: url('#attention-filter');
 }
 
 .user__resources-link--steam::before {
@@ -506,7 +519,7 @@ textarea {
                                     var(--black-color) 0 18px,
                                     var(--main-text-color) 18px calc(100% - 18px),
                                     var(--black-color) calc(100% - 18px) 100%);
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-normal);
 }
 
 .game-item__info {
@@ -530,7 +543,7 @@ textarea {
   width: 100%;
   height: 105%;
   object-fit: cover;
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-normal);
   overflow: hidden;
 }
 
@@ -556,7 +569,7 @@ textarea {
   text-align: left;
   background-color: var(--main-bg-color);
   border: none;
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-normal);
 }
 
 .custom-select__text {
@@ -578,7 +591,7 @@ textarea {
   margin: 0;
   padding: 5px 0 2px 0;
   list-style-type: none;
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-normal);
 }
 
 .custom-select__item:not([hidden]) + .custom-select__item:not([hidden]) {
@@ -719,9 +732,12 @@ textarea {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+  filter: url("#text-color-filter");
 }
 
 .upcoming-match__text {
+  position: relative;
+  z-index: 2;
   max-width: 300px;
   margin-left: auto;
   overflow: hidden;
@@ -742,6 +758,255 @@ textarea {
           mask-image: linear-gradient(to right, transparent, #000000 85%);
 }
 /* upcoming match end */
+
+
+/* title start */
+.title {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--important-color);
+}
+/* title end */
+
+
+/* last bets start */
+.last-bets {
+}
+
+.last-bets__title {
+  position: relative;
+  margin: 0;
+  padding: 20px 0 15px 40px;
+}
+
+.last-bets__title::before {
+  top: 28.5px;
+  left: 25px;
+  transform: translateY(-50%);
+}
+
+.last-bets__title::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent-color);
+}
+
+.bets-list {
+  margin: 0;
+  padding: 20px 25px;
+  list-style-type: none;
+}
+
+/* bets item start */
+.bets-item {
+  padding: 15px;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius-medium);
+}
+
+.bets-item + .bets-item {
+  margin-top: 20px;
+}
+
+.bets-item__info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+  font-size: 10px;
+  color: var(--secondary-color);
+}
+
+.bets-item__user-name {
+  line-height: 12px;
+}
+
+.bets-item__user-name,
+.bets-item__bet {
+  margin-right: 2px;
+  text-decoration: none;
+}
+
+.bets-item__user-name:not([href]),
+.bets-item__bet:not([href]) {
+  color: var(--main-text-color);
+}
+
+.bets-item__user-name:not([href])::before,
+.bets-item__bet:not([href])::before {
+  display: none;
+}
+
+.bets-item__user-name[href] {
+  margin-right: 4px;
+  padding: 0 15px 0 20px;
+  color: var(--black-color);
+  background-color: var(--important-color);
+  border-radius: var(--border-radius-small);
+}
+
+.bets-item__user-name[href]::before {
+  top: 1px;
+  left: 4px;
+  width: 13px;
+  height: 11px;
+  filter: url('#black-filter');
+}
+
+.bets-item__user-name[href]::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  background-image: url("../images/icons/link-icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: url("#black-filter");
+}
+
+.bets-item__bet[href] {
+  padding-right: 12px;
+  color: var(--important-color);
+}
+
+.bets-item__bet[href]::before {
+  top: 50%;
+  right: 2px;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-50%);
+  filter: url("#white-filter");
+}
+
+.bets-item__type {
+  margin-left: auto;
+}
+
+.bets-item__body {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.bets-item__resources {
+  margin-right: 5px;
+}
+
+.bets-item__money {
+  font-weight: 700;
+}
+
+.bets-item__money + .bets-item__money {
+  margin-left: 5px;
+}
+
+.bets-item__money::before {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.bets-item__betcoins {
+  padding-left: 17px;
+}
+
+.bets-item__betcoins::before {
+  filter: url("#attention-filter");
+}
+
+.bets-item__items-price {
+  padding-left: 13px;
+}
+
+.bets-item__items-price::before {
+  filter: url("#text-color-filter");
+}
+
+.bets-item__team {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bets-item__team-logo {
+  margin-right: 5px;
+}
+
+.bets-item__team-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.bets-item__show-content {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.bets-item__show-content::before {
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(-1);
+  filter: url("#text-color-filter");
+  transition: all 0.3s;
+}
+
+.bets-item__content {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.bets-item__items-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 15px 0 0;
+}
+
+.bets-item__items-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  opacity: 0;
+  background-color: var(--main-bg-color);
+  transition: all 0.3s;
+}
+
+.bets-item--opened .bets-item__body {
+  margin-bottom: 10px;
+}
+
+.bets-item--opened .bets-item__items-list::before {
+  opacity: 1;
+}
+
+.bets-item--opened .bets-item__show-content::before {
+  transform: translateX(-50%) scaleY(1);
+}
+
+.bets-item__items-list .game-item {
+  width: unset;
+}
+/* bets item end */
+/* last bets end */
 
 
 /* footer start */
@@ -790,7 +1055,7 @@ textarea {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  filter: url('#light-filter');
+  filter: url('#text-color-filter');
 }
 
 .footer__mail-link {
