@@ -1,12 +1,12 @@
 // imports
-import { Tabs } from "./Tabs.js";
+import { Tabs } from "../components/Tabs.js";
 
 // variables
 const lastBetsList = document.querySelector('.bets-list');
 
 
 // events
-lastBetsList.onclick = toggleBetItems;
+lastBetsList.addEventListener('click', toggleBetItems);
 
 
 // components

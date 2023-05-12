@@ -158,152 +158,164 @@
               <span class="bet-info__money bet-info__money-for">$0</span>
             </p>
 
-            <!-- permissions -->
-            <form class="permissions" action="#">
-              <label class="permissions__item" for="small-coef-checkbox">
-                <input
-                  class="permissions__checkbox visually-hidden"
-                  type="checkbox"
-                  id="small-coef-checkbox"
-                  name="smallCoef"
-                  checked>
-                <span class="permissions__toggle" aria-hidden="true"></span>
-                <span class="permissions__text">Allow small coefficient change (up to 0.05)</span>
-              </label>
-              <label class="permissions__item" for="any-coef-checkbox">
-                <input
-                  class="permissions__checkbox visually-hidden"
-                  type="checkbox"
-                  id="any-coef-checkbox"
-                  name="anyCoef">
-                <span class="permissions__toggle" aria-hidden="true"></span>
-                <span class="permissions__text">Allow any coefficient change</span>
-              </label>
-            </form>
 
-            <!-- user bet -->
-            <section class="user-bet">
-              <h3 class="visually-hidden">==================</h3>
-              <div class="user-bet__header">
-                <p class="user-bet__info">
-                  You placed
-                  <a class="user-bet__info-link href=" #"">bet</a>
-                  at 12.06.2017 12:38
-                </p>
-                <button class="user-bet__cancel-button" type="button">Cancel</button>
-                <p class="user-bet__total">
-                  Total bet:
-                  <b class="user-bet__total-sum">8 (1.83$)</b>
-                </p>
-              </div>
-              <div class="user-bet__body">
-                <div class="betcoin user-bet__betcoin"></div>
-                <ul class="user-bet__items-list">
-                  <li class="user-bet__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="user-bet__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                </ul>
-              </div>
-              <div class="user-bet__footer">
-                <form class="user-bet__betcoin-amount betcoin-range" action="#">
-                  <label class="betcoin-range__label" for="betcoin-range-slider">BetCoin:</label>
+            <!-- bet form -->
+            <form class="bet-form" action="#">
+
+              <!-- permissions -->
+              <fieldset class="bet-form__row permissions">
+                <legend class="visually-hidden">==============</legend>
+                <label class="toggle permissions__item" for="small-coef-checkbox">
                   <input
-                    class="betcoin-range__slider"
-                    type="range"
-                    id="betcoin-range-slider"
-                    name="betcoinRangeSlider"
-                    value="0.0"
-                    min="0"
-                    max="100"
-                    step="0.1">
+                    class="toggle__checkbox permissions__checkbox visually-hidden"
+                    type="checkbox"
+                    id="small-coef-checkbox"
+                    name="smallCoef"
+                    checked>
+                  <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
+                  <span class="permissions__text">Allow small coefficient change (up to 0.05)</span>
+                </label>
+                <label class="toggle permissions__item" for="any-coef-checkbox">
+                  <input
+                    class="toggle__checkbox permissions__checkbox visually-hidden"
+                    type="checkbox"
+                    id="any-coef-checkbox"
+                    name="anyCoef">
+                  <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
+                  <span class="permissions__text">Allow any coefficient change</span>
+                </label>
+              </fieldset>
+
+              <!-- user bet -->
+              <fieldset class="bet-form__block user-bet">
+                <legend class="visually-hidden">Placed bet</legend>
+                <div class="bet-form__block-header user-bet__header">
+                  <p class="user-bet__info">
+                    You placed
+                    <a class="user-bet__info-link icon icon--link" href="#">bet</a>
+                    at 12.06.2017 12:38
+                  </p>
+                  <button class="user-bet__cancel-button icon icon--cross" type="button">Cancel</button>
+                  <p class="total user-bet__total">
+                    Total bet:
+                    <b class="total__sum user-bet__total-sum">8 (1.83$)</b>
+                  </p>
+                </div>
+                <div class="bet-form__block-body user-bet__body">
+                  <div class="betcoin user-bet__betcoin icon icon--coins">
+                    <div class="betcoin__info">
+                      <p class="betcoin__text">Betcoin</p>
+                      <b class="betcoin__sum">5.03$</b>
+                    </div>
+                  </div>
+                  <div class="user-bet__item game-item">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="user-bet__item game-item">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="bet-form__row">
+                <legend class="visually-hidden">==========</legend>
+                <div class="betcoin-range">
+                  <label class="betcoin-range__label icon icon--coins" for="betcoin-range-slider">BetCoin:</label>
+                  <div class="betcoin-range__slider-wrapper">
+                    <input
+                      class="betcoin-range__slider"
+                      type="range"
+                      id="betcoin-range-slider"
+                      name="betcoinRangeSlider"
+                      value="0.0"
+                      min="0"
+                      max="100"
+                      step="0.1">
+                  </div>
                   <input
                     class="betcoin-range__num"
                     type="number"
                     id="betcoin-range-number"
                     name="betcoinRangeNumber"
-                    value="0.0"
-                    readonly>
-                </form>
-                <button class="user-bet__submit" type="button">Place Bet</button>
-              </div>
-            </section>
-
-            <!-- stash -->
-            <section class="stash">
-              <div class="stash__header">
-                <h3 class="stash__title">Your stash</h3>
-                <button class="stash__all-in" type="button">All in</button>
-                <p class="stash__total">
-                  Total:
-                  <b class="stash__total-sum">0 (0.00$)</b>
-                </p>
-              </div>
-              <div class="stash__body">
-                <div class="stash__filter">
-
+                    value="0.0">
                 </div>
-                <ul class="stash__items">
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="stash__item game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                </ul>
-              </div>
-              <button class="button stash__show-more" type="button">Show more</button>
-            </section>
+                <button class="bet-form__submit button button--important icon icon--coins-stack" type="submit">Place Bet</button>
+              </fieldset>
+
+              <!-- stash -->
+              <fieldset class="bet-form__block stash">
+                <legend class="visually-hidden">Stash</legend>
+                <div class="bet-form__block-header stash__header">
+                  <span class="stash__title">Your stash</span>
+                  <button class="stash__all-in icon icon--all-items" type="button">All in</button>
+                  <p class="total stash__total">
+                    Total:
+                    <b class="total__sum stash__total-sum">0 (0.00$)</b>
+                  </p>
+                </div>
+                <div class="bet-form__block-body stash__body">
+                  <div class="stash__filter">
+
+                  </div>
+                  <ul class="stash__items">
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                    <li class="stash__item game-item">
+                      <b class="game-item__info game-item__price">$0.21</b>
+                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                    </li>
+                  </ul>
+                </div>
+                <button class="button stash__show-more" type="button">Show more</button>
+              </fieldset>
+            </form>
           </article>
 
           <!-- streams -->
@@ -915,7 +927,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 
       <!-- #ffffff -->
-      <filter id="white-filter">
+      <filter id="color_ffffff">
         <fecolormatrix
           color-interpolation-filters="sRGB"
           type="matrix"
@@ -927,7 +939,7 @@
       </filter>
 
       <!-- #000000 -->
-      <filter id="black-filter">
+      <filter id="color_000000">
         <fecolormatrix
         color-interpolation-filters="sRGB"
         type="matrix"
@@ -939,7 +951,7 @@
       </filter>
 
       <!-- #fba200 -->
-      <filter id="attention-filter">
+      <filter id="color_fba200">
         <fecolormatrix
         color-interpolation-filters="sRGB"
         type="matrix"
@@ -950,8 +962,20 @@
         </fecolormatrix>
       </filter>
 
+      <!-- #f7ae00 -->
+      <filter id="color_f7ae00">
+        <fecolormatrix
+        color-interpolation-filters="sRGB"
+        type="matrix"
+        values="0 0 0 0 0.97
+                0 0 0 0 0.68
+                0 0 0 0 0
+                0 0 0 1 0">
+        </fecolormatrix>
+      </filter>
+
       <!-- #c8c8c8 -->
-      <filter id="text-color-filter">
+      <filter id="color_c8c8c8">
         <fecolormatrix
         color-interpolation-filters="sRGB"
         type="matrix"

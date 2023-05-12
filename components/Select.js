@@ -21,8 +21,8 @@ export class Select {
       this.#activateItem();
     }
 
-    this.button.onclick = () => this.#toggleList();
-    this.list.onclick = event => this.#selectActiveItem(event);
+    this.button.addEventListener('click', () => this.#toggleList());
+    this.list.addEventListener('click', event => this.#selectActiveItem(event));
 
     document.addEventListener('click', event => {
       const { target } = event;

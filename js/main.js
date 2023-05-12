@@ -1,5 +1,5 @@
 // imports
-import { Select } from "./Select.js";
+import { Select } from "../components/Select.js";
 
 
 // components
