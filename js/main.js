@@ -1,9 +1,9 @@
 // imports
-import { Select } from "../components/Select.js";
+import { LanguagesDropdown } from "../components/Dropdown/LanguagesDropdown.js";
 
 
 // components
-new Select('#footer_languages_toggle').startEvents();
+new LanguagesDropdown('#footer_languages_dropdown').start();
 
 
 

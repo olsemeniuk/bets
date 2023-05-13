@@ -9,14 +9,16 @@ export class Tabs {
     this.contentItems = this.target.querySelectorAll('.tabs__content-item');
   }
 
-  startEvents() {
-    this.buttonsRow.onclick = event => {
+  start() {
+    this.buttonsRow.addEventListener('click', event => {
       this.#changeActiveButton(event);
       this.#changeActiveContent();
-    }
+    });
   }
 
   #changeActiveContent() {
+    if (!this.activeButtonData) return;
+
     this.contentItems.forEach(item => {
       item.classList.remove('tabs__content-item--active');
       if (item.dataset.content === this.activeButtonData) {
@@ -33,7 +35,6 @@ export class Tabs {
 
     this.buttons.forEach(btn => btn.classList.remove('tabs__button--active'));
     button.classList.add('tabs__button--active');
-
     this.activeButtonData = button.dataset.button;
   }
 }

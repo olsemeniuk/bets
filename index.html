@@ -253,67 +253,151 @@
                   <button class="stash__all-in icon icon--all-items" type="button">All in</button>
                   <p class="total stash__total">
                     Total:
-                    <b class="total__sum stash__total-sum">0 (0.00$)</b>
+                    <b class="total__sum stash__total-sum"></b>
                   </p>
                 </div>
-                <div class="bet-form__block-body stash__body">
-                  <div class="stash__filter">
+                <div class="bet-form__block-body stash__body show-more">
+                  <div class="stash__filter-block">
 
+                    <!-- rarity filter -->
+                    <div class="dropdown arrow-dropdown rarity-dropdown" id="stash_rarity_dropdown">
+                      <button class="dropdown__button arrow-dropdown__button" type="button">
+                        <span class="dropdown__text-wrapper arrow-dropdown__text-wrapper">
+                          Rarity:
+                          <span class="dropdown__text arrow-dropdown__text"></span>
+                        </span>
+                      </button>
+                      <div class="dropdown__list-wrapper">
+                        <ul class="dropdown__list arrow-dropdown__list">
+                          <li class="dropdown__item">
+                            <button
+                              class="dropdown__list-button arrow-dropdown__list-button"
+                              type="button"
+                              data-rarity="all">
+                              All
+                            </button>
+                          </li>
+                          <li class="dropdown__item">
+                            <button
+                              class="dropdown__list-button arrow-dropdown__list-button"
+                              type="button"
+                              data-rarity="common">
+                              Common
+                            </button>
+                          </li>
+                          <li class="dropdown__item">
+                            <button
+                              class="dropdown__list-button arrow-dropdown__list-button"
+                              type="button"
+                              data-rarity="legendary">
+                              Legendary
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                      <input
+                        class="dropdown__input"
+                        id="stash_rarity_input"
+                        type="text"
+                        name="stashRarity"
+                        aria-hidden="true">
+                    </div>
+
+                    <!-- price sort -->
+                    <button class="sort stash__sort" type="button">Sort by price</button>
                   </div>
-                  <ul class="stash__items">
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                    <li class="stash__item game-item">
-                      <b class="game-item__info game-item__price">$0.21</b>
-                      <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                      <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                    </li>
-                  </ul>
+                  <!-- stash items -->
+                  <div class="show-more__items-wrapper">
+                    <ul class="stash__items show-more__items-inner">
+                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.21</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.23</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                        <b class="game-item__info game-item__price">$0.41</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.61" data-rarity="legendary">
+                        <b class="game-item__info game-item__price">$0.61</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.1" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.1</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.21</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.23</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                        <b class="game-item__info game-item__price">$0.41</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.61" data-rarity="legendary">
+                        <b class="game-item__info game-item__price">$0.61</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.1" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.1</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.21</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.23</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.1" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.1</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.21</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.23</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.61" data-rarity="legendary">
+                        <b class="game-item__info game-item__price">$0.61</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                      <li class="stash__item game-item show-more__item" data-price="0.11" data-rarity="common">
+                        <b class="game-item__info game-item__price">$0.1</b>
+                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <button class="button button--secondary stash__show-more show-more__button" type="button">Show more</button>
                 </div>
-                <button class="button stash__show-more" type="button">Show more</button>
               </fieldset>
             </form>
           </article>
@@ -812,32 +896,34 @@
     <div class="container">
       <div class="footer__inner page-block">
 
-        <!-- languages toggle -->
-        <div class="languages footer__languages custom-select" id="footer_languages_toggle">
-          <button class="languages__button custom-select__button" type="button">
-            <span class="languages__button-text custom-select__text"></span>
+        <!-- languages dropdown -->
+        <div class="languages footer__languages dropdown" id="footer_languages_dropdown">
+          <button class="languages__button dropdown__button" type="button">
+            <span class="dropdown__text-wrapper">
+              <span class="languages__button-text dropdown__text"></span>
+            </span>
           </button>
-          <div class="labguages__list-wrapper custom-select__list-wrapper">
-            <ul class="languages__list custom-select__list">
-              <li class="languages__item custom-select__item">
+          <div class="labguages__list-wrapper dropdown__list-wrapper">
+            <ul class="languages__list dropdown__list">
+              <li class="languages__item dropdown__item">
                 <button
-                  class="languages__item-button custom-select__list-button icon icon--english"
+                  class="languages__item-button dropdown__list-button icon icon--english"
                   type="button">
                   English
                 </button>
               </li>
-              <li class="languages__item custom-select__item">
+              <li class="languages__item dropdown__item">
                 <button
-                  class="languages__item-button custom-select__list-button icon icon--spanish"
+                  class="languages__item-button dropdown__list-button icon icon--spanish"
                   type="button">
                   Spanish
                 </button>
               </li>
             </ul>
           </div>
-          <form class="custom-select__form" action="#" method="get">
+          <form class="dropdown__form" action="#" method="get">
             <input
-              class="custom-select__input"
+              class="dropdown__input"
               id="footer_language_input"
               type="text"
               name="laguageInput"
