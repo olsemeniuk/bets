@@ -198,22 +198,22 @@
                   <button class="user-bet__cancel-button icon icon--cross" type="button">Cancel</button>
                   <p class="total user-bet__total">
                     Total bet:
-                    <b class="total__sum user-bet__total-sum">8 (1.83$)</b>
+                    <b class="total__sum user-bet__total-sum"></b>
                   </p>
                 </div>
                 <div class="bet-form__block-body user-bet__body">
-                  <div class="betcoin user-bet__betcoin icon icon--coins">
+                  <div class="betcoin user-bet__betcoin icon icon--coins" data-sum="0">
                     <div class="betcoin__info">
                       <p class="betcoin__text">Betcoin</p>
-                      <b class="betcoin__sum">5.03$</b>
+                      <b class="betcoin__sum">0$</b>
                     </div>
                   </div>
-                  <div class="user-bet__item game-item">
+                  <div class="user-bet__item game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
                     <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
                   </div>
-                  <div class="user-bet__item game-item">
+                  <div class="user-bet__item game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
                     <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
@@ -240,7 +240,7 @@
                     type="number"
                     id="betcoin-range-number"
                     name="betcoinRangeNumber"
-                    value="0.0">
+                    placeholder="0.0">
                 </div>
                 <button class="bet-form__submit button button--important icon icon--coins-stack" type="submit">Place Bet</button>
               </fieldset>
@@ -307,7 +307,7 @@
                     <button class="sort stash__sort" type="button">Sort by price</button>
                   </div>
                   <!-- stash items -->
-                  <div class="show-more__items-wrapper">
+                  <div class="show-more__items-wrapper stash__items-wrapper">
                     <ul class="stash__items show-more__items-inner">
                       <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.21</b>

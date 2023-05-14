@@ -1437,6 +1437,11 @@ textarea {
   box-shadow: 0 0 15px 4px var(--pale-attention-color-30);
   background-color: var(--contrast-lighter-color);
   border-radius: var(--border-radius-medium);
+  transition: all 0.3s;
+}
+
+.betcoin[data-sum="0"] {
+  filter: grayscale(1);
 }
 
 .betcoin::before {

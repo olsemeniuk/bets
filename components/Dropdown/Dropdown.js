@@ -51,7 +51,6 @@ export class Dropdown {
     this.listButton.forEach(item => arrayOfListElementsWidth.push(item.getBoundingClientRect().width));
     const maxListElementWidth = Math.max(...arrayOfListElementsWidth);
     const buttonWidth = this.textWrapper.getBoundingClientRect().width;
-
     const maxWidth = Math.max(maxListElementWidth, buttonWidth);
 
     this.button.style.width = `${maxWidth}px`;
