@@ -878,6 +878,8 @@ textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  -moz-filter: var(--important-filer);
+  -webkit-filter: var(--important-filer);
   filter: var(--important-filer);
 }
 
@@ -950,7 +952,6 @@ textarea {
 
 
 /* last bets start */
-
 .last-bets__title {
   position: relative;
   padding: 20px 0 15px 40px;
@@ -1628,12 +1629,6 @@ textarea {
   border-radius: var(--border-radius-normal);
 }
 
-.betcoin-range__num::-webkit-outer-spin-button,
-.betcoin-range__num::-webkit-inner-spin-button {
-	appearance: none;
-	margin: 0;
-}
-
 /* betcoin range end */
 
 .bet-form__submit {
@@ -1702,10 +1697,6 @@ textarea {
 
 .stash__items .game-item {
   width: unset;
-}
-
-.stash__show-more {
-  /* display: none; */
 }
 
 /* stash end */

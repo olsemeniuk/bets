@@ -1,5 +1,5 @@
 // imports
-import { changeClasses, checkClass, delegate, getElementHeight } from "./main.js";
+import { changeClasses, checkClass, delegate, getHeight } from "../modules/helpers.js";
 import { Tabs } from "../components/Tabs/Tabs.js";
 import { ArrowDropdown } from "../components/Dropdown/ArrowDropdown.js";
 
@@ -57,8 +57,8 @@ function toggleBetItems() {
   const listWrapperToToggle = parentItem.querySelector('.bets-item__content');
   const listToToggle = parentItem.querySelector('.bets-item__items-list');
 
-  const listHeight = getElementHeight(listToToggle);
-  const listWrapperHeight = getElementHeight(listWrapperToToggle);
+  const listHeight = getHeight(listToToggle);
+  const listWrapperHeight = getHeight(listWrapperToToggle);
 
   if (listWrapperHeight === 0) {
     listWrapperToToggle.style.height = `${listHeight}px`;
@@ -178,7 +178,7 @@ function filterItemsByRarity() {
 
 function hideSecondRowItems(wrapper, insideItems, block) {
   const rowHeight = checkRowHeight(insideItems);
-  const wrapperHeight = getElementHeight(wrapper);
+  const wrapperHeight = getHeight(wrapper);
 
   if (wrapperHeight > rowHeight + 20) {
     wrapper.style.height = `${rowHeight + 35}px`;
@@ -188,7 +188,7 @@ function hideSecondRowItems(wrapper, insideItems, block) {
 
 function toggleItemsBlockHeight(block, wrapper, insideItems, inner, button) {
   const rowHeight = checkRowHeight(insideItems);
-  const innerHeight = getElementHeight(inner);
+  const innerHeight = getHeight(inner);
 
   const isOpened = block.classList.contains('show-more--opened');
 
@@ -206,7 +206,7 @@ function toggleItemsBlockHeight(block, wrapper, insideItems, inner, button) {
 function checkRowHeight(rowItems) {
   let rowHeight = '';
   rowItems.forEach(item => {
-    const itemHeight = getElementHeight(item);
+    const itemHeight = getHeight(item);
     if (itemHeight !== 0) {
       rowHeight = itemHeight;
     }
@@ -218,7 +218,7 @@ function correctStashHeight() {
   const stashItemsWrapper = document.querySelector('.stash__items-wrapper');
   const stashBody = document.querySelector('.stash__body');
 
-  const listHeight = getElementHeight(stashItemsList);
+  const listHeight = getHeight(stashItemsList);
   const rowHeight = checkRowHeight(stashItems);
 
   stashItemsWrapper.style.height = `${listHeight}px`;
@@ -241,17 +241,32 @@ function slideBetcoinsAmount({target}) {
       break;
 
     case rangeNum:
-      const isInvalid = Number(rangeNum.value) < 0 || /^00/.test(rangeNum.value)
+      rangeNum.value = validateNumberInput(rangeNum.value);
       const isBiggerThanMax = Number(rangeNum.value) > betcoinSlider.max;
-      if (isInvalid) rangeNum.value = 0;
-      if (isBiggerThanMax) rangeNum.value = betcoinSlider.max;
 
-      betcoinSlider.value = Number(rangeNum.value) === 0 ? 0 : rangeNum.value;
+      if (isBiggerThanMax) rangeNum.value = betcoinSlider.max;
+      betcoinSlider.value = Number(rangeNum.value) === 0 ?
+                            0 : Number(rangeNum.value);
       break;
   }
 
   changeBetcoinSum(Number(rangeNum.value));
   if (Number(rangeNum.value) === '') changeBetcoinSum(0);
+}
+
+function validateNumberInput(value) {
+  value = value.replace(/[^.\d]+|^00+|^\./g,'')
+               .replace( /^([^\.]*\.)|\./g, '$1' );
+
+  const dotIndex = value.indexOf('.');
+
+  if (dotIndex !== -1) {
+    const digitisAfterDot = value.slice(dotIndex).length;
+    if (digitisAfterDot > 2) value = value.slice(0, dotIndex + 3);
+    return value;
+  }
+
+  return value;
 }
 
 function changeBetcoinSum(value) {
