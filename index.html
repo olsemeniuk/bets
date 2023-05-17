@@ -44,6 +44,9 @@
 
         <!-- main navigation -->
         <nav class="menu">
+          <button class="menu__button" type="button">
+            <span class="visually-hidden">Open navigation menu</span>
+          </button>
           <ul class="menu__list">
             <li class="menu__item">
               <a class="menu__link icon icon--bets" href="#">
@@ -97,21 +100,21 @@
                 <span class="visually-hidden">Logout profile</span>
               </button>
             </div>
-            <img
-              class="user__avatar"
-              width="106"
-              height="115"
-              src="images/temp/user-avatar.png"
-              srcset=""
-              sizes=""
-              alt="">
           </div>
         </div>
+        <img
+          class="user-avatar"
+          width="106"
+          height="115"
+          src="images/temp/user-avatar.png"
+          srcset=""
+          sizes=""
+          alt="">
       </div>
     </div>
   </header>
 
-  <div class="page-content">
+  <div style="display: none" class="page-content">
     <div class="container">
       <div class="page-content__inner">
 
@@ -2822,7 +2825,7 @@
   </div>
 
   <!-- footer -->
-  <footer class="footer">
+  <footer style="display: none" class="footer">
     <h2 class="visually-hidden">===================</h2>
     <div class="container">
       <div class="footer__inner page-block">

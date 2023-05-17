@@ -27,7 +27,7 @@ const teamsBetRows = teamsBetList.querySelectorAll('.teams-bet__row');
 const coefRadios = teamsBet.querySelectorAll('.coef__radio');
 const showMoreCoefsButton = teamsBet.querySelector('.teams-bet__show-more');
 
-// last bes elements
+// last bets elements
 const lastBetsList = document.querySelector('.bets-list');
 
 // betcoin-range
@@ -208,7 +208,10 @@ function betCoefsHeightToggle() {
   const wrapper = document.querySelector('.teams-bet__coefficients-wrapper');
   let minHeight = 0;
 
-  if (teamsBetRows.length < 5) return;
+  if (teamsBetRows.length <= 5) {
+    teamsBet.classList.add('teams-bet--small');
+    return;
+  }
 
   teamsBetRows.forEach((item, index) => {
     let itemMargin = getComputedStyle(item).getPropertyValue('margin-top');
@@ -485,11 +488,11 @@ function disableCoefsRadio() {
     let numberOfInactiveCoefs = 0;
 
     rowCoefs.forEach(item => {
-      const isLocked = item.classList.contains('coef--locked')
-      const isDisabled = item.classList.contains('coef--disabled')
+      const isLocked = item.classList.contains('coef--locked');
+      const isDisabled = item.classList.contains('coef--disabled');
       if (isLocked || isDisabled) numberOfInactiveCoefs++;
     });
 
-    if (numberOfInactiveCoefs === 2) rowTitle.classList.add('teams-bet__row-title--disabled')
+    if (numberOfInactiveCoefs === 2) rowTitle.classList.add('teams-bet__row-title--disabled');
   })
 }
