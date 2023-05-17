@@ -2447,6 +2447,10 @@ fieldset {
   list-style-type: none;
 }
 
+.footer__links-block + .footer__links-block {
+  margin-left: 10px;
+}
+
 .links-block {
   display: flex;
   font-size: 12px;
@@ -2521,8 +2525,7 @@ fieldset {
 }
 
 .copyright {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .copyright::before {
@@ -2533,12 +2536,12 @@ fieldset {
 
 .copyright__item {
   position: relative;
+  display: inline-block;
   margin: 0;
   font-size: 12px;
 }
 
 .copyright__item + .copyright__item {
-  margin-left: 4px;
   padding-left: 4px;
 }
 
@@ -2633,6 +2636,33 @@ fieldset {
   .menu__item + .menu__item {
     margin-left: 20px;
   }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .footer__languages {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 30px;
+  }
+
+  .footer__logo {
+    margin: 0 0 10px 0;
+  }
+
+  .footer__links {
+    justify-content: center;
+    margin: 0;
+  }
+
+  .footer__links-block {
+    margin-bottom: 25px;
+  }
 }
 
 /* Medium Devices, Desktops */
@@ -2719,6 +2749,29 @@ fieldset {
             mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
   }
 
+  .footer__inner {
+    padding-top: 40px;
+  }
+
+  .footer__logo {
+    margin: 0 0 6px 0;
+  }
+
+  .footer__links {
+    flex-direction: column;
+  }
+
+  .links-block--support {
+    order: 1;
+  }
+
+  .links-block--info {
+    order: 2;
+  }
+
+  .links-block--social {
+    order: 3;
+  }
 }
 
 /* Extra Small Devices, Phones */
@@ -2737,5 +2790,9 @@ fieldset {
 
   .user__resources-link {
     font-size: 12px;
+  }
+
+  .footer__inner {
+    padding: 40px 15px 15px;
   }
 }

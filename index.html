@@ -2825,10 +2825,20 @@
   </div>
 
   <!-- footer -->
-  <footer style="display: none" class="footer">
+  <footer class="footer">
     <h2 class="visually-hidden">===================</h2>
     <div class="container">
       <div class="footer__inner page-block">
+
+        <!-- footer logo -->
+        <a class="logo footer__logo" href="#">
+          <img
+            class="logo__img"
+            src="images/logo.png"
+            width="120"
+            height="53"
+            alt="Bets logo.">
+        </a>
 
         <!-- languages dropdown -->
         <div class="dropdown languages footer__languages" id="footer_languages_dropdown">
@@ -2865,28 +2875,18 @@
           </form>
         </div>
 
-        <!-- footer logo -->
-        <a class="logo footer__logo" href="#">
-          <img
-            class="logo__img"
-            src="images/logo.png"
-            width="120"
-            height="53"
-            alt="Bets logo.">
-        </a>
-
         <div class="footer__info">
           <!-- footer links -->
           <ul class="footer__links">
 
             <!-- support -->
-            <li class="footer__links-block links-block">
+            <li class="footer__links-block links-block links-block--support">
               <h3 class="links-block__title">Support (RU/EN):</h3>
               <a class="footer__mail-link icon icon--mail" href="mailto:support@bets4.pro">support@bets4.pro</a>
             </li>
 
             <!-- socials -->
-            <li class="footer__links-block links-block">
+            <li class="footer__links-block links-block links-block--socials">
               <h3 class="links-block__title">Our social pages:</h3>
               <ul class="socials">
                 <li class="socials__item">
@@ -2903,7 +2903,7 @@
             </li>
 
             <!-- info links -->
-            <li class="links-block">
+            <li class="footer__links-block links-block links-block--info">
               <h3 class="links-block__title icon icon--info">Info:</h3>
               <ul class="info-links">
                 <li class="info-links__item">
