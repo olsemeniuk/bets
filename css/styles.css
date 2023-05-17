@@ -1533,7 +1533,7 @@ fieldset {
   background-color: var(--contrast-color);
   background-image: url("../images/streams-video-bg.jpg");
   background-repeat: no-repeat;
-  background-size: 101%;
+  background-size: cover;
   background-position: center;
   border: 1px solid var(--contrast-color);
   border-radius: var(--border-radius-normal);
@@ -1709,7 +1709,7 @@ fieldset {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 200px;
+  width: calc(100% - 500px);
   padding: 0 15px;
   text-align: center;
 }
@@ -2625,6 +2625,18 @@ fieldset {
   ==================== */
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1200px) {
+  .page-block {
+    padding: 15px;
+  }
+
+  .last-bets {
+    padding: 0;
+  }
+
+  .upcoming-match {
+    padding: 10px 65px 9px 40px;
+  }
+
   .header__inner {
     padding: 25px;
   }
@@ -2708,10 +2720,15 @@ fieldset {
     padding-top: 0;
   }
 
-  .header .container {
+  .container {
     width: 100%;
     padding: 0;
   }
+
+  .page-block {
+    padding: 0;
+  }
+
 
   .header__inner {
     padding: 10px 50px 10px 15px;
@@ -2746,7 +2763,27 @@ fieldset {
 
   .user-avatar {
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
-            mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  }
+
+  .page-content__inner {
+    display: block;
+  }
+
+  .upcoming-match {
+    padding: 10px 65px 9px 40px;
+  }
+
+  .main {
+    margin-right: 0;
+  }
+
+  .last-bets {
+    width: auto;
+  }
+
+  .simplebar-placeholder {
+    width: 100% !important;
   }
 
   .footer__inner {
