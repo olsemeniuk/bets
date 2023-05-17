@@ -21,10 +21,12 @@ const helpers = {
 
   getHeight: function (element) {
     return element.getBoundingClientRect().height
-  },
+  }
 }
 
-export const changeClasses = helpers.changeClasses;
-export const checkClass = helpers.checkClass;
-export const delegate = helpers.delegate;
-export const getHeight = helpers.getHeight;
+const changeClasses = helpers.changeClasses;
+const checkClass = helpers.checkClass;
+const delegate = helpers.delegate;
+const getHeight = helpers.getHeight;
+
+export {changeClasses, checkClass, delegate, getHeight};

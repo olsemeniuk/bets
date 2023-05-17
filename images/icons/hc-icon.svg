@@ -1,0 +1,16 @@
+<svg id="hc" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        opacity: 0.5;
+      }
+    </style>
+  </defs>
+  <rect id="Прямоугольник_1" data-name="Прямоугольник 1" class="cls-1" x="5" y="3" width="3" height="11"/>
+  <rect id="Прямоугольник_2" data-name="Прямоугольник 2" class="cls-1" x="9" y="9" width="3" height="5"/>
+  <rect id="Прямоугольник_3" data-name="Прямоугольник 3" class="cls-2" x="9" y="3" width="3" height="6"/>
+</svg>

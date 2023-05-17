@@ -20,6 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- styles and css libs -->
+  <link rel="stylesheet" href="libs/css/simplebar.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -77,26 +78,33 @@
 
         <!-- user info -->
         <div class="user">
-          <button class="user__login-button icon icon--login" type="button">Login</button>
+          <button class="user__login-button" type="button">Login</button>
           <div class="user__menu">
             <ul class="user__resources">
               <li class="user__resources-item">
-                <a class="user__resources-link user__resources-link--betcoins icon icon--coins" href="#">$15.03</a>
+                <a class="user__resources-link user__resources-link--betcoins" href="#">$15.03</a>
               </li>
               <li class="user__resources-item">
-                <a class="user__resources-link user__resources-link--steam icon icon--steam" href="#">$12.24</a>
+                <a class="user__resources-link user__resources-link--steam" href="#">$12.24</a>
               </li>
             </ul>
             <div class="user__options">
               <a class="user__profile" href="#">
-                <span class="user__profile-name">[Im]mortal</span>
+                <b class="user__profile-name">[Im]mortal</b>
                 profile
               </a>
               <button class="user__logout-button icon icon--logout" type="button">
                 <span class="visually-hidden">Logout profile</span>
               </button>
             </div>
-            <img class="user__avatar" src="images/user-avatar.png" alt="">
+            <img
+              class="user__avatar"
+              width="106"
+              height="115"
+              src="images/temp/user-avatar.png"
+              srcset=""
+              sizes=""
+              alt="">
           </div>
         </div>
       </div>
@@ -111,156 +119,461 @@
         <main class="main">
           <!-- upcoming match block -->
           <section class="upcoming-match page-block">
-            <a class="upcoming-match__category icon icon--dota" href="#"></a>
+            <a class="upcoming-match__category upcoming-match__category--dota" href="#"></a>
             <div class="upcoming-match__info">
               <h2 class="upcoming-match__title">Upcoming match</h2>
               <i class="upcoming-match__num">№190543</i>
-              <b class="upcoming-match__timer icon icon--time">2h 4 min to start</b>
+              <b class="upcoming-match__timer">2h 4 min to start</b>
             </div>
             <a class="upcoming-match__text" href="#">ProDotA Cup Europe #20</a>
             <img
               class="upcoming-match__img"
-              src="images/dota-cup-bg.png"
               width="92"
               height="55"
-              alt=""
-              aria-hidden="true">
+              src="images/temp/dota-cup-bg.png"
+              srcset=""
+              sizes=""
+              alt="">
           </section>
 
           <!-- bet -->
           <article class="bet page-block">
             <h2 class="visually-hidden">========================</h2>
-
-            <!-- teams bet block -->
-            <section class="teams-bet">
-              <h3 class="visually-hidden">========================</h3>
-              <div class="teams-bet__teams">
-                <p class="teams-bet__team-name">PENTA Sports</p>
-                <span class="teams-bet__vs"></span>
-                <p class="teams-bet__team-name">Team Singularity</p>
-              </div>
-              <ul class="teams-bet__bets-list rates">
-                <li class="rates__item rates-item">
-                  <span class="rates-item__coef coef"></span>
-                  <b class="rates-item__title"></b>
-                  <span class="rates-item__coef coef"></span>
-                </li>
-              </ul>
-            </section>
-
-            <!-- bet info -->
-            <p class="bet-info">
-              Placing bet on:
-              <span class="bet-info__type">Handicap: Team Singularity +4.5</span>.
-              You’ll get
-              <span class="bet-info__money bet-info__money-get">$0</span>
-              for
-              <span class="bet-info__money bet-info__money-for">$0</span>
-            </p>
-
-
             <!-- bet form -->
             <form class="bet-form" action="#">
-
-              <!-- permissions -->
-              <fieldset class="bet-form__row permissions">
-                <legend class="visually-hidden">==============</legend>
-                <label class="toggle permissions__item" for="small-coef-checkbox">
-                  <input
-                    class="toggle__checkbox permissions__checkbox visually-hidden"
-                    type="checkbox"
-                    id="small-coef-checkbox"
-                    name="smallCoef"
-                    checked>
-                  <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
-                  <span class="permissions__text">Allow small coefficient change (up to 0.05)</span>
-                </label>
-                <label class="toggle permissions__item" for="any-coef-checkbox">
-                  <input
-                    class="toggle__checkbox permissions__checkbox visually-hidden"
-                    type="checkbox"
-                    id="any-coef-checkbox"
-                    name="anyCoef">
-                  <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
-                  <span class="permissions__text">Allow any coefficient change</span>
-                </label>
-              </fieldset>
-
-              <!-- user bet -->
-              <fieldset class="bet-form__block user-bet">
-                <legend class="visually-hidden">Placed bet</legend>
-                <div class="bet-form__block-header user-bet__header">
-                  <p class="user-bet__info">
-                    You placed
-                    <a class="user-bet__info-link icon icon--link" href="#">bet</a>
-                    at 12.06.2017 12:38
-                  </p>
-                  <button class="user-bet__cancel-button icon icon--cross" type="button">Cancel</button>
-                  <p class="total user-bet__total">
-                    Total bet:
-                    <b class="total__sum user-bet__total-sum"></b>
-                  </p>
-                </div>
-                <div class="bet-form__block-body user-bet__body">
-                  <div class="betcoin user-bet__betcoin icon icon--coins" data-sum="0">
-                    <div class="betcoin__info">
-                      <p class="betcoin__text">Betcoin</p>
-                      <b class="betcoin__sum">0$</b>
+              <!-- teams bet block -->
+              <fieldset class="teams-bet">
+                <legend class="visually-hidden">========================</legend>
+                <div class="teams-bet__block">
+                  <div class="teams-bet__row">
+                    <div class="teams-bet__team teams-bet__team--first teams-bet__team--winner" data-team="1">
+                      <span class="teams-bet__team-name">PENTA Sports</span>
+                      <img
+                        class="teams-bet__team-logo"
+                        width="50"
+                        height="50"
+                        src="images/temp/wolf-logo.png"
+                        srcset=""
+                        sizes=""
+                        alt="Penta sports logo.">
+                    </div>
+                    <div class="teams-bet__row-title">
+                      <div class="teams-bet__vs">vs</div>
+                      <div class="teams-bet__type">Bo5</div>
+                      <button class="open-button" type="button"></button>
+                    </div>
+                    <div class="teams-bet__team teams-bet__team--second teams-bet__team--lost" data-team="2">
+                      <img
+                        class="teams-bet__team-logo"
+                        width="50"
+                        height="45"
+                        src="images/temp/saw-logo.png"
+                        srcset=""
+                        sizes=""
+                        alt="Team singularity logo.">
+                      <span class="teams-bet__team-name">Team Singularity</span>
                     </div>
                   </div>
-                  <div class="user-bet__item game-item" data-price="0.21" data-rarity="common">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  <div class="details">
+                    <div class="details__inner">
+                      <div class="details__block datails__first-team">
+                        <div class="details__win-rate">
+                          Win rate last 28 games: <b>50%</b>
+                        </div>
+                        <div class="details__section">
+                          <div class="details__caption">Last 3 games</div>
+                          <div class="details__score-wrapper">
+                            <div class="details__score-item">
+                              <a class="details__team-link" href="#">BIG Academy</a>
+                              <b class="details__score">1 : 2</b>
+                              <a class="details__team-link" href="#">Let us cook</a>
+                            </div>
+                            <div class="details__score-item">
+                              <a class="details__team-link" href="#">BIG Academy</a>
+                              <b class="details__score">1 : 2</b>
+                              <a class="details__team-link" href="#">Let us cook</a>
+                            </div>
+                            <div class="details__score-item">
+                              <a class="details__team-link" href="#">BIG Academy</a>
+                              <b class="details__score">1 : 2</b>
+                              <a class="details__team-link" href="#">Let us cook</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="details__section">
+                          <div class="details__caption">Last game vs Sangal:</div>
+                          <div class="details__score-item">
+                            <a class="details__team-link" href="#">BIG Academy</a>
+                            <b class="details__score">1 : 2</b>
+                            <a class="details__team-link" href="#">Let us cook</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="details__block datails__second-team">
+                        <div class="details__win-rate">
+                          Win rate last 28 games: <b>50%</b>
+                        </div>
+                        <div class="details__section">
+                          <div class="details__caption">Last 3 games</div>
+                          <div class="details__score-wrapper">
+                            <div class="details__score-item">
+                              <a class="details__team-link" href="#">BIG Academy</a>
+                              <b class="details__score">1 : 2</b>
+                              <a class="details__team-link" href="#">Let us cook</a>
+                            </div>
+                            <div class="details__score-item">
+                              <a class="details__team-link" href="#">BIG Academy</a>
+                              <b class="details__score">1 : 2</b>
+                              <a class="details__team-link" href="#">Let us cook</a>
+                            </div>
+                            <div class="details__score-item">
+                              <a class="details__team-link" href="#">BIG Academy</a>
+                              <b class="details__score">1 : 2</b>
+                              <a class="details__team-link" href="#">Let us cook</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="details__section">
+                          <div class="details__caption">Last game vs Sangal:</div>
+                          <div class="details__score-item">
+                            <a class="details__team-link" href="#">BIG Academy</a>
+                            <b class="details__score">1 : 2</b>
+                            <a class="details__team-link" href="#">Let us cook</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="user-bet__item game-item" data-price="0.21" data-rarity="common">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  <div class="teams-bet__coefficients-wrapper">
+                    <ul class="teams-bet__coefficients">
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team coef--win">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x2.1</span>
+                            <span class="coef__percent">48%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span class="icon icon--dot">Match</span>
+                        </div>
+                        <label class="coef coef--second-team coef--made-bet">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.9</span>
+                            <span class="coef__percent">52%</span>
+                          </span>
+                        </label>
+                      </li>
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team coef--lost">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x2.1</span>
+                            <span class="coef__percent">48%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span class="live">Live match</span>
+                        </div>
+                        <label class="coef coef--second-team coef--locked">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.9</span>
+                            <span class="coef__percent">52%</span>
+                          </span>
+                        </label>
+                      </li>
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team coef--disabled">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x2.12</span>
+                            <span class="coef__percent">46%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span>Game 3</span>
+                        </div>
+                        <label class="coef coef--second-team coef--locked">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.92</span>
+                            <span class="coef__percent">54%</span>
+                          </span>
+                        </label>
+                      </li>
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.98</span>
+                            <span class="coef__percent">49%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span>Firstblood</span>
+                        </div>
+                        <label class="coef coef--second-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.89</span>
+                            <span class="coef__percent">51%</span>
+                          </span>
+                        </label>
+                      </li>
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x4.0</span>
+                            <span class="coef__percent">24%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span class="icon icon--handicap">HC +1.5: Team Singularity</span>
+                        </div>
+                        <label class="coef coef--second-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.5</span>
+                            <span class="coef__percent">76%</span>
+                          </span>
+                        </label>
+                      </li>
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x2.1</span>
+                            <span class="coef__percent">48%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span>Match</span>
+                        </div>
+                        <label class="coef coef--second-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.9</span>
+                            <span class="coef__percent">52%</span>
+                          </span>
+                        </label>
+                      </li>
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x2.1</span>
+                            <span class="coef__percent">48%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span>Match</span>
+                        </div>
+                        <label class="coef coef--second-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.9</span>
+                            <span class="coef__percent">52%</span>
+                          </span>
+                        </label>
+                      </li>
+                      <li class="teams-bet__row">
+                        <label class="coef coef--first-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_1">
+                          <span class="coef__block">
+                            <span class="coef__x">x2.1</span>
+                            <span class="coef__percent">48%</span>
+                          </span>
+                        </label>
+                        <div class="teams-bet__row-title">
+                          <span>Match</span>
+                        </div>
+                        <label class="coef coef--second-team">
+                          <input
+                            class="visually-hidden coef__radio"
+                            type="radio"
+                            name="coef"
+                            value="team_2">
+                          <span class="coef__block">
+                            <span class="coef__x">x1.9</span>
+                            <span class="coef__percent">52%</span>
+                          </span>
+                        </label>
+                      </li>
+                    </ul>
                   </div>
+                  <button class="button button--secondary teams-bet__show-more" type="button">Show more</button>
                 </div>
+                <!-- bet info -->
+                <p class="bet-info">
+                  <span class="bet-info__placeholder">Please choose what you want to bet on (just click on the odds you are interested in).</span>
+                  <!-- <span class="bet-info__placing-bet">
+                    Placing bet on:
+                    <span class="bet-info__type icon icon--handicap">Handicap: Team Singularity +4.5</span>.
+                    You’ll get
+                    <b class="bet-info__money bet-info__money-get">$0</b>
+                    for
+                    <b class="bet-info__money bet-info__money-for">$0</b>
+                  </span> -->
+                </p>
               </fieldset>
-              <fieldset class="bet-form__row">
-                <legend class="visually-hidden">==========</legend>
-                <div class="betcoin-range">
-                  <label class="betcoin-range__label icon icon--coins" for="betcoin-range-slider">BetCoin:</label>
-                  <div class="betcoin-range__slider-wrapper">
+
+
+              <!-- user bet -->
+              <fieldset class="user-bet">
+                <legend class="visually-hidden">Placed bet</legend>
+
+                <!-- permissions -->
+                <div class="permissions">
+                  <label class="toggle permissions__item" for="small-coef-checkbox">
                     <input
-                      class="betcoin-range__slider"
-                      type="range"
-                      id="betcoin-range-slider"
-                      name="betcoinRangeSlider"
-                      value="0.0"
-                      min="0"
-                      max="100"
-                      step="0.1">
-                  </div>
-                  <input
-                    class="betcoin-range__num"
-                    type="text"
-                    id="betcoin-range-number"
-                    name="betcoinRangeNumber"
-                    placeholder="0.0">
+                      class="toggle__checkbox visually-hidden"
+                      type="checkbox"
+                      id="small-coef-checkbox"
+                      name="smallCoef"
+                      checked>
+                    <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
+                    <span class="permissions__text">Allow small coefficient change (up to 0.05)</span>
+                  </label>
+                  <label class="toggle permissions__item" for="any-coef-checkbox">
+                    <input
+                      class="toggle__checkbox visually-hidden"
+                      type="checkbox"
+                      id="any-coef-checkbox"
+                      name="anyCoef">
+                    <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
+                    <span class="permissions__text">Allow any coefficient change</span>
+                  </label>
                 </div>
-                <button class="bet-form__submit button button--important icon icon--coins-stack" type="submit">Place Bet</button>
+
+                <!-- user-bet__block -->
+                <div class="bet-block user-bet__block">
+                  <div class="bet-block__header">
+                    <p class="user-bet__info">
+                      You placed
+                      <a class="link" href="#">bet</a>
+                      at 12.06.2017 12:38
+                    </p>
+                    <button class="user-bet__cancel-button" type="button">Cancel</button>
+                    <p class="total">
+                      Total bet:
+                      <b class="total__sum user-bet__total-sum"></b>
+                    </p>
+                  </div>
+                  <div class="bet-block__body user-bet__body">
+                    <div class="betcoin user-bet__betcoin" data-sum="0">
+                      <div class="betcoin__info">
+                        <p class="betcoin__text">Betcoin</p>
+                        <b class="betcoin__sum">0$</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- betcoin-range -->
+                <div class="bet-form__row">
+                  <div class="betcoin-range">
+                    <label class="betcoin-range__label" for="betcoin-range-slider">BetCoin:</label>
+                    <div class="betcoin-range__slider-wrapper">
+                      <input
+                        class="betcoin-range__slider"
+                        type="range"
+                        id="betcoin-range-slider"
+                        name="betcoinRangeSlider"
+                        value="0.0"
+                        min="0"
+                        max="100"
+                        step="0.1">
+                    </div>
+                    <input
+                      class="betcoin-range__num"
+                      type="text"
+                      id="betcoin-range-number"
+                      name="betcoinRangeNumber"
+                      placeholder="0.0">
+                  </div>
+                  <button class="bet-form__submit button button--important" type="submit">Place Bet</button>
+                </div>
               </fieldset>
 
               <!-- stash -->
-              <fieldset class="bet-form__block stash">
+              <fieldset class="bet-block stash">
                 <legend class="visually-hidden">Stash</legend>
-                <div class="bet-form__block-header stash__header">
+                <div class="bet-block__header">
                   <span class="stash__title">Your stash</span>
-                  <button class="stash__all-in icon icon--all-items" type="button">All in</button>
-                  <p class="total stash__total">
+                  <button class="stash__all-in" type="button">All in</button>
+                  <p class="total">
                     Total:
                     <b class="total__sum stash__total-sum"></b>
                   </p>
                 </div>
-                <div class="bet-form__block-body stash__body show-more">
+                <div class="bet-block__body stash__body show-more">
                   <div class="stash__filter-block">
 
                     <!-- rarity filter -->
-                    <div class="dropdown arrow-dropdown rarity-dropdown" id="stash_rarity_dropdown">
+                    <div class="dropdown arrow-dropdown" id="stash_rarity_dropdown">
                       <button class="dropdown__button arrow-dropdown__button" type="button">
                         <span class="dropdown__text-wrapper arrow-dropdown__text-wrapper">
                           Rarity:
@@ -307,94 +620,213 @@
                     <button class="sort stash__sort" type="button">Sort by price</button>
                   </div>
                   <!-- stash items -->
-                  <div class="show-more__items-wrapper stash__items-wrapper">
-                    <ul class="stash__items show-more__items-inner">
-                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                  <div class="show-more__wrapper stash__items-wrapper">
+                    <div class="stash__items show-more__inner">
+                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.21</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.23" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.23</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
                         <b class="game-item__info game-item__price">$0.41</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.61" data-rarity="legendary">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.61" data-rarity="legendary">
                         <b class="game-item__info game-item__price">$0.61</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.1" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.1" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.1</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.21</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.23" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.23</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
                         <b class="game-item__info game-item__price">$0.41</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.61" data-rarity="legendary">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.61" data-rarity="legendary">
                         <b class="game-item__info game-item__price">$0.61</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.1" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.1" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.1</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.21</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.23" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.23</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.1" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.1" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.1</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.21" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.21</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.23" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.23" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.23</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.61" data-rarity="legendary">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.61" data-rarity="legendary">
                         <b class="game-item__info game-item__price">$0.61</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                      <li class="stash__item game-item show-more__item" data-price="0.11" data-rarity="common">
+                      </div>
+                      <div class="game-item show-more__item" data-price="0.11" data-rarity="common">
                         <b class="game-item__info game-item__price">$0.1</b>
-                        <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                        <img
+                          class="game-item__img"
+                          width="105"
+                          height="70"
+                          src="images/temp/game-item-image.jpg"
+                          srcset=""
+                          sizes=""
+                          alt="">
                         <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                      </li>
-                    </ul>
+                      </div>
+                    </div>
                   </div>
                   <button class="button button--secondary show-more__button" type="button">Show more</button>
                 </div>
@@ -403,7 +835,7 @@
           </article>
 
           <!-- streams -->
-          <section class="streams page-block">
+          <article class="streams page-block">
             <h2 class="title streams__title icon icon--triangle-dots">Streams</h2>
             <div class="streams__inner">
               <div class="tabs streams__tabs" id="streams_tabs">
@@ -455,32 +887,33 @@
                 </div>
               </div>
             </div>
-          </section>
+          </article>
 
         </main>
 
         <!-- page side block (last bets) -->
         <aside class="last-bets page-block">
           <h2 class="title last-bets__title icon icon--vertical-dots">Last bets</h2>
-          <ul class="last-bets__list bets-list">
+          <ul class="last-bets__list bets-list" id="last_bets_list">
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment">InTeRdAx</a>
-                <a class="bets-item__bet icon icon--link">bet</a>
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
                 on
                 <span class="bets-item__type">HC: Team Singularity +4.5</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$1.27</span>
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/penta-sports-logo.png"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
                     width="16"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">PENTA Sports</span>
                 </b>
@@ -488,22 +921,23 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment" href="#">prOtyn</a>
-                <a class="bets-item__bet icon icon--link" href="#">bet</a>
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
                 on
                 <span class="bets-item__type">Match</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$0.64</span>
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/team-singularity-logo.png"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
                     width="15"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">Team Singularity</span>
                 </b>
@@ -511,22 +945,23 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment">InTeRdAx</a>
-                <a class="bets-item__bet icon icon--link">bet</a>
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet link">bet</span>
                 on
                 <span class="bets-item__type">HC: Team Singularity +4.5</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$1.27</span>
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/penta-sports-logo.png"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
                     width="16"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">PENTA Sports</span>
                 </b>
@@ -534,73 +969,91 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment" href="#">prOtyn</a>
-                <a class="bets-item__bet icon icon--link" href="#">bet</a>
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
                 on
                 <span class="bets-item__type">Match</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$0.64+</span>
-                  <span class="bets-item__money bets-item__items-price icon icon--items">$0.64</span>
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
                 </span>
-                <button class="bets-item__show-content icon icon--chevron" type="button">
+                <button class="open-button" type="button">
                   <span class="visually-hidden">Show all items</span>
                 </button>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/team-singularity-logo.png"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
                     width="15"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">Team Singularity</span>
                 </b>
               </div>
               <div class="bets-item__content">
-                <ul class="bets-item__items-list">
-                  <li class="game-item">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment">InTeRdAx</a>
-                <a class="bets-item__bet icon icon--link">bet</a>
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
                 on
                 <span class="bets-item__type">HC: Team Singularity +4.5</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$1.27</span>
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/penta-sports-logo.png"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
                     width="16"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">PENTA Sports</span>
                 </b>
@@ -608,22 +1061,23 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment" href="#">prOtyn</a>
-                <a class="bets-item__bet icon icon--link" href="#">bet</a>
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
                 on
                 <span class="bets-item__type">Match</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$0.64</span>
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/team-singularity-logo.png"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
                     width="15"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">Team Singularity</span>
                 </b>
@@ -631,22 +1085,23 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment">InTeRdAx</a>
-                <a class="bets-item__bet icon icon--link">bet</a>
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
                 on
                 <span class="bets-item__type">HC: Team Singularity +4.5</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$1.27</span>
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/penta-sports-logo.png"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
                     width="16"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">PENTA Sports</span>
                 </b>
@@ -654,133 +1109,163 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment" href="#">prOtyn</a>
-                <a class="bets-item__bet icon icon--link" href="#">bet</a>
+                <b class="bets-item__user-name" href="#">prOtyn</b>
+                <span class="bets-item__bet" href="#">bet</span>
                 on
                 <span class="bets-item__type">Match</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$0.64+</span>
-                  <span class="bets-item__money bets-item__items-price icon icon--items">$0.64</span>
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
                 </span>
-                <button class="bets-item__show-content icon icon--chevron" type="button">
+                <button class="open-button" type="button">
                   <span class="visually-hidden">Show all items</span>
                 </button>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/team-singularity-logo.png"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
                     width="15"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">Team Singularity</span>
                 </b>
               </div>
               <div class="bets-item__content">
-                <ul class="bets-item__items-list">
-                  <li class="game-item">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
-                    <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
-                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment">InTeRdAx</a>
-                <a class="bets-item__bet icon icon--link">bet</a>
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
                 on
                 <span class="bets-item__type">HC: Team Singularity +4.5</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$1.27</span>
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/penta-sports-logo.png"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
                     width="16"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">PENTA Sports</span>
                 </b>
@@ -788,22 +1273,23 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment" href="#">prOtyn</a>
-                <a class="bets-item__bet icon icon--link" href="#">bet</a>
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
                 on
                 <span class="bets-item__type">Match</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$0.64</span>
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/team-singularity-logo.png"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
                     width="15"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">Team Singularity</span>
                 </b>
@@ -811,22 +1297,23 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment">InTeRdAx</a>
-                <a class="bets-item__bet icon icon--link">bet</a>
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
                 on
                 <span class="bets-item__type">HC: Team Singularity +4.5</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$1.27</span>
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
                 </span>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/penta-sports-logo.png"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
                     width="16"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">PENTA Sports</span>
                 </b>
@@ -834,58 +1321,1502 @@
             </li>
             <li class="bets-list__item bets-item">
               <div class="bets-item__info">
-                <a class="bets-item__user-name icon icon--investment" href="#">prOtyn</a>
-                <a class="bets-item__bet icon icon--link" href="#">bet</a>
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
                 on
                 <span class="bets-item__type">Match</span>
               </div>
               <div class="bets-item__body">
                 <span class="bets-item__resources">
-                  <span class="bets-item__money bets-item__betcoins icon icon--coins">$0.64+</span>
-                  <span class="bets-item__money bets-item__items-price icon icon--items">$0.64</span>
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
                 </span>
-                <button class="bets-item__show-content icon icon--chevron" type="button">
+                <button class="open-button" type="button">
                   <span class="visually-hidden">Show all items</span>
                 </button>
                 <b class="bets-item__team">
                   <img
                     class="bets-item__team-logo"
-                    src="images/team-singularity-logo.png"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
                     width="15"
                     height="16"
-                    aria-hidden="true"
                     alt="">
                   <span class="bets-item__team-name">Team Singularity</span>
                 </b>
               </div>
               <div class="bets-item__content">
-                <ul class="bets-item__items-list">
-                  <li class="game-item">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                  <li class="game-item">
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
                     <b class="game-item__info game-item__price">$0.21</b>
-                    <img class="game-item__img" src="images/game-item-image.jpg" width="105" height="70" alt="">
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
                     <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                  </li>
-                </ul>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet link">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name" href="#">prOtyn</b>
+                <span class="bets-item__bet" href="#">bet</span>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet link">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name" href="#">prOtyn</b>
+                <span class="bets-item__bet" href="#">bet</span>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet link">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name" href="#">prOtyn</b>
+                <span class="bets-item__bet" href="#">bet</span>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <b class="bets-item__user-name">InTeRdAx</b>
+                <span class="bets-item__bet">bet</span>
+                on
+                <span class="bets-item__type">HC: Team Singularity +4.5</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$1.27</span>
+                </span>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/penta-sports-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="16"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">PENTA Sports</span>
+                </b>
+              </div>
+            </li>
+            <li class="bets-list__item bets-item">
+              <div class="bets-item__info">
+                <a class="bets-item__user-link" href="#">prOtyn</a>
+                <a class="bets-item__bet link" href="#">bet</a>
+                on
+                <span class="bets-item__type">Match</span>
+              </div>
+              <div class="bets-item__body">
+                <span class="bets-item__resources">
+                  <span class="bets-item__money bets-item__betcoins">$0.64+</span>
+                  <span class="bets-item__money bets-item__items-price">$0.64</span>
+                </span>
+                <button class="open-button" type="button">
+                  <span class="visually-hidden">Show all items</span>
+                </button>
+                <b class="bets-item__team">
+                  <img
+                    class="bets-item__team-logo"
+                    src="images/temp/team-singularity-logo.png"
+                    srcset=""
+                    sizes=""
+                    width="15"
+                    height="16"
+                    alt="">
+                  <span class="bets-item__team-name">Team Singularity</span>
+                </b>
+              </div>
+              <div class="bets-item__content">
+                <div class="bets-item__items">
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                  <div class="game-item" data-price="0.21" data-rarity="common">
+                    <b class="game-item__info game-item__price">$0.21</b>
+                    <img
+                      class="game-item__img"
+                      width="105"
+                      height="70"
+                      src="images/temp/game-item-image.jpg"
+                      srcset=""
+                      sizes=""
+                      alt="">
+                    <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                  </div>
+                </div>
               </div>
             </li>
           </ul>
         </aside>
-
       </div>
     </div>
   </div>
@@ -897,7 +2828,7 @@
       <div class="footer__inner page-block">
 
         <!-- languages dropdown -->
-        <div class="languages footer__languages dropdown" id="footer_languages_dropdown">
+        <div class="dropdown languages footer__languages" id="footer_languages_dropdown">
           <button class="languages__button dropdown__button" type="button">
             <span class="dropdown__text-wrapper">
               <span class="languages__button-text dropdown__text"></span>
@@ -905,14 +2836,14 @@
           </button>
           <div class="labguages__list-wrapper dropdown__list-wrapper">
             <ul class="languages__list dropdown__list">
-              <li class="languages__item dropdown__item">
+              <li class="dropdown__item">
                 <button
                   class="languages__item-button dropdown__list-button icon icon--english"
                   type="button">
                   English
                 </button>
               </li>
-              <li class="languages__item dropdown__item">
+              <li class="dropdown__item">
                 <button
                   class="languages__item-button dropdown__list-button icon icon--spanish"
                   type="button">
@@ -921,7 +2852,7 @@
               </li>
             </ul>
           </div>
-          <form class="dropdown__form" action="#" method="get">
+          <form action="#" method="get">
             <input
               class="dropdown__input"
               id="footer_language_input"
@@ -969,17 +2900,17 @@
             </li>
 
             <!-- info links -->
-            <li class="footer__links-block links-block">
+            <li class="links-block">
               <h3 class="links-block__title icon icon--info">Info:</h3>
               <ul class="info-links">
                 <li class="info-links__item">
-                  <a class="info-links__link icon icon--link" href="#">Rules</a>
+                  <a class="link" href="#">Rules</a>
                 </li>
                 <li class="info-links__item">
-                  <a class="info-links__link icon icon--link" href="#">News</a>
+                  <a class="link" href="#">News</a>
                 </li>
                 <li class="info-links__item">
-                  <a class="info-links__link icon icon--link" href="#">Agreement</a>
+                  <a class="link" href="#">Agreement</a>
                 </li>
               </ul>
             </li>
@@ -987,7 +2918,7 @@
           </ul>
 
           <!-- footer copy -->
-          <div class="footer__copy copyright">
+          <div class="copyright">
             <p class="copyright__item">
               <span class="copyright__years">2016-2023</span>
               <span class="copyright__page-name">Bets4.pro</span>
@@ -1009,7 +2940,7 @@
 
 
   <!-- svg color filters -->
-  <div class="svg-filters" aria-hidden="true">
+  <div class="visually-hidden" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 
       <!-- #ffffff -->
@@ -1071,10 +3002,35 @@
                 0 0 0 1 0">
         </fecolormatrix>
       </filter>
+
+      <!-- #696969 -->
+      <filter id="color_696969">
+        <fecolormatrix
+        color-interpolation-filters="sRGB"
+        type="matrix"
+        values="0 0 0 0 0.41
+                0 0 0 0 0.41
+                0 0 0 0 0.41
+                0 0 0 1 0">
+        </fecolormatrix>
+      </filter>
+
+      <!-- #ab040d -->
+      <filter id="color_ab040d">
+        <fecolormatrix
+        color-interpolation-filters="sRGB"
+        type="matrix"
+        values="0 0 0 0 0.67
+                0 0 0 0 0.02
+                0 0 0 0 0.05
+                0 0 0 1 0">
+        </fecolormatrix>
+      </filter>
     </svg>
   </div>
 
   <!-- scripts and js libs -->
+  <script src="libs/js/simplebar.min.js"></script>
   <script src="js/main.js" type="module"></script>
   <script src="js/bet.js" type="module"></script>
 </body>
