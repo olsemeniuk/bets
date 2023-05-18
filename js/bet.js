@@ -113,6 +113,10 @@ cancelBetButton.addEventListener('click', cancelBet);
 // disable coefs radio
 disableCoefsRadio();
 
+// mobile tabs
+const mobileTabsButtonsRow = document.querySelector('.mobile-tabs__buttons');
+delegate(mobileTabsButtonsRow, '.mobile-tabs__button', 'click', mobileTabs);
+
 
 // functions
 // change height
@@ -126,7 +130,7 @@ function toggleHeight(wrapper, inner, minHeight = 0) {
   const wrapperHeight = getHeight(wrapper);
   const innerHeight = getHeight(inner) + innerMargins;
 
-  if (wrapperHeight === minHeight) {
+  if (wrapperHeight <= minHeight) {
     wrapper.style.height = `${innerHeight}px`;
   } else {
     wrapper.style.height = `${minHeight}px`;
@@ -207,6 +211,7 @@ function correctShowMoreHeight(block) {
 function betCoefsHeightToggle() {
   const wrapper = document.querySelector('.teams-bet__coefficients-wrapper');
   let minHeight = 0;
+  const isMobile = checkIfIsMobile();
 
   if (teamsBetRows.length <= 5) {
     teamsBet.classList.add('teams-bet--small');
@@ -218,19 +223,21 @@ function betCoefsHeightToggle() {
     itemMargin = itemMargin.slice(0, itemMargin.indexOf('p'));
     itemMargin = Number(itemMargin);
     const height = getHeight(item);
-
     if (index < 5) {
       minHeight += itemMargin ? height + itemMargin : height;
     }
   });
 
   const currentHeight = toggleHeight(wrapper, teamsBetList, minHeight);
+
   if (currentHeight > minHeight) {
     showMoreCoefsButton.classList.remove('teams-bet__show-more--active');
     showMoreCoefsButton.textContent = 'Show more';
+    if (isMobile) showMoreCoefsButton.textContent = 'More';
   } else {
     showMoreCoefsButton.classList.add('teams-bet__show-more--active');
     showMoreCoefsButton.textContent = 'Show less';
+    if (isMobile) showMoreCoefsButton.textContent = 'Less';
   }
 }
 
@@ -354,14 +361,14 @@ function filterItemsByRarity() {
 
   if (currentFilter === 'all') {
     filteredItems = filteredItems.map(item => {
-      item.element.style.display = 'flex';
+      item.element.style.display = 'block';
       return item.element;
     });
   } else {
     filteredItems = filteredItems
       .filter(item => item.rarity === currentFilter)
       .map(item => {
-        item.element.style.display = 'flex';
+        item.element.style.display = 'block';
         return item.element;
       });
   }
@@ -495,4 +502,28 @@ function disableCoefsRadio() {
 
     if (numberOfInactiveCoefs === 2) rowTitle.classList.add('teams-bet__row-title--disabled');
   })
+}
+
+function checkIfIsMobile() {
+  let width = document.documentElement.clientWidth;
+  return width <= 480;
+}
+
+function mobileTabs() {
+  const buttonData = this.dataset.button;
+  const allContent = document.querySelectorAll('.mobile-tabs__content');
+  const allButtons = document.querySelectorAll('.mobile-tabs__button');
+
+  allButtons.forEach(button => {
+    button.classList.remove('mobile-tabs__button--active');
+    this.classList.add('mobile-tabs__button--active');
+  })
+
+  allContent.forEach(content => {
+    const contentData = content.dataset.content;
+    content.classList.remove('mobile-tabs__content--active');
+    if (contentData === buttonData) {
+      content.classList.add('mobile-tabs__content--active');
+    }
+  });
 }

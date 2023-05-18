@@ -44,6 +44,7 @@
   --border-radius-small: 5px;
   --border-radius-normal: 10px;
   --border-radius-medium: 15px;
+  --border-radius-big: 30px;
   --medium-indent: 20px;
 }
 
@@ -65,9 +66,7 @@ html {
 body {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content
-                      1fr
-                      min-content;
+  grid-template-rows: min-content 1fr min-content;
   align-content: start;
   min-height: 100%;
   margin: 0;
@@ -123,7 +122,7 @@ fieldset {
   border: 0;
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
 }
 
 .container {
@@ -134,13 +133,10 @@ fieldset {
 
 
 /* icons start */
-.icon {
-  position: relative;
-}
-
 .icon::before {
   content: "";
-  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
   width: 17px;
   height: 17px;
   background-repeat: no-repeat;
@@ -172,10 +168,6 @@ fieldset {
   background-image: url("../images/icons/support-icon.png");
 }
 
-.icon--login::before {
-  background-image: url("../images/icons/login-icon.svg");
-}
-
 .icon--logout::before {
   background-image: url("../images/icons/out-icon.png");
 }
@@ -205,14 +197,10 @@ fieldset {
 }
 
 .icon--english::before {
-  width: 18px;
-  height: 18px;
   background-image: url("../images/icons/english-flag-icon.png");
 }
 
 .icon--spanish::before {
-  width: 18px;
-  height: 18px;
   background-image: url('https://stuffedeyes.files.wordpress.com/2018/06/spain-2906824_960_720.png');
 }
 
@@ -248,6 +236,10 @@ fieldset {
   background-image: url("../images/icons/all-items-icon.png");
 }
 
+.icon--handicap::before {
+  background-image: url("../images/icons/hc-icon.svg");
+}
+
 .icon--dot::before {
   width: 5px;
   height: 5px;
@@ -255,9 +247,6 @@ fieldset {
   border-radius: 50%;
 }
 
-.icon--handicap::before {
-  background-image: url("../images/icons/hc-icon.svg");
-}
 /* icons end */
 
 /*====================
@@ -285,38 +274,52 @@ fieldset {
   background-color: var(--main-text-color);
   color: var(--contrast-color);
 }
+
 /* button end */
 
 
 /* game item start */
 .game-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 105px;
-  height: 70px;
-  overflow: hidden;
   font-weight: 700;
   font-size: 12px;
   text-align: center;
-  background-image: linear-gradient(to bottom,
-                                    var(--black-color) 0 18px,
-                                    var(--main-text-color) 18px calc(100% - 18px),
-                                    var(--black-color) calc(100% - 18px) 100%);
-  border-radius: var(--border-radius-normal);
   cursor: pointer;
 }
 
-.game-item__info {
+.game-item__inner {
   position: relative;
+  height: 0;
+  padding-top: 66%;
+  border: none;
+}
+
+.game-item__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom,
+      var(--black-color) 0 18px,
+      var(--main-text-color) 18px calc(100% - 18px),
+      var(--black-color) calc(100% - 18px) 100%);
+  border-radius: var(--border-radius-normal);
+}
+
+.game-item__info {
+  position: absolute;
+  right: 0;
+  left: 0;
   z-index: 1;
+  width: 100%;
   margin: 0;
   padding: 0 10px;
   background-color: var(--contrast-color-90);
 }
 
 .game-item__price {
+  top: 0;
   color: var(--important-color);
 }
 
@@ -334,11 +337,13 @@ fieldset {
 }
 
 .game-item__title {
+  bottom: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--attention-light-color);
 }
+
 /* game item end */
 
 
@@ -388,7 +393,7 @@ fieldset {
   list-style-type: none;
 }
 
-.dropdown__item:not([hidden]) + .dropdown__item:not([hidden]) {
+.dropdown__item:not([hidden])+.dropdown__item:not([hidden]) {
   margin-top: 5px;
 }
 
@@ -440,6 +445,7 @@ fieldset {
 .dropdown--open-bottom .dropdown__list {
   padding: 5px 0 2px 0;
 }
+
 /* dropdown end */
 
 
@@ -498,6 +504,7 @@ fieldset {
 .dropdown--open-bottom .arrow-dropdown__list {
   padding: 2px 0 6px;
 }
+
 /* arrow dropdown end */
 
 
@@ -513,9 +520,12 @@ fieldset {
 
 .languages__button-text::before,
 .languages__item-button::before {
+  position: absolute;
   left: 2px;
   top: 50%;
   overflow: hidden;
+  width: 18px;
+  height: 18px;
   background-size: cover;
   border-radius: 50%;
   transform: translateY(-50%);
@@ -524,6 +534,7 @@ fieldset {
 .languages__item-button {
   padding-left: 24px;
 }
+
 /* languages dropdown end */
 
 
@@ -567,16 +578,19 @@ fieldset {
 .sort--ascending::after {
   filter: var(--important-filer);
 }
+
 /* sort end */
 
 
 /* title start */
 .title {
+  position: relative;
   margin: 0;
   font-weight: 400;
   font-size: 18px;
   color: var(--important-color);
 }
+
 /* title end */
 
 
@@ -603,6 +617,7 @@ fieldset {
   transform: translateY(-50%);
   filter: var(--important-filer);
 }
+
 /* link end */
 
 
@@ -633,6 +648,7 @@ fieldset {
 .open-button--active::after {
   transform: translateX(-50%) scaleY(1);
 }
+
 /* open button end */
 
 
@@ -644,6 +660,7 @@ fieldset {
 .tabs__content-item--active {
   display: block;
 }
+
 /* tabs end */
 
 
@@ -671,20 +688,21 @@ fieldset {
   transition: all 0.3s;
 }
 
-.toggle__checkbox:checked ~ .toggle__switcher {
+.toggle__checkbox:checked~.toggle__switcher {
   background-color: var(--active-color);
 }
 
-.toggle__checkbox:checked ~ .toggle__switcher::before {
+.toggle__checkbox:checked~.toggle__switcher::before {
   background-color: var(--contrast-color);
   transform: translateY(-50%) translateX(15px);
 }
+
 /* toggle end */
 
 
 /* total start */
 .total {
-  width: calc(50% - 100px);
+  width: calc(50% - 50px);
   margin: 0;
   font-size: 12px;
   text-align: right;
@@ -694,6 +712,7 @@ fieldset {
   font-weight: 700;
   color: var(--important-color);
 }
+
 /* total end */
 
 /* betcoin start */
@@ -704,7 +723,6 @@ fieldset {
   justify-content: center;
   align-items: center;
   padding: 17px 0 17px 105px;
-  width: 230px;
   box-shadow: 0 0 15px 4px var(--pale-attention-color-30);
   background-color: var(--contrast-lighter-color);
   border-radius: var(--border-radius-medium);
@@ -755,6 +773,7 @@ fieldset {
 .betcoin__sum {
   font-weight: 400;
 }
+
 /* betcoin end */
 
 
@@ -832,6 +851,7 @@ fieldset {
 .show-more--opened .show-more__button::before {
   transform: rotate(0);
 }
+
 /* show more end */
 
 
@@ -839,6 +859,7 @@ fieldset {
 .logo__img {
   vertical-align: middle;
 }
+
 /* logo end */
 
 /* page block */
@@ -855,7 +876,7 @@ fieldset {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 33px 55px 24px 77px;
+  padding: 33px 50px 24px 77px;
 }
 
 .header__logo {
@@ -891,19 +912,14 @@ fieldset {
   color: var(--main-text-color);
 }
 
-.menu__item + .menu__item {
-  margin-left: 27px;
+.menu__item:not(:last-of-type) {
+  margin-right: 27px;
 }
 
 .menu__link {
-  padding-left: 17px;
+  padding: 5px 0;
   text-decoration: none;
   color: var(--important-color);
-}
-
-.menu__link.icon--investment,
-.menu__link.icon--coins {
-  padding-left: 22px;
 }
 
 .menu__link-text {
@@ -937,9 +953,7 @@ fieldset {
 }
 
 .menu__link::before {
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  vertical-align: text-bottom;
   filter: var(--important-filer);
 }
 
@@ -950,32 +964,8 @@ fieldset {
   margin-left: auto;
 }
 
-.user__login-button {
-  position: relative;
-  padding: 6px 40px 6px 20px;
-  font-weight: 700;
-  color: var(--black-color);
-  background-color: var(--important-color);
-  border: none;
-  border-radius: var(--border-radius-medium);
-}
-
-.user__login-button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  width: 13px;
-  height: 13px;
-  background-image: url("../images/icons/login-icon.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  transform: translateY(-50%);
-  filter: var(--black-filter);
-}
-
 .user__menu {
-  display: none;
+  display: flex;
 }
 
 .user__resources {
@@ -996,7 +986,7 @@ fieldset {
   background-color: var(--main-text-color);
 }
 
-.user__resources-item + .user__resources-item {
+.user__resources-item+.user__resources-item {
   margin-top: 5px;
 }
 
@@ -1038,7 +1028,6 @@ fieldset {
 }
 
 .user__profile {
-  margin-right: 5px;
   font-size: 12px;
   text-decoration: none;
   color: var(--main-text-color);
@@ -1052,15 +1041,17 @@ fieldset {
 }
 
 .user__logout-button {
-  padding: 10px;
+  padding: 5px;
   background-color: transparent;
   border: none;
 }
 
 .user__logout-button::before {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 13px;
+  background-image: url("../images/icons/out-icon.png");
   filter: var(--important-filer);
 }
 
@@ -1074,17 +1065,9 @@ fieldset {
   border-top-right-radius: var(--border-radius-medium);
   border-bottom-right-radius: var(--border-radius-medium);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
-          mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
 }
 
-.header.authorized .user__login-button {
-  display: none;
-}
-
-.header.authorized .user__menu {
-  display: flex;
-  align-items: center;
-}
 /* header end */
 
 
@@ -1118,6 +1101,7 @@ fieldset {
   border-radius: 0 0 var(--border-radius-normal) var(--border-radius-normal);
   box-shadow: inset 0px -35px 11px -10px var(--main-bg-color);
 }
+
 /* page content end */
 
 
@@ -1200,11 +1184,13 @@ fieldset {
 
 .upcoming-match__text {
   position: relative;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   z-index: 2;
   max-width: 300px;
   margin-left: auto;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
   color: var(--main-text-color);
@@ -1218,21 +1204,19 @@ fieldset {
   height: 100%;
   object-fit: cover;
   -webkit-mask-image: linear-gradient(to right, transparent, #000000 85%);
-          mask-image: linear-gradient(to right, transparent, #000000 85%);
+  mask-image: linear-gradient(to right, transparent, #000000 85%);
 }
+
 /* upcoming match end */
 
 
 /* last bets start */
 .last-bets__title {
-  position: relative;
-  padding: 20px 0 15px 40px;
+  padding: 20px 0 15px 20px;
 }
 
 .last-bets__title::before {
-  top: 28.5px;
-  left: 17px;
-  transform: translateY(-50%);
+  margin: 0 5px 2px 0;
 }
 
 .last-bets__title::after {
@@ -1258,9 +1242,9 @@ fieldset {
   right: 10px;
   width: 5px;
   background-image: linear-gradient(to right,
-                                    transparent 0 40%,
-                                    var(--accent-color) 40% 60%,
-                                    transparent 60% 100%);
+      transparent 0 40%,
+      var(--accent-color) 40% 60%,
+      transparent 60% 100%);
 }
 
 .simplebar-scrollbar.simplebar-visible {
@@ -1279,7 +1263,7 @@ fieldset {
   border-radius: var(--border-radius-normal);
 }
 
-.bets-item + .bets-item {
+.bets-item+.bets-item {
   margin-top: 20px;
 }
 
@@ -1361,16 +1345,20 @@ fieldset {
 }
 
 .bets-item__resources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   margin-right: 5px;
 }
 
 .bets-item__money {
   position: relative;
+  display: block;
   font-weight: 700;
 }
 
-.bets-item__money + .bets-item__money {
-  margin-left: 5px;
+.bets-item__money:not(:last-child) {
+  margin-right: 5px;
 }
 
 .bets-item__money::before {
@@ -1400,7 +1388,7 @@ fieldset {
 }
 
 .bets-item__items-price::before {
-  top: 2px;
+  top: 4px;
   width: 10px;
   height: 10px;
   background-image: url("../images/icons/items-icon.png");
@@ -1408,20 +1396,16 @@ fieldset {
 }
 
 .bets-item__team {
-  display: flex;
-  align-items: center;
+  width: 50%;
   margin-left: auto;
-  font-size: 12px;
   font-weight: 700;
+  font-size: 12px;
+  text-align: right;
 }
 
 .bets-item__team-logo {
-  margin-right: 5px;
-}
-
-.bets-item__team-name {
-  font-weight: 700;
-  font-size: 14px;
+  vertical-align: middle;
+  margin-right: 3px;
 }
 
 .bets-item__content {
@@ -1451,9 +1435,6 @@ fieldset {
   transition: all 0.3s;
 }
 
-.bets-item__items .game-item {
-  width: unset;
-}
 /* bets item end */
 /* last bets end */
 
@@ -1461,13 +1442,11 @@ fieldset {
 /* streams start */
 .streams__title {
   margin-bottom: 25px;
-  padding-left: 28px;
+  padding-left: 10px;
 }
 
 .streams__title::before {
-  top: 50%;
-  left: 7px;
-  transform: translateY(-50%);
+  margin-right: 7px;
   filter: var(--important-filer);
 }
 
@@ -1562,6 +1541,9 @@ fieldset {
   width: 139px;
   height: 153px;
   background-image: url("../images/icons/play-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   filter: var(--main-text-filter);
 }
 
@@ -1570,6 +1552,7 @@ fieldset {
   text-transform: uppercase;
   color: var(--important-color);
 }
+
 /* streams end */
 
 
@@ -1594,6 +1577,7 @@ fieldset {
   background-color: var(--accent-color);
   border-radius: var(--border-radius-normal);
 }
+
 /* bet-block end */
 
 
@@ -1609,7 +1593,7 @@ fieldset {
   content: "";
   position: absolute;
   top: 0;
-  width: 250px;
+  width: 35%;
   height: 100%;
   background-color: var(--contrast-color);
   border-radius: var(--border-radius-normal);
@@ -1628,9 +1612,10 @@ fieldset {
   z-index: 1;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.teams-bet__row + .teams-bet__row {
+.teams-bet__row+.teams-bet__row {
   margin-top: 5px;
 }
 
@@ -1639,9 +1624,13 @@ fieldset {
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-  width: 250px;
+  width: 35%;
   margin-bottom: 10px;
   padding: 15px;
+}
+
+.teams-bet__team.teams-bet__team--second {
+  flex-direction: row-reverse;
 }
 
 .teams-bet__team-name {
@@ -1651,48 +1640,34 @@ fieldset {
 }
 
 .teams-bet__team--first {
-  padding-left: 38px;
+  padding-left: 15px;
 }
 
 .teams-bet__team--second {
-  padding-right: 38px;
+  padding-right: 15px;
 }
 
 .teams-bet__team--first .teams-bet__team-name {
-  margin-right: 5px;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .teams-bet__team--second .teams-bet__team-name {
-  margin-left: 5px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .teams-bet__team--winner .teams-bet__team-name::before {
   content: "";
-  position: absolute;
-  top: 50%;
+  display: inline-block;
+  vertical-align: baseline;
   width: 13px;
   height: 9px;
-  transform: translateY(-50%);
+  margin-right: 4px;
   background-image: url("../images/icons/crown-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   filter: var(--attention-filter);
-}
-
-.teams-bet__team--first.teams-bet__team--winner .teams-bet__team-name::before {
-  left: 0;
-}
-
-.teams-bet__team--second.teams-bet__team--winner .teams-bet__team-name::before {
-  right: 0;
-}
-
-.teams-bet__team--first.teams-bet__team--winner .teams-bet__team-name {
-  padding-left: 18px;
-}
-
-.teams-bet__team--second.teams-bet__team--winner .teams-bet__team-name {
-  padding-right: 18px;
 }
 
 .teams-bet__team--lost .teams-bet__team-name {
@@ -1709,38 +1684,32 @@ fieldset {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: calc(100% - 500px);
+  width: 30%;
   padding: 0 15px;
   text-align: center;
 }
 
 .teams-bet__row-title span {
   max-width: 100%;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.teams-bet__row-title span.icon {
-  padding-left: 15px;
-}
-
-.teams-bet__row-title span.icon--dot {
-  padding-left: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .teams-bet__row-title span.icon::before {
-  top: 0;
-  left: 0;
+  vertical-align: text-bottom;
   filter: var(--main-text-filter);
 }
 
 .teams-bet__row-title span.icon--dot::before {
-  top: 50%;
-  transform: translateY(-50%);
+  margin-right: 5px;
+  vertical-align: middle;
+  transform: translateY(-1px);
 }
 
-.teams-bet__row:hover .teams-bet__row-title:not(.teams-bet__row-title--disabled) span:not(.live) {
+.teams-bet__row:hover .teams-bet__row-title:not(.teams-bet__row-title--disabled, .live) span {
   color: var(--important-color);
 }
 
@@ -1748,13 +1717,23 @@ fieldset {
   filter: var(--important-filer);
 }
 
-.teams-bet__row--chosen .teams-bet__row-title span:not(.live) {
-  font-weight: 700;
+.teams-bet__row--chosen .teams-bet__row-title:not(.live) span {
   color: var(--important-color);
+  text-shadow: 0.1px 0.1px 0.3px var(--important-color),
+    0.2px 0.2px 0.3px var(--important-color),
+    0.3px 0.3px 0.3px var(--important-color),
+    -0.1px -0.1px 0.3px var(--important-color),
+    -0.2px -0.2px 0.3px var(--important-color),
+    -0.3px -0.3px 0.3px var(--important-color);
 }
 
-.teams-bet__row--chosen .teams-bet__row-title .live {
-  font-weight: 700;
+.teams-bet__row--chosen .teams-bet__row-title.live {
+  text-shadow: 0.1px 0.1px 0.3px var(--text-error-color),
+    0.2px 0.2px 0.3px var(--text-error-color),
+    0.3px 0.3px 0.3px var(--text-error-color),
+    -0.1px -0.1px 0.3px var(--text-error-color),
+    -0.2px -0.2px 0.3px var(--text-error-color),
+    -0.3px -0.3px 0.3px var(--text-error-color);
 }
 
 .teams-bet__row--chosen .teams-bet__row-title span.icon::before {
@@ -1767,21 +1746,18 @@ fieldset {
 }
 
 .live {
-  position: relative;
-  padding: 5px 10px 5px 20px;
-  color: var(--text-error-color);
+  flex-direction: row;
+  filter: var(--text-error-filter);
 }
 
-.live::after {
+.live::before {
   content: "";
-  position: absolute;
-  top: 50%;
-  left: 10px;
+  display: inline-block;
   width: 5px;
   height: 5px;
+  margin-right: 5px;
   background-color: var(--text-error-color);
   border-radius: 50%;
-  transform: translateY(-50%);
   animation: liveDotAnimation 1.3s infinite ease-in-out;
 }
 
@@ -1809,7 +1785,7 @@ fieldset {
 
 /* coef start */
 .coef {
-  width: 250px;
+  width: 35%;
 }
 
 .coef__block {
@@ -1817,10 +1793,10 @@ fieldset {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  width: 82%;
   height: 30px;
   margin: 0 auto;
-  padding: 5px 10px;
+  padding: 5px 20px;
   font-weight: 700;
   border: 1px solid var(--main-bg-color);
   border-radius: var(--border-radius-normal);
@@ -1841,15 +1817,15 @@ fieldset {
   background-color: var(--main-text-color);
   background-repeat: no-repeat;
   background-size: contain;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-.coef__radio:checked ~ .coef__block {
+.coef__radio:checked~.coef__block {
   color: var(--black-color);
   background-color: var(--attention-color);
 }
 
-.coef__radio:checked ~ .coef__block::after {
+.coef__radio:checked~.coef__block::after {
   background-color: var(--black-color);
 }
 
@@ -1868,14 +1844,14 @@ fieldset {
 }
 
 .coef--first-team .coef__block::before {
-  left: 10px;
+  left: 5px;
 }
 
 .coef--second-team .coef__block::before {
-  right: 10px;
+  right: 5px;
 }
 
-.coef__radio:checked ~ .coef__block::before {
+.coef__radio:checked~.coef__block::before {
   filter: var(--black-filter);
 }
 
@@ -1893,7 +1869,7 @@ fieldset {
   filter: var(--attention-filter);
 }
 
-.coef--win .coef__radio:checked ~ .coef__block::after {
+.coef--win .coef__radio:checked~.coef__block::after {
   filter: var(--black-filter);
   background-color: transparent;
 }
@@ -1926,7 +1902,7 @@ fieldset {
   border-color: var(--text-error-color);
 }
 
-.coef--lost .coef__block::after{
+.coef--lost .coef__block::after {
   width: 10px;
   height: 10px;
   background-color: transparent;
@@ -1945,7 +1921,7 @@ fieldset {
   filter: var(--text-error-filter);
 }
 
-.coef--lost .coef__radio:checked ~ .coef__block::after {
+.coef--lost .coef__radio:checked~.coef__block::after {
   background-color: transparent;
   filter: var(--black-filter);
 }
@@ -1973,8 +1949,8 @@ fieldset {
 
 .coef--locked .coef__block:hover,
 .coef--disabled .coef__block:hover,
-.coef--locked .coef__radio:checked ~ .coef__block::after,
-.coef--disabled .coef__radio:checked ~ .coef__block::after {
+.coef--locked .coef__radio:checked~.coef__block::after,
+.coef--disabled .coef__radio:checked~.coef__block::after {
   background-color: transparent;
   cursor: default;
 }
@@ -1993,6 +1969,7 @@ fieldset {
   transform: translateY(-50%);
   filter: var(--attention-filter);
 }
+
 /* coef end */
 
 .teams-bet__show-more {
@@ -2068,6 +2045,7 @@ fieldset {
   font-weight: 700;
   color: var(--attention-color);
 }
+
 /* bet info end */
 
 
@@ -2094,7 +2072,7 @@ fieldset {
 }
 
 .details__block {
-  width: 250px;
+  width: 35%;
   padding: 0 10px;
 }
 
@@ -2134,7 +2112,7 @@ fieldset {
   justify-content: center;
 }
 
-.details__score-item + .details__score-item {
+.details__score-item+.details__score-item {
   margin-top: 4px;
 }
 
@@ -2158,6 +2136,7 @@ fieldset {
   text-align: center;
   color: var(--success-color);
 }
+
 /* teams details end */
 /* teams bet end */
 
@@ -2174,7 +2153,7 @@ fieldset {
   padding-left: 38px;
 }
 
-.permissions__item + .permissions__item {
+.permissions__item+.permissions__item {
   margin-left: 70px;
 }
 
@@ -2184,6 +2163,7 @@ fieldset {
   left: 0;
   transform: translateY(-50%);
 }
+
 /* permissions end */
 
 /* user bet start */
@@ -2198,7 +2178,7 @@ fieldset {
 }
 
 .user-bet__info {
-  width: calc(50% - 100px);
+  width: calc(50% - 50px);
   margin: 0;
   overflow: hidden;
   white-space: nowrap;
@@ -2233,7 +2213,7 @@ fieldset {
 
 .user-bet__body {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   gap: 20px;
   padding: 35px 109px;
 }
@@ -2304,7 +2284,7 @@ fieldset {
   transform: translateY(-50%);
   background-color: var(--main-text-color);
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 
 .betcoin-range__slider::-webkit-slider-thumb {
@@ -2315,7 +2295,7 @@ fieldset {
   border-radius: 50%;
   cursor: pointer;
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 
 .betcoin-range__slider::-moz-range-thumb {
@@ -2326,7 +2306,7 @@ fieldset {
   border-radius: 50%;
   cursor: pointer;
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
 }
 
 .betcoin-range__num {
@@ -2338,6 +2318,7 @@ fieldset {
   border: none;
   border-radius: var(--border-radius-normal);
 }
+
 /* betcoin range end */
 
 .bet-form__submit {
@@ -2362,12 +2343,13 @@ fieldset {
   transform: translateY(-50%);
   filter: var(--black-filter);
 }
+
 /* user bet end */
 
 
 /* stash start */
 .stash__title {
-  width: calc(50% - 100px);
+  width: calc(50% - 50px);
   font-weight: 700;
 }
 
@@ -2408,14 +2390,11 @@ fieldset {
 
 .stash__items {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 105px);
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   gap: 20px;
   padding: 0 45px 0;
 }
 
-.stash__items .game-item {
-  width: unset;
-}
 /* stash end */
 /* bet form end */
 
@@ -2447,7 +2426,7 @@ fieldset {
   list-style-type: none;
 }
 
-.footer__links-block + .footer__links-block {
+.footer__links-block+.footer__links-block {
   margin-left: 10px;
 }
 
@@ -2462,26 +2441,29 @@ fieldset {
   font-size: 12px;
 }
 
-.links-block__title.icon--info {
-  padding-left: 16px;
-}
-
 .links-block__title.icon--info::before {
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  vertical-align: text-bottom;
   filter: var(--main-text-filter);
 }
 
 .footer__mail-link {
-  padding-left: 16px;
+  position: relative;
+  padding-left: 15px;
   color: var(--important-color);
   text-decoration: none;
 }
 
 .footer__mail-link::before {
+  content: "";
+  position: absolute;
   top: 50%;
   left: 0;
+  width: 13px;
+  height: 10px;
+  background-image: url("../images/icons/mail-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   transform: translateY(-50%);
   filter: var(--important-filer);
 }
@@ -2495,22 +2477,41 @@ fieldset {
   line-height: 0;
 }
 
-.socials__item + .socials__item{
+.socials__item+.socials__item {
   margin-left: 10px;
 }
 
 .socials__link {
   width: 30px;
   height: 20px;
+  text-align: center;
   background-color: var(--important-color);
   border-radius: var(--border-radius-medium);
 }
 
 .socials__link::before {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 20px;
   filter: var(--black-filter);
+}
+
+.links-block--info .links-block__title {
+  position: relative;
+  padding-left: 16px;
+}
+
+.links-block--info .links-block__title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 13px;
+  height: 11px;
+  background-image: url("../images/icons/info-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: translateY(-50%);
+  filter: var(--main-text-filter);
 }
 
 .info-links {
@@ -2520,7 +2521,7 @@ fieldset {
   list-style-type: none;
 }
 
-.info-links__item + .info-links__item {
+.info-links__item+.info-links__item {
   margin-left: 18px;
 }
 
@@ -2541,11 +2542,11 @@ fieldset {
   font-size: 12px;
 }
 
-.copyright__item + .copyright__item {
+.copyright__item+.copyright__item {
   padding-left: 4px;
 }
 
-.copyright__item + .copyright__item::before {
+.copyright__item+.copyright__item::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -2566,15 +2567,10 @@ fieldset {
   color: var(--inactive-color);
 }
 
-.copyright__by.icon--steam {
-  padding-left: 20px;
-}
-
 .copyright__by.icon--steam::before {
-  top: 50%;
-  left: 0;
+  margin-right: 3px;
   background-size: contain;
-  transform: translateY(-50%);
+  vertical-align: text-bottom;
 }
 
 .copyright__by--company {
@@ -2593,29 +2589,39 @@ fieldset {
   left: 15px;
   bottom: 15px;
 }
+
 /* footer end */
+
+/* mobile tabs start */
+.mobile-tabs {
+  display: none;
+}
+/* mobile tabs end */
 
 
 /*====================
     ANIMATIONS
   ====================*/
 @media (prefers-reduced-motion: no-preference) {
+
   /* live dot */
-  @keyframes liveDotAnimation{
-    0%{
-        transform: translateY(-50%) scale(1);
-        opacity: 1;
-        box-shadow: 0 0 5px red,0 0 10px red,0 0 15px red,0 0 20px red;
+  @keyframes liveDotAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red, 0 0 20px red;
     }
-    50%{
-        transform: translateY(-50%) scale(0.5);
-        opacity: 0.3;
-        box-shadow: 0 0 5px red,0 0 10px red;
+
+    50% {
+      transform: scale(0.5);
+      opacity: 0.3;
+      box-shadow: 0 0 5px red, 0 0 10px red;
     }
-    100%{
-        transform: translateY(-50%) scale(1);
-        opacity: 1;
-        box-shadow: 0 0 5px red,0 0 10px red,0 0 15px red,0 0 20px red;
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red, 0 0 20px red;
     }
   }
 }
@@ -2645,8 +2651,24 @@ fieldset {
     margin-right: 10px;
   }
 
-  .menu__item + .menu__item {
-    margin-left: 20px;
+  .menu__item:not(:last-of-type) {
+    margin-right: 20px;
+  }
+
+  .teams-bet__row-title span {
+    -webkit-line-clamp: 2;
+  }
+
+  .stash__items {
+    padding: 0 20px;
+  }
+
+  .last-bets {
+    width: 370px;
+  }
+
+  .simplebar-placeholder {
+    width: 100% !important;
   }
 
   .footer__inner {
@@ -2679,6 +2701,19 @@ fieldset {
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
+  :root {
+    --medium-indent: 10px;
+  }
+
+  .bet,
+  .streams {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
   .header__inner {
     padding: 15px;
   }
@@ -2712,6 +2747,105 @@ fieldset {
     width: calc(50% - 70px);
     margin-left: 0;
   }
+
+  .main {
+    width: 60%;
+  }
+
+  .upcoming-match {
+    padding-right: 20px;
+  }
+
+  .upcoming-match__text {
+    max-width: 80px;
+    text-align: right;
+    -webkit-line-clamp: 2;
+  }
+
+  .upcoming-match__img {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000000 100%);
+    mask-image: linear-gradient(to right, transparent, #000000 100%);
+  }
+
+  .coef__block {
+    width: 90%;
+  }
+
+  .last-bets {
+    width: 40%;
+  }
+
+  .bets-list {
+    padding: 10px 15px 10px 10px;
+  }
+
+  .bets-item {
+    padding: 10px;
+  }
+
+  .user-bet__body {
+    padding: 20px;
+  }
+
+  .betcoin-range__slider-wrapper {
+    width: 120px;
+  }
+
+  .permissions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .permissions__item+.permissions__item {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
+  .simplebar-track.simplebar-vertical {
+    right: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 850px) {
+  .teams-bet__show-more {
+    min-width: 100px;
+    padding: 4px 15px 3px;
+  }
+
+  .teams-bet__show-more::before {
+    left: 7px;
+  }
+
+  .teams-bet__show-more::after {
+    right: 7px;
+  }
+
+  .teams-bet__row-title {
+    padding: 0 7px;
+  }
+
+  .teams-bet__team--first {
+    padding: 5px;
+  }
+
+  .bet-form__row {
+    flex-direction: column-reverse;
+  }
+
+  .bet-form__submit {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .betcoin-range {
+    width: 100%;
+  }
+
+  .betcoin-range__slider-wrapper {
+    width: auto;
+    flex: 1;
+  }
 }
 
 /* Small Devices, Tablets */
@@ -2719,16 +2853,6 @@ fieldset {
   body {
     padding-top: 0;
   }
-
-  .container {
-    width: 100%;
-    padding: 0;
-  }
-
-  .page-block {
-    padding: 0;
-  }
-
 
   .header__inner {
     padding: 10px 50px 10px 15px;
@@ -2770,21 +2894,84 @@ fieldset {
     display: block;
   }
 
-  .upcoming-match {
-    padding: 10px 65px 9px 40px;
-  }
-
   .main {
+    width: 100%;
     margin-right: 0;
   }
 
   .last-bets {
-    width: auto;
+    width: 100%;
   }
 
-  .simplebar-placeholder {
-    width: 100% !important;
+  .bet-form__row {
+    flex-direction: row;
   }
+
+  .betcoin-range {
+    width: 70%;
+  }
+
+  .bet-form__submit {
+    margin-bottom: 0;
+    margin-left: auto;
+  }
+
+  .bets-item__items {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  }
+
+  /* mobile tabs start */
+  .mobile-tabs {
+    display: block;
+    padding: 10px 10px 50px;
+    text-align: center;
+    background-color: var(--main-bg-color);
+    border-radius: var(--border-radius-medium);
+  }
+
+  .mobile-tabs__buttons {
+    display: inline-block;
+    padding: 2px;
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius-big);
+  }
+
+  .mobile-tabs__button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: var(--main-text-color);
+    background-color: transparent;
+    border: none;
+    border-radius: var(--border-radius-big);
+  }
+
+  .mobile-tabs__button::before {
+    margin-right: 5px;
+    filter: var(--main-text-filter);
+  }
+
+  .mobile-tabs__button--active {
+    color: var(--important-color);
+    background-color: var(--contrast-color);
+  }
+
+  .mobile-tabs__button--active::before {
+    filter: var(--important-filer);
+  }
+
+  .mobile-tabs__content {
+    display: none;
+    margin-top: -50px;
+  }
+
+  .mobile-tabs__content--active {
+    display: block;
+  }
+
+  .mobile-tabs__content .title {
+    display: none;
+  }
+  /* mobile tabs end */
 
   .footer__inner {
     padding-top: 40px;
@@ -2813,6 +3000,33 @@ fieldset {
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
+  .page-block {
+    padding: 0;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .upcoming-match {
+    padding: 10px 10px 10px 40px;
+  }
+
+  .upcoming-match__num,
+  .coef__block::after,
+  .user-bet__info,
+  .stash__title {
+    display: none;
+  }
+
+  .total {
+    width: auto;
+  }
+
+  .stash__filter-block {
+    text-align: center;
+  }
+
   .header__inner {
     padding: 2px 30px 2px 15px;
   }
@@ -2821,7 +3035,7 @@ fieldset {
     width: 100px;
   }
 
-  .user__resources-item + .user__resources-item {
+  .user__resources-item+.user__resources-item {
     margin-top: 2px;
   }
 
@@ -2829,7 +3043,130 @@ fieldset {
     font-size: 12px;
   }
 
+  .bet {
+    padding: 0 5px;
+  }
+
+  .teams-bet {
+    margin: 0 -5px;
+  }
+
+  .teams-bet__block::before,
+  .teams-bet__block::after,
+  .teams-bet__team,
+  .details__block,
+  .coef {
+    width: calc(50% - 140px/2);
+  }
+
+  .teams-bet__row-title {
+    width: 140px;
+    padding: 0 10px;
+  }
+
+  .coef__block {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .coef__x,
+  .coef__percent {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .coef__percent {
+    font-weight: 400;
+  }
+
+  .coef--win .coef__block::after,
+  .coef--lost .coef__block::after,
+  .coef--disabled .coef__block::after {
+    display: block;
+    left: auto;
+    right: 5px;
+    transform: translateY(-50%);
+  }
+
+  .coef--locked .coef__block::after {
+    display: block;
+  }
+
+  .coef--locked .coef__x,
+  .coef--locked .coef__percent {
+    opacity: 0.1;
+  }
+
+  .teams-bet__team {
+    flex-direction: column-reverse;
+    padding: 5px;
+  }
+
+  .teams-bet__team--first .teams-bet__team-name,
+  .teams-bet__team--second .teams-bet__team-name {
+    text-align: center;
+    margin: 10px 0 0;
+  }
+
+  .teams-bet__show-more {
+    bottom: 4px;
+    min-width: 80px;
+    padding: 8px 20px 8px;
+  }
+
+  .teams-bet__show-more::after {
+    right: 10px;
+  }
+
+  .teams-bet__show-more::before {
+    left: 10px;
+  }
+
+  .bet-form__row {
+    flex-direction: column-reverse;
+  }
+
+  .betcoin-range {
+    width: 100%;
+  }
+
+  .bet-form__submit {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .teams-bet__team.teams-bet__team--second {
+    flex-direction: column-reverse;
+  }
+
+  .streams__video-block {
+    height: 210px;
+  }
+
+  .streams__video-play::before {
+    width: 94px;
+    height: 100px;
+  }
+
+  .streams__video-text {
+    font-size: 14px;
+  }
+
   .footer__inner {
     padding: 40px 15px 15px;
+  }
+
+  /* mobile tabs start */
+  .streams {
+    padding: 10px;
+  }
+  /* mobile tabs end */
+}
+
+
+@media only screen and (min-width: 769px) {
+  .mobile-tabs__content {
+    display: block !important;
   }
 }
