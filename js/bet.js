@@ -1,6 +1,5 @@
 // imports
 import { changeClasses, checkClass, delegate, getHeight } from "../modules/helpers.js";
-import { Tabs } from "../components/Tabs/Tabs.js";
 import { ArrowDropdown } from "../components/Dropdown/ArrowDropdown.js";
 
 
@@ -8,7 +7,7 @@ import { ArrowDropdown } from "../components/Dropdown/ArrowDropdown.js";
 // stash elements
 const stashBody = document.querySelector('.stash__body');
 const rarityFilterDropdown = document.getElementById('stash_rarity_dropdown');
-const stashSort = stashBody.querySelector('.stash__sort');
+const stashSortButton = document.querySelector('.stash__sort');
 const stashItemsParent = stashBody.querySelector('.stash__items');
 const stashGameItems = stashItemsParent.querySelectorAll('.game-item');
 const stashTotalSum = document.querySelector('.stash__total-sum');
@@ -16,6 +15,7 @@ const allInButton = document.querySelector('.stash__all-in')
 
 // user bet elements
 const userBet = document.querySelector('.user-bet');
+const userBetInner = userBet.querySelector('.user-bet__inner');
 const userBetBody = userBet.querySelector('.user-bet__body');
 const cancelBetButton = userBet.querySelector('.user-bet__cancel-button');
 const userBetTotalSum = userBet.querySelector('.user-bet__total-sum');
@@ -39,11 +39,8 @@ const betcoinRangeNum = betcoinRange.querySelector('.betcoin-range__num');
 const showMore = document.querySelectorAll('.show-more');
 
 
-
 // components
-new Tabs('#streams_tabs').start();
 new ArrowDropdown('#stash_rarity_dropdown').start();
-
 
 
 // libs
@@ -52,6 +49,36 @@ new SimpleBar(document.getElementById('last_bets_list'), {
   autoHide: false
 });
 
+// sort and filter game items
+const stashMixer = mixitup(stashItemsParent, {
+  animation: {
+    effects: 'fade translateZ(-100px)',
+    duration: 500,
+  }
+});
+
+
+stashSortButton.addEventListener('click', () => {
+  const descendingClass = 'sort--descending';
+  const ascendingClass = 'sort--ascending';
+  const isDescending = stashSortButton.classList.contains(descendingClass);
+  const isAscending = stashSortButton.classList.contains(ascendingClass);
+
+  if (!isAscending && !isDescending) {
+    stashSortButton.classList.add(descendingClass);
+    stashMixer.sort('price:desc');
+  }
+
+  if (isAscending) {
+    stashSortButton.classList.remove(ascendingClass);
+    stashSortButton.classList.add(descendingClass);
+    stashMixer.sort('price:desc');
+  } else if (isDescending) {
+    stashSortButton.classList.add(ascendingClass);
+    stashSortButton.classList.remove(descendingClass);
+    stashMixer.sort('price:asc');
+  }
+});
 
 
 // functions calls & events
@@ -59,19 +86,21 @@ countStashItems();
 countUserBetItems();
 
 // stash filter & sort
-delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', filterItemsByRarity);
-stashSort.addEventListener('click', sortOnClick);
+delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', function() {
+  setTimeout(() => {
+    correctShowMoreHeight(stashBody);
+  }, 500);
+  setTimeout(() => {
+    countStashItems();
+  }, 550);
+});
 
 // show more height toggling
 showMore.forEach(block => {
-  const wrapper = block.querySelector('.show-more__wrapper');
-  const inner = block.querySelector('.show-more__inner');
-  const items = block.querySelectorAll('.show-more__item');
   const button = block.querySelector('.show-more__button');
-
-  hideSecondRowItems(wrapper, items, block);
+  hideSecondRowItems(block);
   button.addEventListener('click', () => {
-    toggleShowMoreBlockHeight(block, wrapper, items, inner, button);
+    toggleShowMoreBlockHeight(block);
   });
 });
 
@@ -87,20 +116,20 @@ betCoefsHeightToggle();
 
 // show/hide user bet
 delegate(teamsBet, '.coef__radio', 'click', showHideUserBet);
+showHideUserBet();
 
 // activate coef block
 delegate(teamsBet, '.coef__radio', 'click', activateCoefBlock);
 
 // show/hide teams bet details
 delegate(teamsBet, '.open-button', 'click', toggleTeamsDetails);
-showHideUserBet();
 
 // bet item
 stashItemsParent.addEventListener('click', event => {
-  betItem(event, userBetBody);
+  betItem(event, userBetInner);
 })
 
-userBetBody.addEventListener('click', event => {
+userBetInner.addEventListener('click', event => {
   betItem(event, stashItemsParent);
 });
 
@@ -117,18 +146,16 @@ disableCoefsRadio();
 const mobileTabsButtonsRow = document.querySelector('.mobile-tabs__buttons');
 delegate(mobileTabsButtonsRow, '.mobile-tabs__button', 'click', mobileTabs);
 
+// streams tabs
+const streamsButtonsRow = document.querySelector('.streams__tabs-buttons');
+delegate(streamsButtonsRow, '.streams__tabs-button', 'click', streamTabs);
+
 
 // functions
 // change height
 function toggleHeight(wrapper, inner, minHeight = 0) {
-  let innerMarginTop = getComputedStyle(inner).getPropertyValue('margin-top');
-  let innerMarginBottom = getComputedStyle(inner).getPropertyValue('margin-bottom');
-  innerMarginTop = innerMarginTop.slice(0, innerMarginTop.indexOf('p'));
-  innerMarginBottom = innerMarginBottom.slice(0, innerMarginBottom.indexOf('p'));
-  const innerMargins = Number(innerMarginTop) + Number(innerMarginBottom);
-
   const wrapperHeight = getHeight(wrapper);
-  const innerHeight = getHeight(inner) + innerMargins;
+  const innerHeight = getHeight(inner);
 
   if (wrapperHeight <= minHeight) {
     wrapper.style.height = `${innerHeight}px`;
@@ -155,12 +182,14 @@ function toggleBetItemsHeight() {
   toggleFullHeight(wrapper, inner, this)
 }
 
-function hideSecondRowItems(wrapper, insideItems, block) {
+function hideSecondRowItems(block) {
+  const wrapper = block.querySelector('.show-more__wrapper');
+  const insideItems = block.querySelectorAll('.show-more__item');
   const rowHeight = checkRowHeight(insideItems);
   const wrapperHeight = getHeight(wrapper);
 
-  if (wrapperHeight > rowHeight + 20) {
-    wrapper.style.height = `${rowHeight + 35}px`;
+  if (wrapperHeight > rowHeight) {
+    wrapper.style.height = `${rowHeight + (rowHeight / 100 * 35)}px`;
     block.classList.add('show-more--active');
   }
 }
@@ -176,10 +205,15 @@ function checkRowHeight(rowItems) {
   return Number(rowHeight);
 }
 
-function toggleShowMoreBlockHeight(block, wrapper, insideItems, inner, button) {
+function toggleShowMoreBlockHeight(block) {
+  const wrapper = block.querySelector('.show-more__wrapper');
+  const inner = block.querySelector('.show-more__inner');
+  const button = block.querySelector('.show-more__button');
+  const insideItems = block.querySelectorAll('.show-more__item');
+
   const rowHeight = checkRowHeight(insideItems);
   const isOpened = block.classList.contains('show-more--opened');
-  toggleHeight(wrapper, inner, rowHeight + 35);
+  toggleHeight(wrapper, inner, rowHeight + (rowHeight / 100 * 35));
 
   if (!isOpened) {
     block.classList.add('show-more--opened');
@@ -198,7 +232,6 @@ function correctShowMoreHeight(block) {
   const innerHeight = getHeight(inner);
 
   wrapper.style.height = `${innerHeight}px`;
-  console.log(innerHeight, rowHeight)
   if (innerHeight <= rowHeight || rowHeight === 0) {
     block.classList.remove('show-more--active');
     block.classList.remove('show-more--opened');
@@ -212,19 +245,14 @@ function betCoefsHeightToggle() {
   const wrapper = document.querySelector('.teams-bet__coefficients-wrapper');
   let minHeight = 0;
   const isMobile = checkIfIsMobile();
-
   if (teamsBetRows.length <= 5) {
     teamsBet.classList.add('teams-bet--small');
     return;
   }
-
   teamsBetRows.forEach((item, index) => {
-    let itemMargin = getComputedStyle(item).getPropertyValue('margin-top');
-    itemMargin = itemMargin.slice(0, itemMargin.indexOf('p'));
-    itemMargin = Number(itemMargin);
     const height = getHeight(item);
     if (index < 5) {
-      minHeight += itemMargin ? height + itemMargin : height;
+      minHeight += height;
     }
   });
 
@@ -242,15 +270,27 @@ function betCoefsHeightToggle() {
 }
 
 function showHideUserBet() {
+  const userBetContent = userBet.querySelector('.user-bet__content');
+
   let checkedRadio = false;
   coefRadios.forEach(radio => {
     if (radio.checked) checkedRadio = true;
   });
 
+
   if (checkedRadio) {
     userBet.style.display = 'block';
+    setTimeout(() => {
+      const userBetContentHeight = getHeight(userBetContent);
+      userBet.style.height = `${userBetContentHeight}px`;
+    });
+    setTimeout(() => {
+      userBet.style.height = 'auto';
+      toggleShowMoreBlockHeight(userBetBody);
+    }, 300);
   } else {
     userBet.style.display = 'none';
+    userBet.style.height = '0'
   }
 }
 
@@ -258,58 +298,6 @@ function toggleTeamsDetails() {
   const details = document.querySelector('.details');
   const inner = details.querySelector('.details__inner');
   toggleFullHeight(details, inner, this);
-}
-
-
-// game items sorting by price
-function sortElements(elements, parent, order) {
-  let sortArray = [];
-  elements.forEach(item => {
-    sortArray.push({
-      element: item,
-      price: Number(item.dataset.price)
-    });
-  });
-
-  switch (order) {
-    case 'ascending':
-      sortArray = sortArray.sort((a, b) => {
-        if (a.price < b.price) return -1;
-        if (a.price > b.price) return 1;
-        return 0;
-      });
-      break;
-    case 'descending':
-      sortArray = sortArray.sort((a, b) => {
-        if (a.price < b.price) return 1;
-        if (a.price > b.price) return -1;
-        return 0;
-      });
-      break;
-  }
-
-  sortArray = sortArray.map(item => item.element);
-  parent.innerHTML = '';
-  parent.append(...sortArray);
-}
-
-function sortOnClick() {
-  const isActive = this.className.includes('sort--');
-  const stashItemsToSort = document.querySelectorAll('.stash__items .game-item');
-
-  if (!isActive) {
-    this.classList.add('sort--descending');
-  } else if (checkClass(this, 'sort--descending')) {
-    changeClasses(this, 'sort--descending', 'sort--ascending');
-  } else if (checkClass(this, 'sort--ascending')) {
-    changeClasses(this, 'sort--ascending', 'sort--descending');
-  }
-
-  if (checkClass(this, 'sort--descending')) {
-    sortElements(stashItemsToSort, stashItemsParent, 'descending');
-  } else if (checkClass(this, 'sort--ascending')) {
-    sortElements(stashItemsToSort, stashItemsParent, 'ascending');
-  }
 }
 
 
@@ -338,44 +326,12 @@ function countStashItems() {
 }
 
 function countUserBetItems() {
-  const userBetItemsToCount = document.querySelectorAll('.user-bet__body .game-item')
+  const betcoinsAmount = Number(betcoinRangeNum.value);
+  const userBetItemsToCount = document.querySelectorAll('.user-bet__inner .game-item')
   const betItemsTotalInfo = countItemsAndPrice(userBetItemsToCount);
-  userBetTotalSum.textContent = `${betItemsTotalInfo[0]} (${betItemsTotalInfo[1]}$)`;
-}
-
-
-// filter items by rarity
-function filterItemsByRarity() {
-  const currentFilter = this.dataset.rarity.toLowerCase().trim();
-  const stashItemsToFilter = document.querySelectorAll('.stash__items .game-item');
-
-  let filteredItems = [];
-
-  stashItemsToFilter.forEach(item => {
-    filteredItems.push({
-      element: item,
-      rarity: item.dataset.rarity.toLowerCase().trim(),
-    });
-    item.style.display = 'none';
-  });
-
-  if (currentFilter === 'all') {
-    filteredItems = filteredItems.map(item => {
-      item.element.style.display = 'block';
-      return item.element;
-    });
-  } else {
-    filteredItems = filteredItems
-      .filter(item => item.rarity === currentFilter)
-      .map(item => {
-        item.element.style.display = 'block';
-        return item.element;
-      });
-  }
-
-  stashItemsParent.append(...filteredItems);
-  countStashItems();
-  correctShowMoreHeight(stashBody);
+  const itemsPrice = Number(betItemsTotalInfo[1]);
+  const finalSum = (betcoinsAmount + itemsPrice).toFixed(2);
+  userBetTotalSum.textContent = `${betItemsTotalInfo[0]} (${finalSum}$)`;
 }
 
 // slide betcoins amount
@@ -397,6 +353,7 @@ function slideBetcoinsAmount({ target }) {
 
   changeBetcoinSum(Number(betcoinRangeNum.value));
   if (Number(betcoinRangeNum.value) === '') changeBetcoinSum(0);
+  countUserBetItems();
 }
 
 function validateNumberInput(value) {
@@ -420,21 +377,35 @@ function changeBetcoinSum(value) {
   betcoinSum.textContent = `${value}$`;
 }
 
+
+
 // bet item
 function changeGameItemPlace({ target }, placeForItem) {
   const clickedItem = target.closest('.game-item');
   if (userBet.style.display === 'none' || !clickedItem) return;
 
   const itemToBet = clickedItem;
-  itemToBet.remove();
-  placeForItem.append(itemToBet);
-  correctShowMoreHeight(stashBody);
+  stashMixer.remove(itemToBet, true, () => {
+    placeForItem.append(itemToBet);
+
+    itemToBet.style.display = 'inline-block';
+    itemToBet.style.transform = 'scale(0)';
+    itemToBet.style.transition = 'all 0.3s';
+
+    correctShowMoreHeight(stashBody);
+    correctShowMoreHeight(userBetBody);
+
+    setTimeout(() => {
+      itemToBet.style.transform = 'scale(1)';
+      countUserBetItems();
+      countStashItems();
+    });
+  });
+
 }
 
 function betItem(event, wrapper) {
   changeGameItemPlace(event, wrapper);
-  countUserBetItems();
-  countStashItems();
 }
 
 function allIn() {
@@ -446,23 +417,23 @@ function allIn() {
   });
 
   stashItemsArray.forEach(item => item.remove());
-  userBetBody.append(...stashItemsArray);
+  userBetInner.append(...stashItemsArray);
 
   correctShowMoreHeight(stashBody);
+  correctShowMoreHeight(userBetBody);
   countStashItems();
   countUserBetItems();
 }
 
 function cancelBet() {
-  const gameItems = document.querySelectorAll('.user-bet__body .game-item');
+  const gameItems = document.querySelectorAll('.user-bet__inner .game-item');
 
   if (gameItems.length > 0) {
     gameItems.forEach(item => item.remove());
     stashItemsParent.append(...gameItems);
-
     countStashItems();
-    countUserBetItems();
     correctShowMoreHeight(stashBody);
+    correctShowMoreHeight(userBetBody);
   }
 
   if (Number(betcoinSlider.value) > 0) {
@@ -470,6 +441,7 @@ function cancelBet() {
     betcoinRangeNum.value = 0;
     changeBetcoinSum(0);
   }
+  countUserBetItems();
 }
 
 // coefs
@@ -501,7 +473,7 @@ function disableCoefsRadio() {
     });
 
     if (numberOfInactiveCoefs === 2) rowTitle.classList.add('teams-bet__row-title--disabled');
-  })
+  });
 }
 
 function checkIfIsMobile() {
@@ -509,21 +481,64 @@ function checkIfIsMobile() {
   return width <= 480;
 }
 
-function mobileTabs() {
-  const buttonData = this.dataset.button;
-  const allContent = document.querySelectorAll('.mobile-tabs__content');
-  const allButtons = document.querySelectorAll('.mobile-tabs__button');
+// tabs
+function tabs(allButtons, allContent, button, activeButtonClass, activeContentClass) {
+  const buttonData = button.dataset.button;
 
-  allButtons.forEach(button => {
-    button.classList.remove('mobile-tabs__button--active');
-    this.classList.add('mobile-tabs__button--active');
-  })
+  allButtons.forEach(item => {
+    item.classList.remove(activeButtonClass);
+    button.classList.add(activeButtonClass);
+  });
 
-  allContent.forEach(content => {
-    const contentData = content.dataset.content;
-    content.classList.remove('mobile-tabs__content--active');
-    if (contentData === buttonData) {
-      content.classList.add('mobile-tabs__content--active');
+  allContent.forEach(item => {
+    const contentData = item.dataset.content;
+    item.classList.remove(activeContentClass);
+    if (buttonData === contentData) {
+      item.classList.add(activeContentClass);
     }
   });
 }
+
+function mobileTabs() {
+  const allContent = document.querySelectorAll('.mobile-tabs__content');
+  const allButtons = document.querySelectorAll('.mobile-tabs__button');
+  const activeButton = 'mobile-tabs__button--active';
+  const activeContent = 'mobile-tabs__content--active';
+
+  tabs(allButtons, allContent, this, activeButton, activeContent);
+}
+
+function streamTabs() {
+  const allContent = document.querySelectorAll('.streams__content-item');
+  const allButtons = document.querySelectorAll('.streams__tabs-button');
+  const activeButton = 'streams__tabs-button--active';
+  const activeContent = 'streams__content-item--active';
+
+  tabs(allButtons, allContent, this, activeButton, activeContent);
+}
+
+// function sortOnClick() {
+  // const currentSorting = stashSortButton.dataset.sort;
+  // if (currentSorting === 'price:asc') {
+  //   stashSortButton.dataset.sort = 'price:desc';
+  // }
+// }
+
+
+// function animateItemRemove(item) {
+//   const itemWidth = item.getBoundingClientRect().width;
+//   item.style.transform = 'scale(0)';
+//   item.style.marginRight = `-${itemWidth}px`;
+//   setTimeout(() => item.remove(), 300);
+//   return item;
+// }
+
+// function animateItemAppend(item, parent) {
+//   setTimeout(() => {
+//     parent.append(item);
+//     item.style.marginRight = '20px';
+//   }, 310);
+//   setTimeout(() => {
+//     item.style.transform = 'scale(1)';
+//   }, 320);
+// }

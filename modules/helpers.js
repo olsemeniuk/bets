@@ -20,7 +20,12 @@ const helpers = {
   },
 
   getHeight: function (element) {
-    return element.getBoundingClientRect().height
+    const elementHeight = element.getBoundingClientRect().height;
+    let marginTop = getComputedStyle(element).getPropertyValue('margin-top');
+    let marginBottom = getComputedStyle(element).getPropertyValue('margin-bottom');
+    marginTop = Number(marginTop.slice(0, marginTop.indexOf('p')));
+    marginBottom = Number(marginBottom.slice(0, marginBottom.indexOf('p')));
+    return elementHeight + marginTop + marginBottom;
   }
 }
 

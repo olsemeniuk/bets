@@ -486,77 +486,83 @@
               <!-- user bet -->
               <fieldset class="user-bet">
                 <legend class="visually-hidden">Placed bet</legend>
-
-                <!-- permissions -->
-                <div class="permissions">
-                  <label class="toggle permissions__item" for="small-coef-checkbox">
-                    <input
-                      class="toggle__checkbox visually-hidden"
-                      type="checkbox"
-                      id="small-coef-checkbox"
-                      name="smallCoef"
-                      checked>
-                    <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
-                    <span class="permissions__text">Allow small coefficient change (up to 0.05)</span>
-                  </label>
-                  <label class="toggle permissions__item" for="any-coef-checkbox">
-                    <input
-                      class="toggle__checkbox visually-hidden"
-                      type="checkbox"
-                      id="any-coef-checkbox"
-                      name="anyCoef">
-                    <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
-                    <span class="permissions__text">Allow any coefficient change</span>
-                  </label>
-                </div>
-
-                <!-- user-bet__block -->
-                <div class="bet-block user-bet__block">
-                  <div class="bet-block__header">
-                    <p class="user-bet__info">
-                      You placed
-                      <a class="link" href="#">bet</a>
-                      at 12.06.2017 12:38
-                    </p>
-                    <button class="user-bet__cancel-button" type="button">Cancel</button>
-                    <p class="total">
-                      Total bet:
-                      <b class="total__sum user-bet__total-sum"></b>
-                    </p>
+                <div class="user-bet__content">
+                  <!-- permissions -->
+                  <div class="permissions">
+                    <label class="toggle permissions__item" for="small-coef-checkbox">
+                      <input
+                        class="toggle__checkbox visually-hidden"
+                        type="checkbox"
+                        id="small-coef-checkbox"
+                        name="smallCoef"
+                        checked>
+                      <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
+                      <span class="permissions__text">Allow small coefficient change (up to 0.05)</span>
+                    </label>
+                    <label class="toggle permissions__item" for="any-coef-checkbox">
+                      <input
+                        class="toggle__checkbox visually-hidden"
+                        type="checkbox"
+                        id="any-coef-checkbox"
+                        name="anyCoef">
+                      <span class="toggle__switcher permissions__switcher" aria-hidden="true"></span>
+                      <span class="permissions__text">Allow any coefficient change</span>
+                    </label>
                   </div>
-                  <div class="bet-block__body user-bet__body">
-                    <div class="betcoin user-bet__betcoin" data-sum="0">
-                      <div class="betcoin__info">
-                        <p class="betcoin__text">Betcoin</p>
-                        <b class="betcoin__sum">0$</b>
+
+                  <!-- user-bet__block -->
+                  <div class="bet-block user-bet__block">
+                    <div class="bet-block__header">
+                      <p class="user-bet__info">
+                        You placed
+                        <a class="link" href="#">bet</a>
+                        at 12.06.2017 12:38
+                      </p>
+                      <button class="user-bet__cancel-button" type="button">Cancel</button>
+                      <p class="total">
+                        Total bet:
+                        <b class="total__sum user-bet__total-sum"></b>
+                      </p>
+                    </div>
+                    <div class="bet-block__body user-bet__body show-more">
+                      <div class="show-more__wrapper">
+                        <div class="show-more__inner user-bet__inner">
+                          <div class="betcoin user-bet__betcoin show-more__item" data-sum="0">
+                            <div class="betcoin__info">
+                              <p class="betcoin__text">Betcoin</p>
+                              <b class="betcoin__sum">0$</b>
+                            </div>
+                          </div>
+                        </div>
+                        <button class="button button--secondary show-more__button" type="button">Show more</button>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- betcoin-range -->
-                <div class="bet-form__row">
-                  <div class="betcoin-range">
-                    <label class="betcoin-range__label" for="betcoin-range-slider">BetCoin:</label>
-                    <div class="betcoin-range__slider-wrapper">
+                  <!-- betcoin-range -->
+                  <div class="bet-form__row">
+                    <div class="betcoin-range">
+                      <label class="betcoin-range__label" for="betcoin-range-slider">BetCoin:</label>
+                      <div class="betcoin-range__slider-wrapper">
+                        <input
+                          class="betcoin-range__slider"
+                          type="range"
+                          id="betcoin-range-slider"
+                          name="betcoinRangeSlider"
+                          value="0.0"
+                          min="0"
+                          max="100"
+                          step="0.1">
+                      </div>
                       <input
-                        class="betcoin-range__slider"
-                        type="range"
-                        id="betcoin-range-slider"
-                        name="betcoinRangeSlider"
-                        value="0.0"
-                        min="0"
-                        max="100"
-                        step="0.1">
+                        class="betcoin-range__num"
+                        type="text"
+                        id="betcoin-range-number"
+                        name="betcoinRangeNumber"
+                        placeholder="0.0">
                     </div>
-                    <input
-                      class="betcoin-range__num"
-                      type="text"
-                      id="betcoin-range-number"
-                      name="betcoinRangeNumber"
-                      placeholder="0.0">
+                    <button class="bet-form__submit button button--important" type="submit">Place Bet</button>
                   </div>
-                  <button class="bet-form__submit button button--important" type="submit">Place Bet</button>
                 </div>
               </fieldset>
 
@@ -588,7 +594,7 @@
                             <button
                               class="dropdown__list-button arrow-dropdown__list-button"
                               type="button"
-                              data-rarity="all">
+                              data-filter="all">
                               All
                             </button>
                           </li>
@@ -596,7 +602,7 @@
                             <button
                               class="dropdown__list-button arrow-dropdown__list-button"
                               type="button"
-                              data-rarity="common">
+                              data-filter="[data-rarity='common']">
                               Common
                             </button>
                           </li>
@@ -604,7 +610,7 @@
                             <button
                               class="dropdown__list-button arrow-dropdown__list-button"
                               type="button"
-                              data-rarity="legendary">
+                              data-filter="[data-rarity='legendary']">
                               Legendary
                             </button>
                           </li>
@@ -624,7 +630,7 @@
                   <!-- stash items -->
                   <div class="show-more__wrapper stash__items-wrapper">
                     <div class="stash__items show-more__inner">
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -640,7 +646,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -656,7 +662,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -672,7 +678,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -688,7 +694,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -704,7 +710,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -720,7 +726,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -736,7 +742,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -752,7 +758,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -768,7 +774,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -784,7 +790,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -800,7 +806,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -816,7 +822,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -832,7 +838,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -848,7 +854,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -864,7 +870,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -880,7 +886,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -896,7 +902,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -912,7 +918,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -928,7 +934,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -944,7 +950,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -960,7 +966,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -976,7 +982,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -992,7 +998,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -1008,7 +1014,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -1024,7 +1030,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -1040,7 +1046,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -1056,7 +1062,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -1072,7 +1078,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -1088,7 +1094,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -1104,7 +1110,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.21</b>
@@ -1120,7 +1126,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="0.41" data-rarity="legendary">
+                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$0.41</b>
@@ -1136,7 +1142,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="game-item show-more__item" data-price="1.21" data-rarity="common">
+                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
                         <div class="game-item__inner">
                           <div class="game-item__content">
                             <b class="game-item__info game-item__price">$1.21</b>
@@ -1170,46 +1176,46 @@
           <article class="streams page-block mobile-tabs__content mobile-tabs__content--active" data-content="1">
             <h2 class="title streams__title icon icon--triangle-dots">Streams</h2>
             <div class="streams__inner">
-              <div class="tabs streams__tabs" id="streams_tabs">
-                <div class="tabs__buttons streams__tabs-buttons">
+              <div class="streams__tabs">
+                <div class="streams__tabs-buttons">
                   <button
-                    class="tabs__button streams__tabs-button"
+                    class="streams__tabs-button"
                     type="button"
                     data-button="1"
                     data-text="ru">
                     <span class="streams__tabs-button-text">ru</span>
                   </button>
                   <button
-                    class="tabs__button streams__tabs-button tabs__button--active"
+                    class="streams__tabs-button streams__tabs-button--active"
                     type="button"
                     data-button="2"
                     data-text="en">
                     <span class="streams__tabs-button-text">en</span>
                   </button>
                   <button
-                    class="tabs__button streams__tabs-button"
+                    class="streams__tabs-button"
                     type="button"
                     data-button="3"
                     data-text="sp">
                     <span class="streams__tabs-button-text">sp</span>
                   </button>
                 </div>
-                <div class="tabs__content streams__tabs-content">
-                  <div class="tabs__content-item streams__tabs-content-item" data-content="1">
+                <div class="streams__tabs-content">
+                  <div class="streams__content-item" data-content="1">
                     <div class="streams__video-block">
                       <button class="streams__video-play" type="button">
                         <span class="streams__video-text">Click to watch</span>
                       </button>
                     </div>
                   </div>
-                  <div class="tabs__content-item streams__tabs-content-item tabs__content-item--active" data-content="2">
+                  <div class="streams__content-item streams__content-item--active" data-content="2">
                     <div class="streams__video-block">
                       <button class="streams__video-play" type="button">
                         <span class="streams__video-text">Click to watch</span>
                       </button>
                     </div>
                   </div>
-                  <div class="tabs__content-item streams__tabs-content-item" data-content="3">
+                  <div class="streams__content-item" data-content="3">
                     <div class="streams__video-block">
                       <button class="streams__video-play" type="button">
                         <span class="streams__video-text">Click to watch</span>
@@ -2347,6 +2353,7 @@
 
   <!-- scripts and js libs -->
   <script src="libs/js/simplebar.min.js"></script>
+  <script src="libs/js/mixitup.min.js"></script>
   <script src="js/main.js" type="module"></script>
   <script src="js/bet.js" type="module"></script>
 </body>
