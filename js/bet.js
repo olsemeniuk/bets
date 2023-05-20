@@ -1,6 +1,28 @@
-// imports
-import { delegate, getHeight } from "../modules/helpers.js";
-import { ArrowDropdown } from "../components/Dropdown/ArrowDropdown.js";
+// helping functions
+const helpers = {
+  delegate: function (parent, selector, eventName, handler) {
+    parent.addEventListener(eventName, event => {
+      const { target } = event;
+      const element = target.closest(selector);
+
+      if (element && parent.contains(element)) {
+        handler.call(element, event);
+      }
+    });
+  },
+
+  getHeight: function (element) {
+    const elementHeight = element.getBoundingClientRect().height;
+    let marginTop = getComputedStyle(element).getPropertyValue('margin-top');
+    let marginBottom = getComputedStyle(element).getPropertyValue('margin-bottom');
+    marginTop = Number(marginTop.slice(0, marginTop.indexOf('p')));
+    marginBottom = Number(marginBottom.slice(0, marginBottom.indexOf('p')));
+    return elementHeight + marginTop + marginBottom;
+  }
+}
+
+const delegate = helpers.delegate;
+const getHeight = helpers.getHeight;
 
 
 // HTML elements
@@ -153,6 +175,12 @@ delegate(mobileTabsButtonsRow, '.mobile-tabs__button', 'click', mobileTabs);
 // streams tabs
 const streamsButtonsRow = document.querySelector('.streams__tabs-buttons');
 delegate(streamsButtonsRow, '.streams__tabs-button', 'click', streamTabs);
+
+betcoinHeightFix();
+
+
+const betsItem = document.querySelectorAll('.bets-item');
+betsItem.forEach(item => countBetsItemItemsPrice(item))
 
 
 // functions
@@ -354,6 +382,14 @@ function countUserBetItems() {
   return finalSum;
 }
 
+function countBetsItemItemsPrice(item) {
+  const itemsToCount = item.querySelectorAll('.game-item');
+  if (itemsToCount.length === 0) return;
+  const itemsPriceBlock = item.querySelector('.bets-item__items-price');
+  const itemsTotal = countItemsAndPrice(itemsToCount)[1];
+  itemsPriceBlock.textContent = `$${itemsTotal}`;
+}
+
 function roundNumber(number) {
   const dotIndex = String(number).indexOf('.');
   if (dotIndex === -1) return number;
@@ -414,13 +450,15 @@ function changeGameItemPlace({ target }, placeForItem) {
 
   const itemToBet = clickedItem;
   itemToBet.remove();
-  stashMixer.forceRefresh();
   placeForItem.append(itemToBet);
 
   countUserBetItems();
   countStashItems();
   correctShowMoreHeight(stashBody);
   correctShowMoreHeight(userBetBody);
+  betcoinHeightFix();
+
+  stashMixer.forceRefresh();
 }
 
 function betItem(event, wrapper) {
@@ -442,6 +480,7 @@ function allIn() {
   correctShowMoreHeight(userBetBody);
   countStashItems();
   countUserBetItems();
+  betcoinHeightFix();
   stashMixer.forceRefresh();
 }
 
@@ -461,6 +500,7 @@ function cancelBet() {
     betcoinRangeNum.value = 0;
     changeBetcoinSum(0);
   }
+  betcoinHeightFix();
   countUserBetItems();
   stashMixer.forceRefresh();
 }
@@ -594,4 +634,15 @@ function changeBetInfoText() {
   }
 
   return coefX;
+}
+
+
+function betcoinHeightFix() {
+  const gameItem = userBetInner.querySelector('.game-item');
+  const userBetBetcoin = userBetInner.querySelector('.betcoin');
+  if (!gameItem) {
+    userBetBetcoin.style.minHeight = '70px';
+  } else {
+    userBetBetcoin.style.minHeight = 'auto';
+  }
 }

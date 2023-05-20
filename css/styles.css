@@ -2126,6 +2126,7 @@ fieldset {
 
 .details__team-link {
   width: 40%;
+  word-break: break-word;
   text-decoration: none;
   color: var(--important-color);
 }
@@ -3017,17 +3018,33 @@ fieldset {
     margin-left: auto;
   }
 
-  /* .bets-item__items {
-    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
-  } */
+  .user-bet__body {
+    padding: 5px;
+  }
+
+  .user-bet__inner,
+  .bets-item__items,
+  .stash__items {
+    margin-right: -10px;
+  }
 
   .stash__items .game-item,
-  .user-bet__inner .game-item {
-    width: calc(25% - 20px);
+  .user-bet__inner .game-item,
+  .bets-item__items .game-item {
+    width: calc(20% - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 
   .user-bet__betcoin {
-    width: calc(50% - 20px);
+    width: calc(40% - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px 0 10px 105px;
+  }
+
+  .bets-item__items .game-item__info {
+    line-height: 18px;
   }
 
   /* mobile tabs start */
@@ -3110,12 +3127,13 @@ fieldset {
 
 @media only screen and (max-width: 600px) {
   .stash__items .game-item,
-  .user-bet__inner .game-item {
-    width: calc(100% / 3 - 20px);
+  .user-bet__inner .game-item,
+  .bets-item__items .game-item {
+    width: calc(25% - 10px);
   }
 
   .user-bet__betcoin {
-    width: calc(100% / 3 * 2 - 20px);
+    width: calc(50% - 10px);
   }
 }
 
@@ -3274,10 +3292,21 @@ fieldset {
     font-size: 14px;
   }
 
-  .stash__items .game-item {
+  .user-bet__inner .game-item,
+  .stash__items .game-item,
+  .bets-item__items .game-item {
     width: calc(100% / 3 - 10px);
     margin-right: 10px;
     margin-bottom: 10px;
+  }
+
+  .user-bet__betcoin {
+    width: calc(100% / 3 * 2 - 10px);
+  }
+
+  .game-item__info,
+  .bets-item__items .game-item__info {
+    line-height: 15px;
   }
 
   .stash__items {
