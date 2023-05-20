@@ -41,7 +41,6 @@ const userBetInner = userBet.querySelector('.user-bet__inner');
 const userBetBody = userBet.querySelector('.user-bet__body');
 const cancelBetButton = userBet.querySelector('.user-bet__cancel-button');
 const userBetTotalSum = userBet.querySelector('.user-bet__total-sum');
-
 // teams bet elements
 const teamsBet = document.querySelector('.teams-bet');
 const teamsBetList = teamsBet.querySelector('.teams-bet__coefficients');
@@ -50,7 +49,8 @@ const coefRadios = teamsBet.querySelectorAll('.coef__radio');
 const showMoreCoefsButton = teamsBet.querySelector('.teams-bet__show-more');
 
 // last bets elements
-const lastBetsList = document.querySelector('.bets-list');
+const lastBets = document.querySelector('.last-bets');
+const lastBetsList = lastBets.querySelector('.bets-list');
 
 // betcoin-range
 const betcoinRange = document.querySelector('.betcoin-range')
@@ -61,17 +61,19 @@ const betcoinRangeNum = betcoinRange.querySelector('.betcoin-range__num');
 const showMore = document.querySelectorAll('.show-more');
 
 
+
 // components
 new ArrowDropdown('#stash_rarity_dropdown').start();
 
 
+
 // libs
 // custom scrollbar
-new SimpleBar(document.getElementById('last_bets_list'), {
+const customScroll = new SimpleBar(document.getElementById('last_bets_list'), {
   autoHide: false
 });
 
-// sort and filter game items
+// mixitup
 const stashMixer = mixitup(stashItemsParent, {
   animation: {
     effects: 'fade translateZ(-100px)',
@@ -79,35 +81,18 @@ const stashMixer = mixitup(stashItemsParent, {
   }
 });
 
-stashSortButton.addEventListener('click', () => {
-  const descendingClass = 'sort--descending';
-  const ascendingClass = 'sort--ascending';
-  const isDescending = stashSortButton.classList.contains(descendingClass);
-  const isAscending = stashSortButton.classList.contains(ascendingClass);
-
-  if (!isAscending && !isDescending) {
-    stashSortButton.classList.add(descendingClass);
-    stashMixer.sort('price:desc');
-  }
-
-  if (isAscending) {
-    stashSortButton.classList.remove(ascendingClass);
-    stashSortButton.classList.add(descendingClass);
-    stashMixer.sort('price:desc');
-  } else if (isDescending) {
-    stashSortButton.classList.add(ascendingClass);
-    stashSortButton.classList.remove(descendingClass);
-    stashMixer.sort('price:asc');
-  }
-});
 
 
 // functions calls & events
+// count items in stash and user bet
 countStashItems();
 countUserBetItems();
 
-// stash filter & sort
-delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', function() {
+// sort stash game items
+stashSortButton.addEventListener('click', sortOnClick);
+
+// height correction after stash filter & sort
+delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', function () {
   setTimeout(() => {
     correctShowMoreHeight(stashBody);
   }, 300);
@@ -152,11 +137,11 @@ delegate(teamsBet, '.open-button', 'click', toggleTeamsDetails);
 
 // bet item
 stashItemsParent.addEventListener('click', event => {
-  betItem(event, userBetInner);
-})
+  changeGameItemPlace(event, userBetInner);
+});
 
 userBetInner.addEventListener('click', event => {
-  betItem(event, stashItemsParent);
+  changeGameItemPlace(event, stashItemsParent);
 });
 
 // all in
@@ -178,9 +163,12 @@ delegate(streamsButtonsRow, '.streams__tabs-button', 'click', streamTabs);
 
 betcoinHeightFix();
 
-
 const betsItem = document.querySelectorAll('.bets-item');
 betsItem.forEach(item => countBetsItemItemsPrice(item))
+
+customScroll.getScrollElement().addEventListener('scroll', showHideShadowsOnScroll);
+
+showHideShadows();
 
 
 // functions
@@ -214,18 +202,6 @@ function toggleBetItemsHeight() {
   toggleFullHeight(wrapper, inner, this)
 }
 
-function hideSecondRowItems(block) {
-  const wrapper = block.querySelector('.show-more__wrapper');
-  const insideItems = block.querySelectorAll('.show-more__item');
-  const rowHeight = checkRowHeight(insideItems);
-  const wrapperHeight = getHeight(wrapper);
-
-  if (wrapperHeight > rowHeight * 2) {
-    wrapper.style.height = `${rowHeight + (rowHeight / 100 * 40 + 15)}px`;
-    block.classList.add('show-more--active');
-  }
-}
-
 function checkRowHeight(rowItems) {
   let rowHeight = 0;
   rowItems.forEach(item => {
@@ -236,6 +212,18 @@ function checkRowHeight(rowItems) {
     }
   });
   return Number(rowHeight);
+}
+
+function hideSecondRowItems(block) {
+  const wrapper = block.querySelector('.show-more__wrapper');
+  const insideItems = block.querySelectorAll('.show-more__item');
+  const rowHeight = checkRowHeight(insideItems);
+  const wrapperHeight = getHeight(wrapper);
+
+  if (wrapperHeight > rowHeight * 2) {
+    wrapper.style.height = `${rowHeight + (rowHeight / 100 * 40 + 15)}px`;
+    block.classList.add('show-more--active');
+  }
 }
 
 function toggleShowMoreBlockHeight(block) {
@@ -280,7 +268,6 @@ function correctShowMoreHeight(block) {
 function betCoefsHeightToggle() {
   const wrapper = document.querySelector('.teams-bet__coefficients-wrapper');
   let minHeight = 0;
-  const isMobile = checkIfIsMobile();
   if (teamsBetRows.length <= 5) {
     teamsBet.classList.add('teams-bet--small');
     return;
@@ -291,9 +278,16 @@ function betCoefsHeightToggle() {
       minHeight += height;
     }
   });
-
   const currentHeight = toggleHeight(wrapper, teamsBetList, minHeight);
+  checkBetCoefsHeight(currentHeight, minHeight);
 
+  window.addEventListener('resize', () => {
+    checkBetCoefsHeight(currentHeight, minHeight);
+  });
+}
+
+function checkBetCoefsHeight(currentHeight, minHeight) {
+  const isMobile = checkIfIsMobile();
   if (currentHeight > minHeight) {
     showMoreCoefsButton.classList.remove('teams-bet__show-more--active');
     showMoreCoefsButton.textContent = 'Show more';
@@ -368,8 +362,10 @@ function countUserBetItems() {
   const finalSum = (betcoinsAmount + itemsPrice).toFixed(2);
   userBetTotalSum.textContent = `${betItemsTotalInfo[0]} (${finalSum}$)`;
 
-  // ====================================
+  betInfoTextRefresh(finalSum);
+}
 
+function betInfoTextRefresh(finalSum) {
   const coefX = changeBetInfoText();
   const betInfoMoneyFor = document.querySelector('.bet-info__money-for');
   const betInfoMoneyGet = document.querySelector('.bet-info__money-get');
@@ -379,15 +375,6 @@ function countUserBetItems() {
 
   betInfoMoneyFor.textContent = `$${roundNumber(betInfoMoneyForSum)}`;
   betInfoMoneyGet.textContent = `$${roundNumber(betInfoMoneyGetSum)}`;
-  return finalSum;
-}
-
-function countBetsItemItemsPrice(item) {
-  const itemsToCount = item.querySelectorAll('.game-item');
-  if (itemsToCount.length === 0) return;
-  const itemsPriceBlock = item.querySelector('.bets-item__items-price');
-  const itemsTotal = countItemsAndPrice(itemsToCount)[1];
-  itemsPriceBlock.textContent = `$${itemsTotal}`;
 }
 
 function roundNumber(number) {
@@ -398,6 +385,14 @@ function roundNumber(number) {
     return number.toFixed(2);
   }
   return number;
+}
+
+function countBetsItemItemsPrice(item) {
+  const itemsToCount = item.querySelectorAll('.game-item');
+  if (itemsToCount.length === 0) return;
+  const itemsPriceBlock = item.querySelector('.bets-item__items-price');
+  const itemsTotal = countItemsAndPrice(itemsToCount)[1];
+  itemsPriceBlock.textContent = `$${itemsTotal}`;
 }
 
 // slide betcoins amount
@@ -451,18 +446,7 @@ function changeGameItemPlace({ target }, placeForItem) {
   const itemToBet = clickedItem;
   itemToBet.remove();
   placeForItem.append(itemToBet);
-
-  countUserBetItems();
-  countStashItems();
-  correctShowMoreHeight(stashBody);
-  correctShowMoreHeight(userBetBody);
-  betcoinHeightFix();
-
-  stashMixer.forceRefresh();
-}
-
-function betItem(event, wrapper) {
-  changeGameItemPlace(event, wrapper);
+  refreshBlocksAfterItemBet()
 }
 
 function allIn() {
@@ -475,13 +459,7 @@ function allIn() {
 
   stashItemsArray.forEach(item => item.remove());
   userBetInner.append(...stashItemsArray);
-
-  correctShowMoreHeight(stashBody);
-  correctShowMoreHeight(userBetBody);
-  countStashItems();
-  countUserBetItems();
-  betcoinHeightFix();
-  stashMixer.forceRefresh();
+  refreshBlocksAfterItemBet()
 }
 
 function cancelBet() {
@@ -490,9 +468,6 @@ function cancelBet() {
   if (gameItems.length > 0) {
     gameItems.forEach(item => item.remove());
     stashItemsParent.append(...gameItems);
-    countStashItems();
-    correctShowMoreHeight(stashBody);
-    correctShowMoreHeight(userBetBody);
   }
 
   if (Number(betcoinSlider.value) > 0) {
@@ -500,16 +475,22 @@ function cancelBet() {
     betcoinRangeNum.value = 0;
     changeBetcoinSum(0);
   }
-  betcoinHeightFix();
+
+  refreshBlocksAfterItemBet()
+}
+
+function refreshBlocksAfterItemBet() {
+  countStashItems();
   countUserBetItems();
+  betcoinHeightFix();
+  correctShowMoreHeight(stashBody);
+  correctShowMoreHeight(userBetBody);
   stashMixer.forceRefresh();
 }
 
 // coefs
-function activateCoefBlock({ target }) {
-  const isRadio = target.classList.contains('coef__radio');
-  if (!isRadio) return;
-  const parentRow = target.closest('.teams-bet__row');
+function activateCoefBlock() {
+  const parentRow = this.closest('.teams-bet__row');
   teamsBetRows.forEach(row => row.classList.remove('teams-bet__row--chosen'));
   parentRow.classList.add('teams-bet__row--chosen');
 }
@@ -646,3 +627,55 @@ function betcoinHeightFix() {
     userBetBetcoin.style.minHeight = 'auto';
   }
 }
+
+function sortOnClick() {
+  const descendingClass = 'sort--descending';
+  const ascendingClass = 'sort--ascending';
+  const isDescending = stashSortButton.classList.contains(descendingClass);
+  const isAscending = stashSortButton.classList.contains(ascendingClass);
+
+  if (!isAscending && !isDescending) {
+    stashSortButton.classList.add(descendingClass);
+    stashMixer.sort('price:desc');
+  }
+
+  if (isAscending) {
+    stashSortButton.classList.remove(ascendingClass);
+    stashSortButton.classList.add(descendingClass);
+    stashMixer.sort('price:desc');
+  } else if (isDescending) {
+    stashSortButton.classList.add(ascendingClass);
+    stashSortButton.classList.remove(descendingClass);
+    stashMixer.sort('price:asc');
+  }
+}
+
+function showHideShadows() {
+  const scrollBar = document.querySelector('.simplebar-track.simplebar-vertical');
+  if (scrollBar.style.visibility === 'hidden') {
+    lastBets.classList.add('last-bets--no-top-shadow');
+    lastBets.classList.add('last-bets--no-bottom-shadow');
+  } else {
+    lastBets.classList.remove('last-bets--no-top-shadow');
+    lastBets.classList.remove('last-bets--no-bottom-shadow');
+  }
+}
+
+function showHideShadowsOnScroll() {
+  const scroll = customScroll.getScrollElement()
+  const distanceToTop = scroll.scrollTop;
+  const distanceToBottom = scroll.scrollHeight - scroll.scrollTop - scroll.clientHeight;
+
+  if (distanceToTop < 10) {
+    lastBets.classList.add('last-bets--no-top-shadow');
+  } else {
+    lastBets.classList.remove('last-bets--no-top-shadow');
+  }
+
+  if (distanceToBottom < 10) {
+    lastBets.classList.add('last-bets--no-bottom-shadow');
+  } else {
+    lastBets.classList.remove('last-bets--no-bottom-shadow');
+  }
+}
+

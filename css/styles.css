@@ -246,7 +246,6 @@ fieldset {
   background-color: var(--main-text-color);
   border-radius: 50%;
 }
-
 /* icons end */
 
 /*====================
@@ -274,7 +273,6 @@ fieldset {
   background-color: var(--main-text-color);
   color: var(--contrast-color);
 }
-
 /* button end */
 
 
@@ -301,9 +299,9 @@ fieldset {
   left: 0;
   overflow: hidden;
   background-image: linear-gradient(to bottom,
-      var(--black-color) 0 18px,
-      var(--main-text-color) 18px calc(100% - 18px),
-      var(--black-color) calc(100% - 18px) 100%);
+                                    var(--black-color) 0 18px,
+                                    var(--main-text-color) 18px calc(100% - 18px),
+                                    var(--black-color) calc(100% - 18px) 100%);
   border-radius: var(--border-radius-normal);
 }
 
@@ -504,9 +502,7 @@ fieldset {
 .dropdown--open-bottom .arrow-dropdown__list {
   padding: 2px 0 6px;
 }
-
 /* arrow dropdown end */
-
 
 /* languages dropdown start */
 .languages__button,
@@ -534,7 +530,6 @@ fieldset {
 .languages__item-button {
   padding-left: 24px;
 }
-
 /* languages dropdown end */
 
 
@@ -578,7 +573,6 @@ fieldset {
 .sort--ascending::after {
   filter: var(--important-filer);
 }
-
 /* sort end */
 
 
@@ -590,7 +584,6 @@ fieldset {
   font-size: 18px;
   color: var(--important-color);
 }
-
 /* title end */
 
 
@@ -617,7 +610,6 @@ fieldset {
   transform: translateY(-50%);
   filter: var(--important-filer);
 }
-
 /* link end */
 
 
@@ -648,12 +640,7 @@ fieldset {
 .open-button--active::after {
   transform: translateX(-50%) scaleY(1);
 }
-
 /* open button end */
-
-
-/* tabs start */
-/* tabs end */
 
 
 /* toggle start */
@@ -1061,7 +1048,6 @@ fieldset {
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
   mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
 }
-
 /* header end */
 
 
@@ -1083,19 +1069,34 @@ fieldset {
   padding: 0;
 }
 
-.last-bets::after {
+.last-bets::after,
+.last-bets::before {
   content: "";
   position: absolute;
   right: 0;
-  bottom: -1px;
   left: 0;
   z-index: 5;
   width: 100%;
   height: 35px;
   border-radius: 0 0 var(--border-radius-normal) var(--border-radius-normal);
+  transition: all 0.3s;
+}
+
+.last-bets::after {
+  bottom: -1px;
+  left: 0;
   box-shadow: inset 0px -35px 11px -10px var(--main-bg-color);
 }
 
+.last-bets::before {
+  top: 50px;
+  box-shadow: inset 0px 35px 11px -10px var(--main-bg-color);
+}
+
+.last-bets--no-top-shadow::before,
+.last-bets--no-bottom-shadow::after {
+  opacity: 0;
+}
 /* page content end */
 
 
@@ -1200,7 +1201,6 @@ fieldset {
   -webkit-mask-image: linear-gradient(to right, transparent, #000000 85%);
   mask-image: linear-gradient(to right, transparent, #000000 85%);
 }
-
 /* upcoming match end */
 
 
@@ -1219,6 +1219,7 @@ fieldset {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 5;
   width: 100%;
   height: 1px;
   background-color: var(--accent-color);
@@ -1234,11 +1235,12 @@ fieldset {
 .simplebar-track.simplebar-vertical {
   top: 10px;
   right: 10px;
+  bottom: 10px;
   width: 5px;
   background-image: linear-gradient(to right,
-      transparent 0 40%,
-      var(--accent-color) 40% 60%,
-      transparent 60% 100%);
+                                    transparent 0 40%,
+                                    var(--accent-color) 40% 60%,
+                                    transparent 60% 100%);
 }
 
 .simplebar-scrollbar.simplebar-visible {
@@ -1433,7 +1435,6 @@ fieldset {
   margin-right: 12px;
   margin-bottom: 12px;
 }
-
 /* bets item end */
 /* last bets end */
 
@@ -1559,7 +1560,6 @@ fieldset {
   text-transform: uppercase;
   color: var(--important-color);
 }
-
 /* streams end */
 
 
@@ -1584,7 +1584,6 @@ fieldset {
   background-color: var(--accent-color);
   border-radius: var(--border-radius-normal);
 }
-
 /* bet-block end */
 
 
@@ -1622,7 +1621,7 @@ fieldset {
   align-items: center;
 }
 
-.teams-bet__row+.teams-bet__row {
+.teams-bet__row + .teams-bet__row {
   margin-top: 5px;
 }
 
@@ -1664,17 +1663,25 @@ fieldset {
   margin-left: 10px;
 }
 
-.teams-bet__team--winner .teams-bet__team-name::before {
+.teams-bet__team--winner.teams-bet__team--first .teams-bet__team-name::before,
+.teams-bet__team--winner.teams-bet__team--second .teams-bet__team-name::after {
   content: "";
   display: inline-block;
   vertical-align: baseline;
   width: 13px;
   height: 9px;
-  margin-right: 4px;
   background-image: url("../images/icons/crown-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   filter: var(--attention-filter);
+}
+
+.teams-bet__team--winner.teams-bet__team--first .teams-bet__team-name::before {
+  margin-right: 4px;
+}
+
+.teams-bet__team--winner.teams-bet__team--second .teams-bet__team-name::after {
+  margin-left: 4px;
 }
 
 .teams-bet__team--lost .teams-bet__team-name {
@@ -1727,11 +1734,11 @@ fieldset {
 .teams-bet__row--chosen .teams-bet__row-title:not(.live) span {
   color: var(--important-color);
   text-shadow: 0.1px 0.1px 0.3px var(--important-color),
-    0.2px 0.2px 0.3px var(--important-color),
-    0.3px 0.3px 0.3px var(--important-color),
-    -0.1px -0.1px 0.3px var(--important-color),
-    -0.2px -0.2px 0.3px var(--important-color),
-    -0.3px -0.3px 0.3px var(--important-color);
+               0.2px 0.2px 0.3px var(--important-color),
+               0.3px 0.3px 0.3px var(--important-color),
+               -0.1px -0.1px 0.3px var(--important-color),
+               -0.2px -0.2px 0.3px var(--important-color),
+               -0.3px -0.3px 0.3px var(--important-color);
 }
 
 .teams-bet__row--chosen .teams-bet__row-title.live {
@@ -3005,6 +3012,10 @@ fieldset {
     width: 100%;
   }
 
+  .last-bets::before {
+    top: 0;
+  }
+
   .bet-form__row {
     flex-direction: row;
   }
@@ -3223,9 +3234,21 @@ fieldset {
   .coef--lost .coef__block::after,
   .coef--disabled .coef__block::after {
     display: block;
+    transform: translateY(-50%);
+  }
+
+  .coef--first-team.coef--win .coef__block::after,
+  .coef--first-team.coef--lost .coef__block::after,
+  .coef--first-team.coef--disabled .coef__block::after {
     left: auto;
     right: 5px;
-    transform: translateY(-50%);
+  }
+
+  .coef--second-team.coef--win .coef__block::after,
+  .coef--second-team.coef--lost .coef__block::after,
+  .coef--second-team.coef--disabled .coef__block::after {
+    right: auto;
+    left: 5px;
   }
 
   .coef--locked .coef__block::after {
