@@ -828,6 +828,7 @@ fieldset {
   z-index: 5;
   height: 100%;
   width: 100%;
+  border-radius: 0 0 var(--border-radius-normal) var(--border-radius-normal);
   box-shadow: inset 0px -35px 11px -10px var(--accent-color);
   transition: all 0.3s;
 }
@@ -1409,10 +1410,9 @@ fieldset {
 
 .bets-item__items {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px -12px 0 0;
   padding: 15px 0 0;
 }
 
@@ -1426,6 +1426,12 @@ fieldset {
   height: 1px;
   background-color: var(--main-bg-color);
   transition: all 0.3s;
+}
+
+.bets-item__items .game-item {
+  width: calc(100% / 3 - 12px);
+  margin-right: 12px;
+  margin-bottom: 12px;
 }
 
 /* bets item end */
@@ -2030,16 +2036,17 @@ fieldset {
   border-radius: var(--border-radius-normal);
 }
 
+.bet-info__placing-bet {
+  display: none;
+}
+
 .bet-info__type {
   color: var(--important-color);
 }
 
-.bet-info__type.icon {
-  padding-left: 17px;
-}
-
-.bet-info__type.icon::before {
-  left: 0;
+.bet-info__type span.icon::before {
+  vertical-align: text-bottom;
+  filter: var(--important-filer);
 }
 
 .bet-info__money {
@@ -2214,13 +2221,14 @@ fieldset {
 }
 
 .user-bet__body {
-  padding: 35px 109px 15px;
+  padding: 20px 94px 0;
 }
 
 .user-bet__inner {
   display: flex;
   flex-wrap: wrap;
   margin-right: -20px;
+  padding: 15px;
 }
 
 .user-bet__inner .game-item {
@@ -2233,6 +2241,7 @@ fieldset {
   width: calc(50% - 20px);
   margin-right: 20px;
   margin-bottom: 20px;
+  padding: 17px 0 17px 105px;
 }
 
 
@@ -2397,13 +2406,13 @@ fieldset {
 }
 
 .stash__filter-block {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding: 0 15px;
 }
 
 .stash__items {
   margin-right: -20px;
-  padding: 0 45px 0;
+  padding: 15px 45px;
   font-size: 0;
   line-height: 0;
 }
@@ -2681,7 +2690,19 @@ fieldset {
   }
 
   .stash__items {
-    padding: 0 20px;
+    padding: 15px 20px;
+  }
+
+  .user-bet__body {
+    padding: 20px 5px 0;
+  }
+
+  .user-bet__inner .game-item {
+    width: calc(20% - 20px);
+  }
+
+  .user-bet__betcoin {
+    width: calc(40% - 20px);
   }
 
   .last-bets {
@@ -2690,6 +2711,20 @@ fieldset {
 
   .simplebar-placeholder {
     width: 100% !important;
+  }
+
+  .bets-item__items {
+    margin-right: -10px;
+  }
+
+  .bets-item__items .game-item {
+    width: calc(100% / 3 - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .bets-item__items .game-item__info {
+    line-height: 14px;
   }
 
   .footer__inner {
@@ -2724,6 +2759,14 @@ fieldset {
 @media only screen and (max-width: 1100px) {
   .stash__items .game-item {
     width: calc(25% - 20px);
+  }
+
+  .user-bet__inner .game-item {
+    width: calc(25% - 20px);
+  }
+
+  .user-bet__betcoin {
+    width: calc(50% - 20px);
   }
 }
 
@@ -2811,10 +2854,6 @@ fieldset {
     padding: 10px;
   }
 
-  .user-bet__body {
-    padding: 20px;
-  }
-
   .betcoin-range__slider-wrapper {
     width: 120px;
   }
@@ -2833,8 +2872,15 @@ fieldset {
     right: 5px;
   }
 
-  .stash__items .game-item {
+  .stash__items .game-item,
+  .user-bet__inner .game-item {
     width: calc(25% - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .user-bet__betcoin {
+    width: calc(50% - 10px);
     margin-right: 10px;
     margin-bottom: 10px;
   }
@@ -2885,8 +2931,15 @@ fieldset {
     flex: 1;
   }
 
-  .stash__items .game-item {
+  .stash__items .game-item,
+  .user-bet__inner .game-item {
     width: calc(100% / 3 - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .user-bet__betcoin {
+    width: calc(100% / 3 * 2 - 20px);
     margin-right: 20px;
     margin-bottom: 20px;
   }
@@ -2964,12 +3017,17 @@ fieldset {
     margin-left: auto;
   }
 
-  .bets-item__items {
+  /* .bets-item__items {
     grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  } */
+
+  .stash__items .game-item,
+  .user-bet__inner .game-item {
+    width: calc(25% - 20px);
   }
 
-  .stash__items .game-item {
-    width: calc(25% - 20px);
+  .user-bet__betcoin {
+    width: calc(50% - 20px);
   }
 
   /* mobile tabs start */
@@ -3051,8 +3109,13 @@ fieldset {
 }
 
 @media only screen and (max-width: 600px) {
-  .stash__items .game-item {
+  .stash__items .game-item,
+  .user-bet__inner .game-item {
     width: calc(100% / 3 - 20px);
+  }
+
+  .user-bet__betcoin {
+    width: calc(100% / 3 * 2 - 20px);
   }
 }
 

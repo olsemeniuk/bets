@@ -1,5 +1,5 @@
 // imports
-import { changeClasses, checkClass, delegate, getHeight } from "../modules/helpers.js";
+import { delegate, getHeight } from "../modules/helpers.js";
 import { ArrowDropdown } from "../components/Dropdown/ArrowDropdown.js";
 
 
@@ -53,10 +53,9 @@ new SimpleBar(document.getElementById('last_bets_list'), {
 const stashMixer = mixitup(stashItemsParent, {
   animation: {
     effects: 'fade translateZ(-100px)',
-    duration: 500,
+    duration: 300,
   }
 });
-
 
 stashSortButton.addEventListener('click', () => {
   const descendingClass = 'sort--descending';
@@ -89,10 +88,10 @@ countUserBetItems();
 delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', function() {
   setTimeout(() => {
     correctShowMoreHeight(stashBody);
-  }, 500);
+  }, 300);
   setTimeout(() => {
     countStashItems();
-  }, 550);
+  }, 350);
 });
 
 // show more height toggling
@@ -113,6 +112,11 @@ betcoinRange.addEventListener('input', slideBetcoinsAmount);
 // show/hide more bet coefficients
 showMoreCoefsButton.addEventListener('click', betCoefsHeightToggle);
 betCoefsHeightToggle();
+
+teamsBet.addEventListener('click', () => {
+  changeBetInfoText();
+  countUserBetItems();
+});
 
 // show/hide user bet
 delegate(teamsBet, '.coef__radio', 'click', showHideUserBet);
@@ -157,7 +161,7 @@ function toggleHeight(wrapper, inner, minHeight = 0) {
   const wrapperHeight = getHeight(wrapper);
   const innerHeight = getHeight(inner);
 
-  if (wrapperHeight <= minHeight) {
+  if (wrapperHeight <= minHeight + 10) {
     wrapper.style.height = `${innerHeight}px`;
   } else {
     wrapper.style.height = `${minHeight}px`;
@@ -188,17 +192,18 @@ function hideSecondRowItems(block) {
   const rowHeight = checkRowHeight(insideItems);
   const wrapperHeight = getHeight(wrapper);
 
-  if (wrapperHeight > rowHeight) {
-    wrapper.style.height = `${rowHeight + (rowHeight / 100 * 35)}px`;
+  if (wrapperHeight > rowHeight * 2) {
+    wrapper.style.height = `${rowHeight + (rowHeight / 100 * 40 + 15)}px`;
     block.classList.add('show-more--active');
   }
 }
 
 function checkRowHeight(rowItems) {
-  let rowHeight = '';
+  let rowHeight = 0;
   rowItems.forEach(item => {
     const itemHeight = getHeight(item);
-    if (itemHeight !== 0) {
+    if (item.style.display === 'none') return;
+    if (itemHeight > rowHeight) {
       rowHeight = itemHeight;
     }
   });
@@ -210,11 +215,11 @@ function toggleShowMoreBlockHeight(block) {
   const inner = block.querySelector('.show-more__inner');
   const button = block.querySelector('.show-more__button');
   const insideItems = block.querySelectorAll('.show-more__item');
-
   const rowHeight = checkRowHeight(insideItems);
-  const isOpened = block.classList.contains('show-more--opened');
-  toggleHeight(wrapper, inner, rowHeight + (rowHeight / 100 * 35));
 
+  toggleHeight(wrapper, inner, rowHeight + (rowHeight / 100 * 40 + 15));
+
+  const isOpened = block.classList.contains('show-more--opened');
   if (!isOpened) {
     block.classList.add('show-more--opened');
     if (button) button.textContent = 'Show less';
@@ -228,16 +233,19 @@ function correctShowMoreHeight(block) {
   const wrapper = block.querySelector('.show-more__wrapper');
   const inner = block.querySelector('.show-more__inner');
   const item = block.querySelectorAll('.show-more__item');
+  const button = block.querySelector('.show-more__button');
   const rowHeight = checkRowHeight(item);
   const innerHeight = getHeight(inner);
 
   wrapper.style.height = `${innerHeight}px`;
-  if (innerHeight <= rowHeight || rowHeight === 0) {
+  if (innerHeight < rowHeight * 2 || rowHeight === 0) {
     block.classList.remove('show-more--active');
     block.classList.remove('show-more--opened');
+    button.textContent = 'Show more';
   } else {
     block.classList.add('show-more--active');
     block.classList.add('show-more--opened');
+    button.textContent = 'Show less';
   }
 }
 
@@ -277,8 +285,8 @@ function showHideUserBet() {
     if (radio.checked) checkedRadio = true;
   });
 
-
   if (checkedRadio) {
+    betInfoShow();
     userBet.style.display = 'block';
     setTimeout(() => {
       const userBetContentHeight = getHeight(userBetContent);
@@ -286,7 +294,6 @@ function showHideUserBet() {
     });
     setTimeout(() => {
       userBet.style.height = 'auto';
-      toggleShowMoreBlockHeight(userBetBody);
     }, 300);
   } else {
     userBet.style.display = 'none';
@@ -332,6 +339,29 @@ function countUserBetItems() {
   const itemsPrice = Number(betItemsTotalInfo[1]);
   const finalSum = (betcoinsAmount + itemsPrice).toFixed(2);
   userBetTotalSum.textContent = `${betItemsTotalInfo[0]} (${finalSum}$)`;
+
+  // ====================================
+
+  const coefX = changeBetInfoText();
+  const betInfoMoneyFor = document.querySelector('.bet-info__money-for');
+  const betInfoMoneyGet = document.querySelector('.bet-info__money-get');
+
+  const betInfoMoneyForSum = Number(finalSum);
+  const betInfoMoneyGetSum = (Number(finalSum) * coefX) - finalSum || 0;
+
+  betInfoMoneyFor.textContent = `$${roundNumber(betInfoMoneyForSum)}`;
+  betInfoMoneyGet.textContent = `$${roundNumber(betInfoMoneyGetSum)}`;
+  return finalSum;
+}
+
+function roundNumber(number) {
+  const dotIndex = String(number).indexOf('.');
+  if (dotIndex === -1) return number;
+  const numbersAfterDot = String(number).slice(dotIndex + 1).length;
+  if (numbersAfterDot > 2) {
+    return number.toFixed(2);
+  }
+  return number;
 }
 
 // slide betcoins amount
@@ -377,31 +407,20 @@ function changeBetcoinSum(value) {
   betcoinSum.textContent = `${value}$`;
 }
 
-
-
 // bet item
 function changeGameItemPlace({ target }, placeForItem) {
   const clickedItem = target.closest('.game-item');
   if (userBet.style.display === 'none' || !clickedItem) return;
 
   const itemToBet = clickedItem;
-  stashMixer.remove(itemToBet, true, () => {
-    placeForItem.append(itemToBet);
+  itemToBet.remove();
+  stashMixer.forceRefresh();
+  placeForItem.append(itemToBet);
 
-    itemToBet.style.display = 'inline-block';
-    itemToBet.style.transform = 'scale(0)';
-    itemToBet.style.transition = 'all 0.3s';
-
-    correctShowMoreHeight(stashBody);
-    correctShowMoreHeight(userBetBody);
-
-    setTimeout(() => {
-      itemToBet.style.transform = 'scale(1)';
-      countUserBetItems();
-      countStashItems();
-    });
-  });
-
+  countUserBetItems();
+  countStashItems();
+  correctShowMoreHeight(stashBody);
+  correctShowMoreHeight(userBetBody);
 }
 
 function betItem(event, wrapper) {
@@ -423,6 +442,7 @@ function allIn() {
   correctShowMoreHeight(userBetBody);
   countStashItems();
   countUserBetItems();
+  stashMixer.forceRefresh();
 }
 
 function cancelBet() {
@@ -442,6 +462,7 @@ function cancelBet() {
     changeBetcoinSum(0);
   }
   countUserBetItems();
+  stashMixer.forceRefresh();
 }
 
 // coefs
@@ -517,28 +538,60 @@ function streamTabs() {
   tabs(allButtons, allContent, this, activeButton, activeContent);
 }
 
-// function sortOnClick() {
-  // const currentSorting = stashSortButton.dataset.sort;
-  // if (currentSorting === 'price:asc') {
-  //   stashSortButton.dataset.sort = 'price:desc';
-  // }
-// }
+function betInfoShow() {
+  const betInfo = document.querySelector('.bet-info');
+  const betInfoPlaceholder = betInfo.querySelector('.bet-info__placeholder');
+  const betInfoPlacingBet = betInfo.querySelector('.bet-info__placing-bet');
 
+  betInfoPlaceholder.style.display = 'none';
+  betInfoPlacingBet.style.display = 'block';
+}
 
-// function animateItemRemove(item) {
-//   const itemWidth = item.getBoundingClientRect().width;
-//   item.style.transform = 'scale(0)';
-//   item.style.marginRight = `-${itemWidth}px`;
-//   setTimeout(() => item.remove(), 300);
-//   return item;
-// }
+function changeBetInfoText() {
+  const radios = document.querySelectorAll('.coef__radio');
+  const teams = document.querySelectorAll('.teams-bet__team');
+  let teamName = '';
+  let activeRadio = '';
 
-// function animateItemAppend(item, parent) {
-//   setTimeout(() => {
-//     parent.append(item);
-//     item.style.marginRight = '20px';
-//   }, 310);
-//   setTimeout(() => {
-//     item.style.transform = 'scale(1)';
-//   }, 320);
-// }
+  radios.forEach(radio => {
+    if (radio.checked) {
+      activeRadio = radio;
+    }
+  });
+
+  if (!activeRadio) return;
+  const radioValue = activeRadio.value;
+  const radioTeamNum = radioValue.slice(radioValue.indexOf('_') + 1);
+  teams.forEach(team => {
+    const teamNum = team.dataset.team;
+    if (teamNum === radioTeamNum) {
+      const name = team.querySelector('.teams-bet__team-name');
+      teamName = name.textContent;
+    }
+  });
+
+  const parentRow = activeRadio.closest('.teams-bet__row');
+  const title = parentRow.querySelector('.teams-bet__row-title span');
+  const titleText = title.textContent;
+
+  const titleContainsIcon = title.classList.contains('icon');
+  let icon = '';
+  if (titleContainsIcon) {
+    title.classList.forEach(titleClass => {
+      if (titleClass.includes('icon--') && titleClass !== 'icon--dot') icon = titleClass;
+    });
+  }
+
+  const parentCoef = activeRadio.closest('.coef');
+  const coefX = Number(parentCoef.querySelector('.coef__x').textContent.slice(1));
+
+  const betInfoType = document.querySelector('.bet-info__type');
+
+  if (!icon) {
+    betInfoType.innerHTML = `${teamName} <span>${titleText}</span>`;
+  } else {
+    betInfoType.innerHTML = `${teamName} <span class="icon ${icon}">${titleText}</span>`;
+  }
+
+  return coefX;
+}
