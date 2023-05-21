@@ -169,7 +169,7 @@ betsItem.forEach(item => countBetsItemItemsPrice(item))
 customScroll.getScrollElement().addEventListener('scroll', showHideShadowsOnScroll);
 
 showHideShadows();
-
+disableSubmitButton();
 mobileTabsActiveBg();
 
 
@@ -363,7 +363,7 @@ function countUserBetItems() {
   const itemsPrice = Number(betItemsTotalInfo[1]);
   const finalSum = (betcoinsAmount + itemsPrice).toFixed(2);
   userBetTotalSum.textContent = `${betItemsTotalInfo[0]} (${finalSum}$)`;
-
+  disableSubmitButton();
   betInfoTextRefresh(finalSum);
 }
 
@@ -711,5 +711,15 @@ function showHideShadowsOnScroll() {
     lastBets.classList.add('last-bets--no-bottom-shadow');
   } else {
     lastBets.classList.remove('last-bets--no-bottom-shadow');
+  }
+}
+
+function disableSubmitButton() {
+  const submitButton = document.querySelector('.bet-form__submit');
+  const totalIsEmpry = userBetTotalSum.textContent === '0 (0.00$)';
+  if (totalIsEmpry) {
+    submitButton.disabled = true;
+  } else {
+    submitButton.disabled = false;
   }
 }

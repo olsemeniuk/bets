@@ -262,6 +262,7 @@ fieldset {
   background-color: transparent;
   border: none;
   border-radius: var(--border-radius-normal);
+  transition: all 0.3s;
 }
 
 /* button important */
@@ -273,6 +274,11 @@ fieldset {
 .button--secondary {
   background-color: var(--main-text-color);
   color: var(--contrast-color);
+}
+
+.button--secondary:hover {
+  background-color: var(--important-color);
+  box-shadow: 0 0 5px 0 var(--important-color);
 }
 
 /* button end */
@@ -409,6 +415,14 @@ fieldset {
   border: none;
 }
 
+.dropdown__list-button:hover {
+  color: var(--important-color);
+}
+
+.dropdown--colored .dropdown__list-button:hover {
+  opacity: 0.8;
+}
+
 .dropdown__input {
   display: none;
 }
@@ -482,6 +496,10 @@ fieldset {
   transform: translateY(-50%) scaleY(-1);
 }
 
+.dropdown:hover .arrow-dropdown__text-wrapper::after {
+  filter: var(--important-filer);
+}
+
 .arrow-dropdown__text {
   font-weight: 600;
   font-size: 12px;
@@ -515,6 +533,7 @@ fieldset {
 
 .languages__button-text {
   padding-left: 24px;
+  color: var(--important-color);
 }
 
 .languages__button-text::before,
@@ -545,6 +564,10 @@ fieldset {
   background-color: var(--main-bg-color);
   border: none;
   border-radius: var(--border-radius-normal)
+}
+
+.sort:hover {
+  color: var(--important-color);
 }
 
 .sort::before,
@@ -617,6 +640,14 @@ fieldset {
   filter: var(--important-filer);
 }
 
+.link:hover {
+  color: var(--main-text-color);
+}
+
+.link:hover::after {
+  filter: var(--main-text-filter);
+}
+
 /* link end */
 
 
@@ -640,8 +671,13 @@ fieldset {
   background-image: url("../images/icons/chevron-icon.png");
   background-repeat: no-repeat;
   background-position: center;
+  filter: var(--main-text-filter);
   transform: translateX(-50%) scaleY(-1);
   transition: all 0.3s;
+}
+
+.open-button:hover::after {
+  filter: var(--important-filer);
 }
 
 .open-button--active::after {
@@ -911,6 +947,14 @@ fieldset {
   color: var(--important-color);
 }
 
+.menu__link:hover {
+  color: var(--main-text-color);
+}
+
+.menu__link:hover::before {
+  filter: var(--main-text-filter);
+}
+
 .menu__link-text {
   position: relative;
 }
@@ -927,7 +971,7 @@ fieldset {
   transition: all 0.3s ease-in-out;
 }
 
-.menu__link-text:hover::after {
+.menu__link:hover .menu__link-text::after {
   width: 100%;
   left: 0;
 }
@@ -987,6 +1031,14 @@ fieldset {
   color: var(--important-color);
 }
 
+.user__resources-link:hover {
+  color: var(--main-text-color);
+}
+
+.user__resources-link:active {
+  opacity: 0.5;
+}
+
 .user__resources-link::before {
   content: "";
   position: absolute;
@@ -1029,6 +1081,14 @@ fieldset {
   color: var(--important-color);
 }
 
+.user__profile:hover .user__profile-name {
+  color: var(--main-text-color);
+}
+
+.user__profile:active {
+  opacity: 0.5;
+}
+
 .user__logout-button {
   padding: 5px;
   background-color: transparent;
@@ -1042,6 +1102,14 @@ fieldset {
   height: 13px;
   background-image: url("../images/icons/out-icon.png");
   filter: var(--important-filer);
+}
+
+.user__logout-button:hover::before {
+  filter: var(--main-text-filter);
+}
+
+.user__logout-button:active {
+  opacity: 0.5;
 }
 
 .user-avatar {
@@ -1159,6 +1227,7 @@ fieldset {
   margin: 0;
   font-weight: 700;
   font-size: 14px;
+  text-decoration: none;
   color: var(--important-color);
 }
 
@@ -1200,6 +1269,14 @@ fieldset {
   text-overflow: ellipsis;
   text-decoration: none;
   color: var(--main-text-color);
+}
+
+.upcoming-match__text:hover {
+  color: var(--important-color);
+}
+
+.upcoming-match__text:active {
+  opacity: 0.5;
 }
 
 .upcoming-match__img {
@@ -1324,7 +1401,7 @@ fieldset {
 }
 
 .bets-item__user-link::after {
-  top: 2px;
+  top: 3px;
   right: 4px;
   width: 7px;
   height: 7px;
@@ -2228,7 +2305,8 @@ fieldset {
 }
 
 .user-bet {
-  margin-bottom: 20px;
+  margin: 0 -20px 20px -20px;
+  padding: 0 20px;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -2261,6 +2339,14 @@ fieldset {
   background-position: center;
   transform: translateY(-50%);
   filter: var(--main-text-filter);
+}
+
+.user-bet__cancel-button:hover {
+  color: var(--important-color);
+}
+
+.user-bet__cancel-button:hover::before {
+  filter: var(--important-filer);
 }
 
 .user-bet__block {
@@ -2378,6 +2464,22 @@ fieldset {
   appearance: none;
 }
 
+.betcoin-range__slider::-webkit-slider-thumb:hover {
+  background-color: var(--main-text-color);
+}
+
+.betcoin-range__slider::-moz-range-thumb:hover {
+  background-color: var(--main-text-color);
+}
+
+.betcoin-range__slider::-webkit-slider-thumb:active {
+  background-color: var(--important-color);
+}
+
+.betcoin-range__slider::-moz-range-thumb:active {
+  background-color: var(--important-color);
+}
+
 .betcoin-range__num {
   width: 60px;
   height: 25px;
@@ -2413,6 +2515,20 @@ fieldset {
   filter: var(--black-filter);
 }
 
+.bet-form__submit:hover {
+  box-shadow: 0 0 12px 5px var(--pale-attention-color-30);
+}
+
+.bet-form__submit:disabled {
+  color: var(--main-text-color);
+  background-color: var(--contrast-color);
+  box-shadow: none;
+}
+
+.bet-form__submit:disabled::before {
+  filter: var(--main-text-filter);
+}
+
 /* user bet end */
 
 
@@ -2441,6 +2557,15 @@ fieldset {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.stash__all-in:hover {
+  color: var(--important-color);
+  border-color: var(--important-color);
+}
+
+.stash__all-in:hover::after {
+  filter: var(--important-filer);
 }
 
 .stash__sort {
@@ -2545,6 +2670,14 @@ fieldset {
   filter: var(--important-filer);
 }
 
+.footer__mail-link:hover {
+  color: var(--main-text-color);
+}
+
+.footer__mail-link:hover::before {
+  filter: var(--main-text-filter);
+}
+
 .socials {
   display: flex;
   align-items: center;
@@ -2569,6 +2702,10 @@ fieldset {
 .socials__link::before {
   height: 20px;
   filter: var(--black-filter);
+}
+
+.socials__link:hover {
+  background-color: var(--main-text-color);
 }
 
 .links-block--info .links-block__title {
@@ -3144,6 +3281,14 @@ fieldset {
   .mobile-tabs__button::before {
     margin-right: 5px;
     filter: var(--main-text-filter);
+  }
+
+  .mobile-tabs__button:hover {
+    color: var(--important-color);
+  }
+
+  .mobile-tabs__button:hover::before {
+    filter: var(--important-filer)
   }
 
   .mobile-tabs__button--active-bg {
