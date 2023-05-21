@@ -246,6 +246,7 @@ fieldset {
   background-color: var(--main-text-color);
   border-radius: 50%;
 }
+
 /* icons end */
 
 /*====================
@@ -273,6 +274,7 @@ fieldset {
   background-color: var(--main-text-color);
   color: var(--contrast-color);
 }
+
 /* button end */
 
 
@@ -299,9 +301,9 @@ fieldset {
   left: 0;
   overflow: hidden;
   background-image: linear-gradient(to bottom,
-                                    var(--black-color) 0 18px,
-                                    var(--main-text-color) 18px calc(100% - 18px),
-                                    var(--black-color) calc(100% - 18px) 100%);
+      var(--black-color) 0 18px,
+      var(--main-text-color) 18px calc(100% - 18px),
+      var(--black-color) calc(100% - 18px) 100%);
   border-radius: var(--border-radius-normal);
 }
 
@@ -502,6 +504,7 @@ fieldset {
 .dropdown--open-bottom .arrow-dropdown__list {
   padding: 2px 0 6px;
 }
+
 /* arrow dropdown end */
 
 /* languages dropdown start */
@@ -530,6 +533,7 @@ fieldset {
 .languages__item-button {
   padding-left: 24px;
 }
+
 /* languages dropdown end */
 
 
@@ -573,6 +577,7 @@ fieldset {
 .sort--ascending::after {
   filter: var(--important-filer);
 }
+
 /* sort end */
 
 
@@ -584,6 +589,7 @@ fieldset {
   font-size: 18px;
   color: var(--important-color);
 }
+
 /* title end */
 
 
@@ -610,6 +616,7 @@ fieldset {
   transform: translateY(-50%);
   filter: var(--important-filer);
 }
+
 /* link end */
 
 
@@ -640,6 +647,7 @@ fieldset {
 .open-button--active::after {
   transform: translateX(-50%) scaleY(1);
 }
+
 /* open button end */
 
 
@@ -1048,6 +1056,7 @@ fieldset {
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
   mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
 }
+
 /* header end */
 
 
@@ -1098,6 +1107,7 @@ fieldset {
   opacity: 0;
   z-index: -1;
 }
+
 /* page content end */
 
 
@@ -1202,6 +1212,7 @@ fieldset {
   -webkit-mask-image: linear-gradient(to right, transparent, #000000 85%);
   mask-image: linear-gradient(to right, transparent, #000000 85%);
 }
+
 /* upcoming match end */
 
 
@@ -1239,9 +1250,9 @@ fieldset {
   bottom: 10px;
   width: 5px;
   background-image: linear-gradient(to right,
-                                    transparent 0 40%,
-                                    var(--accent-color) 40% 60%,
-                                    transparent 60% 100%);
+      transparent 0 40%,
+      var(--accent-color) 40% 60%,
+      transparent 60% 100%);
 }
 
 .simplebar-scrollbar.simplebar-visible {
@@ -1436,6 +1447,7 @@ fieldset {
   margin-right: 12px;
   margin-bottom: 12px;
 }
+
 /* bets item end */
 /* last bets end */
 
@@ -1464,50 +1476,74 @@ fieldset {
 
 .streams__tabs-button {
   position: relative;
-  padding: 10px;
+  padding: 6px 10px;
   text-transform: uppercase;
   background-color: transparent;
   border: none;
   border-top-left-radius: var(--border-radius-normal);
   border-top-right-radius: var(--border-radius-normal);
-  transition: all 0.3s;
 }
 
-.streams__tabs-button:hover {
+.streams__tabs-button + .streams__tabs-button {
+  margin-left: 5px;
+}
+
+.streams__tabs-button:not(.streams__tabs-button--active):hover {
   color: var(--important-color);
   background-color: var(--main-bg-color);
 }
 
-.streams__tabs-button::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 50%;
-  font-weight: 400;
-  transform: translateX(-50%);
-  transition: all 0.3s;
-}
-
-.streams__tabs-button-text {
-  opacity: 0;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
 .streams__tabs-button--active {
-  position: relative;
+  z-index: 1;
   color: var(--important-color);
   background-color: var(--contrast-color);
+  background-size: 100%;
+  text-shadow: 0.1px 0.1px 0.3px var(--important-color),
+               0.2px 0.2px 0.3px var(--important-color),
+               0.3px 0.3px 0.3px var(--important-color),
+               -0.1px -0.1px 0.3px var(--important-color),
+               -0.2px -0.2px 0.3px var(--important-color),
+               -0.3px -0.3px 0.3px var(--important-color);
 }
 
-.streams__tabs-button--active::after {
-  opacity: 0;
+.streams__tabs-button::after,
+.streams__tabs-button::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  bottom: -1px;
+  background: transparent;
 }
 
-.streams__tabs-button--active .streams__tabs-button-text {
-  opacity: 1;
+.streams__tabs-button::after {
+  right: calc(100% - 1px);
+}
+
+.streams__tabs-button::before {
+  left: calc(100% - 1px);
+  transform: scaleX(-1);
+}
+
+.streams__tabs-button--active::after,
+.streams__tabs-button--active::before {
+  background: radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
+  background: -moz-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
+  background: -o-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
+  background: -webkit-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
+}
+
+.streams__tabs-button:not(.streams__tabs-button--active):hover::before,
+.streams__tabs-button:not(.streams__tabs-button--active):hover::after {
+  background: radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
+  background: -moz-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
+  background: -o-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
+  background: -webkit-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
 }
 
 .streams__content-item {
+  position: relative;
+  z-index: 1;
   display: none;
 }
 
@@ -1561,6 +1597,7 @@ fieldset {
   text-transform: uppercase;
   color: var(--important-color);
 }
+
 /* streams end */
 
 
@@ -1585,6 +1622,7 @@ fieldset {
   background-color: var(--accent-color);
   border-radius: var(--border-radius-normal);
 }
+
 /* bet-block end */
 
 
@@ -1622,7 +1660,7 @@ fieldset {
   align-items: center;
 }
 
-.teams-bet__row + .teams-bet__row {
+.teams-bet__row+.teams-bet__row {
   margin-top: 5px;
 }
 
@@ -1735,11 +1773,11 @@ fieldset {
 .teams-bet__row--chosen .teams-bet__row-title:not(.live) span {
   color: var(--important-color);
   text-shadow: 0.1px 0.1px 0.3px var(--important-color),
-               0.2px 0.2px 0.3px var(--important-color),
-               0.3px 0.3px 0.3px var(--important-color),
-               -0.1px -0.1px 0.3px var(--important-color),
-               -0.2px -0.2px 0.3px var(--important-color),
-               -0.3px -0.3px 0.3px var(--important-color);
+    0.2px 0.2px 0.3px var(--important-color),
+    0.3px 0.3px 0.3px var(--important-color),
+    -0.1px -0.1px 0.3px var(--important-color),
+    -0.2px -0.2px 0.3px var(--important-color),
+    -0.3px -0.3px 0.3px var(--important-color);
 }
 
 .teams-bet__row--chosen .teams-bet__row-title.live {
@@ -2635,6 +2673,7 @@ fieldset {
 .mobile-tabs {
   display: none;
 }
+
 /* mobile tabs end */
 
 
@@ -3064,7 +3103,6 @@ fieldset {
     --bg-height: 100px;
     position: relative;
     display: block;
-    margin-bottom: var(--medium-indent);
     padding: 10px;
     text-align: center;
     background-color: var(--main-bg-color);
@@ -3128,20 +3166,13 @@ fieldset {
 
   .mobile-tabs__content {
     position: absolute;
+    margin-top: -10px;
     opacity: 0;
     transition: opacity 0.3s;
-  }
-
-  .mobile-tabs__content.streams {
     transform: translateX(-100%) scale(0);
   }
 
-  .mobile-tabs__content.last-bets {
-    transform: translateX(100%) scale(0);
-  }
-
-  .mobile-tabs__content--active.streams,
-  .mobile-tabs__content--active.last-bets {
+  .mobile-tabs__content--active {
     position: static;
     z-index: 10;
     transform: translateX(0) scale(1);
@@ -3151,6 +3182,7 @@ fieldset {
   .mobile-tabs__content .title {
     display: none;
   }
+
   /* mobile tabs end */
 
   .footer__inner {
@@ -3179,6 +3211,7 @@ fieldset {
 }
 
 @media only screen and (max-width: 600px) {
+
   .stash__items .game-item,
   .user-bet__inner .game-item,
   .bets-item__items .game-item {
@@ -3236,7 +3269,7 @@ fieldset {
   }
 
   .bet {
-    padding: 0 5px;
+    padding: 0 5px 5px;
   }
 
   .teams-bet {
@@ -3382,17 +3415,7 @@ fieldset {
     padding: 40px 15px 15px;
   }
 
-  /* mobile tabs start */
   .streams {
-    padding: 10px;
-  }
-  /* mobile tabs end */
-}
-
-
-@media only screen and (min-width: 769px) {
-  .mobile-tabs__content.streams,
-  .mobile-tabs__content.last-bets {
-    transform: none;
+    padding: 10px 5px 5px;
   }
 }
