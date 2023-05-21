@@ -170,6 +170,8 @@ customScroll.getScrollElement().addEventListener('scroll', showHideShadowsOnScro
 
 showHideShadows();
 
+mobileTabsActiveBg();
+
 
 // functions
 // change height
@@ -523,6 +525,11 @@ function checkIfIsMobile() {
   return width <= 480;
 }
 
+function checkIfIsTablet() {
+  let width = document.documentElement.clientWidth;
+  return width <= 768;
+}
+
 // tabs
 function tabs(allButtons, allContent, button, activeButtonClass, activeContentClass) {
   const buttonData = button.dataset.button;
@@ -544,19 +551,49 @@ function tabs(allButtons, allContent, button, activeButtonClass, activeContentCl
 function mobileTabs() {
   const allContent = document.querySelectorAll('.mobile-tabs__content');
   const allButtons = document.querySelectorAll('.mobile-tabs__button');
-  const activeButton = 'mobile-tabs__button--active';
-  const activeContent = 'mobile-tabs__content--active';
 
-  tabs(allButtons, allContent, this, activeButton, activeContent);
+  const activeButtonClass = 'mobile-tabs__button--active';
+  const activeContentClass = 'mobile-tabs__content--active';
+
+  tabs(allButtons, allContent, this, activeButtonClass, activeContentClass);
+
+  mobileTabsActiveBg();
+  mobileTabsBgSize()
+}
+
+function mobileTabsActiveBg() {
+  const buttonsRow = document.querySelector('.mobile-tabs__buttons');
+
+  if (!document.querySelector('.mobile-tabs__button--active-bg')) {
+    const activeBgHTML = document.createElement('span');
+    activeBgHTML.className = 'mobile-tabs__button--active-bg';
+    buttonsRow.prepend(activeBgHTML);
+  }
+
+  const activeBg = document.querySelector('.mobile-tabs__button--active-bg');
+  const activeButton = document.querySelector('.mobile-tabs__button--active');
+
+  const buttonOffset = activeButton.offsetLeft;
+  const buttonWidth = activeButton.getBoundingClientRect().width;
+
+  activeBg.style.width = `${buttonWidth}px`;
+  activeBg.style.transform = `translateX(${buttonOffset}px)`;
+}
+
+function mobileTabsBgSize() {
+  const mobileTabs = document.querySelector('.mobile-tabs');
+  const activeContent = document.querySelector('.mobile-tabs__content--active');
+
+  mobileTabs.style.setProperty('--bg-height', `${getHeight(activeContent)}px`);
 }
 
 function streamTabs() {
   const allContent = document.querySelectorAll('.streams__content-item');
   const allButtons = document.querySelectorAll('.streams__tabs-button');
-  const activeButton = 'streams__tabs-button--active';
-  const activeContent = 'streams__content-item--active';
+  const activeButtonClass = 'streams__tabs-button--active';
+  const activeContentClass = 'streams__content-item--active';
 
-  tabs(allButtons, allContent, this, activeButton, activeContent);
+  tabs(allButtons, allContent, this, activeButtonClass, activeContentClass);
 }
 
 function betInfoShow() {
@@ -605,7 +642,6 @@ function changeBetInfoText() {
 
   const parentCoef = activeRadio.closest('.coef');
   const coefX = Number(parentCoef.querySelector('.coef__x').textContent.slice(1));
-
   const betInfoType = document.querySelector('.bet-info__type');
 
   if (!icon) {
@@ -616,7 +652,6 @@ function changeBetInfoText() {
 
   return coefX;
 }
-
 
 function betcoinHeightFix() {
   const gameItem = userBetInner.querySelector('.game-item');
@@ -678,4 +713,3 @@ function showHideShadowsOnScroll() {
     lastBets.classList.remove('last-bets--no-bottom-shadow');
   }
 }
-

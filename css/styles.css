@@ -1096,6 +1096,7 @@ fieldset {
 .last-bets--no-top-shadow::before,
 .last-bets--no-bottom-shadow::after {
   opacity: 0;
+  z-index: -1;
 }
 /* page content end */
 
@@ -3060,14 +3061,32 @@ fieldset {
 
   /* mobile tabs start */
   .mobile-tabs {
+    --bg-height: 100px;
+    position: relative;
     display: block;
-    padding: 10px 10px 50px;
+    margin-bottom: var(--medium-indent);
+    padding: 10px;
     text-align: center;
     background-color: var(--main-bg-color);
     border-radius: var(--border-radius-medium);
+    transition: all 0.3s;
+  }
+
+  .mobile-tabs::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: var(--bg-height);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--main-bg-color);
   }
 
   .mobile-tabs__buttons {
+    position: relative;
     display: inline-block;
     padding: 2px;
     background-color: var(--accent-color);
@@ -3075,6 +3094,7 @@ fieldset {
   }
 
   .mobile-tabs__button {
+    position: relative;
     padding: 10px 20px;
     font-size: 18px;
     color: var(--main-text-color);
@@ -3088,9 +3108,18 @@ fieldset {
     filter: var(--main-text-filter);
   }
 
+  .mobile-tabs__button--active-bg {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    bottom: 2px;
+    background-color: var(--contrast-color);
+    border-radius: var(--border-radius-big);
+    transition: all 0.3s;
+  }
+
   .mobile-tabs__button--active {
     color: var(--important-color);
-    background-color: var(--contrast-color);
   }
 
   .mobile-tabs__button--active::before {
@@ -3098,12 +3127,25 @@ fieldset {
   }
 
   .mobile-tabs__content {
-    display: none;
-    margin-top: -50px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
-  .mobile-tabs__content--active {
-    display: block;
+  .mobile-tabs__content.streams {
+    transform: translateX(-100%) scale(0);
+  }
+
+  .mobile-tabs__content.last-bets {
+    transform: translateX(100%) scale(0);
+  }
+
+  .mobile-tabs__content--active.streams,
+  .mobile-tabs__content--active.last-bets {
+    position: static;
+    z-index: 10;
+    transform: translateX(0) scale(1);
+    opacity: 1;
   }
 
   .mobile-tabs__content .title {
@@ -3349,7 +3391,8 @@ fieldset {
 
 
 @media only screen and (min-width: 769px) {
-  .mobile-tabs__content {
-    display: block !important;
+  .mobile-tabs__content.streams,
+  .mobile-tabs__content.last-bets {
+    transform: none;
   }
 }
