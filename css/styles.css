@@ -892,7 +892,7 @@ fieldset {
   margin-bottom: var(--medium-indent);
   padding: 25px;
   background-color: var(--main-bg-color);
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-normal);
 }
 
 
@@ -901,11 +901,11 @@ fieldset {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 33px 50px 24px 77px;
+  padding: 33px 50px 29px 77px;
 }
 
 .header__logo {
-  margin-right: 68px;
+  margin-right: 65px;
 }
 
 /* menu */
@@ -938,7 +938,7 @@ fieldset {
 }
 
 .menu__item:not(:last-of-type) {
-  margin-right: 27px;
+  margin-right: 22px;
 }
 
 .menu__link {
@@ -1185,7 +1185,7 @@ fieldset {
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 10px 65px 9px 40px;
+  padding: 9px 65px 9px 40px;
 }
 
 .upcoming-match__category {
@@ -1224,7 +1224,7 @@ fieldset {
 
 .upcoming-match__title {
   display: inline-block;
-  margin: 0;
+  margin: 0 2px 0 0;
   font-weight: 700;
   font-size: 14px;
   text-decoration: none;
@@ -1239,7 +1239,7 @@ fieldset {
 .upcoming-match__timer {
   position: relative;
   display: block;
-  padding-left: 15px;
+  padding-left: 17px;
   font-weight: 400;
 }
 
@@ -1343,7 +1343,7 @@ fieldset {
 
 /* bets item start */
 .bets-item {
-  padding: 15px;
+  padding: 9px 15px 14px;
   background-color: var(--accent-color);
   border-radius: var(--border-radius-normal);
 }
@@ -1532,7 +1532,7 @@ fieldset {
 /* streams start */
 .streams__title {
   margin-bottom: 25px;
-  padding-left: 10px;
+  padding-left: 6px;
 }
 
 .streams__title::before {
@@ -1561,7 +1561,7 @@ fieldset {
   border-top-right-radius: var(--border-radius-normal);
 }
 
-.streams__tabs-button + .streams__tabs-button {
+.streams__tabs-button+.streams__tabs-button {
   margin-left: 5px;
 }
 
@@ -1576,11 +1576,11 @@ fieldset {
   background-color: var(--contrast-color);
   background-size: 100%;
   text-shadow: 0.1px 0.1px 0.3px var(--important-color),
-               0.2px 0.2px 0.3px var(--important-color),
-               0.3px 0.3px 0.3px var(--important-color),
-               -0.1px -0.1px 0.3px var(--important-color),
-               -0.2px -0.2px 0.3px var(--important-color),
-               -0.3px -0.3px 0.3px var(--important-color);
+    0.2px 0.2px 0.3px var(--important-color),
+    0.3px 0.3px 0.3px var(--important-color),
+    -0.1px -0.1px 0.3px var(--important-color),
+    -0.2px -0.2px 0.3px var(--important-color),
+    -0.3px -0.3px 0.3px var(--important-color);
 }
 
 .streams__tabs-button::after,
@@ -1604,18 +1604,18 @@ fieldset {
 
 .streams__tabs-button--active::after,
 .streams__tabs-button--active::before {
-  background: radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
-  background: -moz-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
-  background: -o-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
-  background: -webkit-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--contrast-color) 10px);
+  background: radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--contrast-color) 10px);
+  background: -moz-radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--contrast-color) 10px);
+  background: -o-radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--contrast-color) 10px);
+  background: -webkit-radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--contrast-color) 10px);
 }
 
 .streams__tabs-button:not(.streams__tabs-button--active):hover::before,
 .streams__tabs-button:not(.streams__tabs-button--active):hover::after {
-  background: radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
-  background: -moz-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
-  background: -o-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
-  background: -webkit-radial-gradient(0 0, circle, rgba(0,0,0,0) 9px, var(--main-bg-color) 10px);
+  background: radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--main-bg-color) 10px);
+  background: -moz-radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--main-bg-color) 10px);
+  background: -o-radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--main-bg-color) 10px);
+  background: -webkit-radial-gradient(0 0, circle, rgba(0, 0, 0, 0) 9px, var(--main-bg-color) 10px);
 }
 
 .streams__content-item {
@@ -1630,14 +1630,24 @@ fieldset {
 
 .streams__video-block {
   position: relative;
+  overflow: hidden;
   height: 337px;
   background-color: var(--contrast-color);
+  border: 1px solid var(--contrast-color);
+  border-radius: var(--border-radius-normal);
+}
+
+.streams__video-block::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
   background-image: url("../images/streams-video-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border: 1px solid var(--contrast-color);
-  border-radius: var(--border-radius-normal);
 }
 
 .streams__video-play {
@@ -1646,6 +1656,7 @@ fieldset {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1675,6 +1686,15 @@ fieldset {
   color: var(--important-color);
 }
 
+.streams__video-play:hover::before {
+  filter: var(--important-filer) drop-shadow(0 0 5px var(--important-color));
+}
+
+.streams__video-play:hover .streams__video-text {
+  text-shadow: 0 0 10px var(--important-color);
+}
+
+
 /* streams end */
 
 
@@ -1690,7 +1710,7 @@ fieldset {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 11px 20px;
+  padding: 15px 20px 11px;
   font-size: 12px;
 }
 
@@ -1706,8 +1726,8 @@ fieldset {
 /* teams bet start */
 .teams-bet__block {
   position: relative;
-  margin-bottom: 20px;
-  padding-bottom: 42px;
+  margin-bottom: 16px;
+  padding-bottom: 45px;
 }
 
 .teams-bet__block::before,
@@ -1747,8 +1767,8 @@ fieldset {
   align-items: center;
   flex-shrink: 0;
   width: 35%;
-  margin-bottom: 10px;
-  padding: 15px;
+  margin-bottom: 13px;
+  padding: 15px 10px;
 }
 
 .teams-bet__team.teams-bet__team--second {
@@ -1771,12 +1791,12 @@ fieldset {
 
 .teams-bet__team--first .teams-bet__team-name {
   text-align: right;
-  margin-right: 10px;
+  margin: 0 10px 0 22px;
 }
 
 .teams-bet__team--second .teams-bet__team-name {
   text-align: left;
-  margin-left: 10px;
+  margin: 0 22px 0 10px;
 }
 
 .teams-bet__team--winner.teams-bet__team--first .teams-bet__team-name::before,
@@ -2277,7 +2297,7 @@ fieldset {
 .permissions {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 17px;
 }
 
 .permissions__item {
@@ -2286,7 +2306,7 @@ fieldset {
 }
 
 .permissions__item+.permissions__item {
-  margin-left: 70px;
+  margin-left: 50px;
 }
 
 .permissions__switcher {
@@ -2350,7 +2370,7 @@ fieldset {
 }
 
 .user-bet__block {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .user-bet__body {
@@ -2389,7 +2409,7 @@ fieldset {
 
 .betcoin-range__label {
   position: relative;
-  margin-right: 9px;
+  margin-right: 14px;
   padding-left: 23px;
   font-size: 12px;
 }
@@ -2536,6 +2556,10 @@ fieldset {
 .stash__title {
   width: calc(50% - 50px);
   font-weight: 700;
+}
+
+.stash .bet-block__header {
+  padding: 9px 18px 11px 17px;
 }
 
 .stash__all-in {
@@ -2803,41 +2827,36 @@ fieldset {
   left: 15px;
   bottom: 15px;
 }
-
 /* footer end */
 
 /* mobile tabs start */
 .mobile-tabs {
   display: none;
 }
-
 /* mobile tabs end */
 
 
 /*====================
     ANIMATIONS
   ====================*/
-@media (prefers-reduced-motion: no-preference) {
+/* live dot */
+@keyframes liveDotAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red, 0 0 20px red;
+  }
 
-  /* live dot */
-  @keyframes liveDotAnimation {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-      box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red, 0 0 20px red;
-    }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.3;
+    box-shadow: 0 0 5px red, 0 0 10px red;
+  }
 
-    50% {
-      transform: scale(0.5);
-      opacity: 0.3;
-      box-shadow: 0 0 5px red, 0 0 10px red;
-    }
-
-    100% {
-      transform: scale(1);
-      opacity: 1;
-      box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red, 0 0 20px red;
-    }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red, 0 0 20px red;
   }
 }
 
@@ -2882,6 +2901,22 @@ fieldset {
     padding: 20px 5px 0;
   }
 
+  .teams-bet__team--second .teams-bet__team-name {
+    margin-right: 0;
+  }
+
+  .teams-bet__team--first .teams-bet__team-name {
+    margin-left: 0;
+  }
+
+  .teams-bet__team--first {
+    padding-left: 10px;
+  }
+
+  .teams-bet__team--second {
+    padding-right: 10px;
+  }
+
   .user-bet__inner .game-item {
     width: calc(20% - 20px);
   }
@@ -2910,6 +2945,10 @@ fieldset {
 
   .bets-item__items .game-item__info {
     line-height: 14px;
+  }
+
+  .streams__title {
+    padding-top: 10px;
   }
 
   .footer__inner {
@@ -3507,6 +3546,11 @@ fieldset {
 
   .bet-form__row {
     flex-direction: column-reverse;
+  }
+
+  .user-bet {
+    margin: 0 0 20px;
+    padding: 0;
   }
 
   .betcoin-range {
