@@ -1997,6 +1997,10 @@ fieldset {
   background-color: var(--attention-color);
 }
 
+.coef--lost .coef__radio:checked~.coef__block {
+  background-color: var(--text-error-color)
+}
+
 .coef__radio:checked~.coef__block::after {
   background-color: var(--black-color);
 }
