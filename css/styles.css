@@ -1859,6 +1859,7 @@ fieldset {
   width: 30%;
   padding: 0 15px;
   text-align: center;
+  cursor: default;
 }
 
 .teams-bet__row-title span {
