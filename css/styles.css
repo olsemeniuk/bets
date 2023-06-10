@@ -144,60 +144,60 @@ fieldset {
 }
 
 .icon--bets::before {
-  background-image: url("../images/icons/bet-icon.png");
+  background-image: url("/images/icons/bet-icon.svg");
 }
 
 .icon--investment::before {
-  background-image: url("../images/icons/investment-icon.svg");
+  background-image: url("/images/icons/investment-icon.svg");
 }
 
 .icon--items::before {
-  background-image: url("../images/icons/items-icon.png");
+  background-image: url("/images/icons/items-icon.svg");
 }
 
 .icon--coins::before {
-  background-image: url("../images/icons/coins-icon.svg");
+  background-image: url("/images/icons/coins-icon.svg");
   background-size: contain;
 }
 
 .icon--scales::before {
-  background-image: url("../images/icons/scales-icon.svg");
+  background-image: url("/images/icons/scales-icon.svg");
 }
 
 .icon--support::before {
-  background-image: url("../images/icons/support-icon.png");
+  background-image: url("/images/icons/support-icon.svg");
 }
 
 .icon--logout::before {
-  background-image: url("../images/icons/out-icon.png");
+  background-image: url("/images/icons/out-icon.svg");
 }
 
 .icon--steam::before {
-  background-image: url("../images/icons/steam-icon.png");
+  background-image: url("/images/icons/steam-icon.svg");
 }
 
 .icon--mail::before {
-  background-image: url("../images/icons/mail-icon.svg");
+  background-image: url("/images/icons/mail-icon.svg");
 }
 
 .icon--facebook::before {
-  background-image: url("../images/icons/facebook-icon.png");
+  background-image: url("/images/icons/facebook-icon.svg");
 }
 
 .icon--vkontakte::before {
-  background-image: url("../images/icons/vk-icon.png");
+  background-image: url("/images/icons/vk-icon.svg");
 }
 
 .icon--info::before {
-  background-image: url("../images/icons/info-icon.svg");
+  background-image: url("/images/icons/info-icon.svg");
 }
 
 .icon--link::before {
-  background-image: url("../images/icons/link-icon.png");
+  background-image: url("/images/icons/link-icon.svg");
 }
 
 .icon--english::before {
-  background-image: url("../images/icons/english-flag-icon.png");
+  background-image: url("/images/icons/english-flag-icon.png");
 }
 
 .icon--spanish::before {
@@ -205,39 +205,39 @@ fieldset {
 }
 
 .icon--dota::before {
-  background-image: url("../images/icons/dota-icon.png");
+  background-image: url("/images/icons/dota-icon.png");
 }
 
 .icon--time::before {
-  background-image: url("../images/icons/time-icon.svg");
+  background-image: url("/images/icons/time-icon.svg");
 }
 
 .icon--vertical-dots::before {
-  background-image: url("../images/icons/vertical-dots-icon.svg");
+  background-image: url("/images/icons/vertical-dots-icon.svg");
 }
 
 .icon--chevron::before {
-  background-image: url("../images/icons/chevron-icon.png");
+  background-image: url("/images/icons/chevron-icon.svg");
 }
 
 .icon--triangle-dots::before {
-  background-image: url("../images/icons/triangle-dots-icon.svg");
+  background-image: url("/images/icons/triangle-dots-icon.svg");
 }
 
 .icon--cross::before {
-  background-image: url("../images/icons/cross-icon.svg");
+  background-image: url("/images/icons/cross-icon.svg");
 }
 
 .icon--coins-stack::before {
-  background-image: url("../images/icons/coins-stack-icon.svg");
+  background-image: url("/images/icons/coins-stack-icon.svg");
 }
 
 .icon--all-items::before {
-  background-image: url("../images/icons/all-items-icon.png");
+  background-image: url("/images/icons/all-items-icon.svg");
 }
 
 .icon--handicap::before {
-  background-image: url("../images/icons/hc-icon.svg");
+  background-image: url("/images/icons/hc-icon.svg");
 }
 
 .icon--dot::before {
@@ -484,7 +484,7 @@ fieldset {
   right: 10px;
   width: 7px;
   height: 5px;
-  background-image: url("../images/icons/arrow-icon.svg");
+  background-image: url("/images/icons/arrow-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   transform: translateY(-50%);
@@ -577,7 +577,7 @@ fieldset {
   bottom: 8px;
   width: 9px;
   height: 6px;
-  background-image: url("../images/icons/arrow-icon.svg");
+  background-image: url("/images/icons/arrow-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -632,7 +632,7 @@ fieldset {
   right: 0;
   width: 8px;
   height: 8px;
-  background-image: url("../images/icons/link-icon.png");
+  background-image: url("/images/icons/link-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -668,11 +668,12 @@ fieldset {
   left: 50%;
   width: 11px;
   height: 8px;
-  background-image: url("../images/icons/chevron-icon.png");
+  background-image: url("/images/icons/chevron-icon.svg");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   filter: var(--main-text-filter);
-  transform: translateX(-50%) scaleY(-1);
+  transform: translateX(-50%) scaleY(1);
   transition: all 0.3s;
 }
 
@@ -681,7 +682,7 @@ fieldset {
 }
 
 .open-button--active::after {
-  transform: translateX(-50%) scaleY(1);
+  transform: translateX(-50%) scaleY(-1);
 }
 
 /* open button end */
@@ -763,7 +764,7 @@ fieldset {
   left: 35px;
   width: 40px;
   height: 33px;
-  background-image: url("../images/icons/coins-icon.svg");
+  background-image: url("/images/icons/coins-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -918,7 +919,7 @@ fieldset {
   width: 23px;
   height: 19px;
   background-color: transparent;
-  background-image: url("../images/icons/menu-icon.svg");
+  background-image: url("/images/icons/menu-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1052,14 +1053,20 @@ fieldset {
 .user__resources-link--betcoins::before {
   width: 19px;
   height: 19px;
-  background-image: url("../images/icons/coins-icon.svg");
+  background-image: url("/images/icons/coins-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   filter: var(--attention-filter);
 }
 
 .user__resources-link--steam::before {
   width: 18px;
   height: 18px;
-  background-image: url("../images/icons/steam-icon.png");
+  background-image: url("/images/icons/steam-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   filter: var(--important-filer);
 }
 
@@ -1100,7 +1107,10 @@ fieldset {
   display: inline-block;
   width: 11px;
   height: 13px;
-  background-image: url("../images/icons/out-icon.png");
+  background-image: url("/images/icons/out-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   filter: var(--important-filer);
 }
 
@@ -1119,8 +1129,8 @@ fieldset {
   bottom: 0;
   height: 100%;
   object-position: right;
-  border-top-right-radius: var(--border-radius-medium);
-  border-bottom-right-radius: var(--border-radius-medium);
+  border-top-right-radius: var(--border-radius-normal);
+  border-bottom-right-radius: var(--border-radius-normal);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
   mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
 }
@@ -1215,7 +1225,7 @@ fieldset {
 }
 
 .upcoming-match__category--dota::before {
-  background-image: url("../images/icons/dota-icon.png");
+  background-image: url("/images/icons/dota-icon.png");
 }
 
 .upcoming-match__info {
@@ -1251,7 +1261,7 @@ fieldset {
   width: 12px;
   height: 12px;
   transform: translateY(-50%);
-  background-image: url("../images/icons/time-icon.svg");
+  background-image: url("/images/icons/time-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   filter: var(--main-text-filter);
@@ -1348,6 +1358,12 @@ fieldset {
   border-radius: var(--border-radius-normal);
 }
 
+.bets-item .open-button::after {
+  top: 5px;
+  width: 7px;
+  height: 6px;
+}
+
 .bets-item+.bets-item {
   margin-top: 20px;
 }
@@ -1397,7 +1413,10 @@ fieldset {
   left: 4px;
   width: 13px;
   height: 11px;
-  background-image: url("../images/icons/investment-icon.svg");
+  background-image: url("/images/icons/investment-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .bets-item__user-link::after {
@@ -1405,7 +1424,10 @@ fieldset {
   right: 4px;
   width: 7px;
   height: 7px;
-  background-image: url("../images/icons/link-icon.png");
+  background-image: url("/images/icons/link-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .bets-item__bet.link {
@@ -1463,7 +1485,7 @@ fieldset {
   width: 18px;
   height: 18px;
   top: 50%;
-  background-image: url("../images/icons/coins-icon.svg");
+  background-image: url("/images/icons/coins-icon.svg");
   transform: translateY(-50%);
   filter: var(--pale-attention-filter);
 }
@@ -1476,7 +1498,7 @@ fieldset {
   top: 4px;
   width: 10px;
   height: 10px;
-  background-image: url("../images/icons/items-icon.png");
+  background-image: url("/images/icons/items-icon.svg");
   filter: var(--main-text-filter);
 }
 
@@ -1644,7 +1666,7 @@ fieldset {
   right: -10px;
   bottom: -10px;
   left: -10px;
-  background-image: url("../images/streams-video-bg.jpg");
+  background-image: url("/images/streams-video-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1673,7 +1695,7 @@ fieldset {
   display: block;
   width: 139px;
   height: 153px;
-  background-image: url("../images/icons/play-icon.svg");
+  background-image: url("/images/icons/play-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1806,7 +1828,7 @@ fieldset {
   vertical-align: baseline;
   width: 13px;
   height: 9px;
-  background-image: url("../images/icons/crown-icon.svg");
+  background-image: url("/images/icons/crown-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   filter: var(--attention-filter);
@@ -2001,6 +2023,10 @@ fieldset {
   right: 5px;
 }
 
+.coef--lost.coef--second-team .coef__block::before {
+  transform: translateY(-50%) scaleX(-1);
+}
+
 .coef__radio:checked~.coef__block::before {
   filter: var(--black-filter);
 }
@@ -2015,7 +2041,10 @@ fieldset {
   width: 13px;
   height: 9px;
   background-color: transparent;
-  background-image: url("../images/icons/crown-icon.svg");
+  background-image: url("/images/icons/crown-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   filter: var(--attention-filter);
 }
 
@@ -2030,7 +2059,10 @@ fieldset {
   top: 50%;
   width: 16px;
   height: 15px;
-  background-image: url("../images/icons/coins-plus-icon.png");
+  background-image: url("/images/icons/coins-plus-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   transform: translateY(-50%);
   filter: var(--attention-filter);
 }
@@ -2041,6 +2073,7 @@ fieldset {
 
 .coef--second-team.coef--win .coef__block::before {
   right: 5px;
+  transform: translateY(-50%) scaleX(-1);
 }
 
 /* coef lost */
@@ -2056,7 +2089,10 @@ fieldset {
   width: 10px;
   height: 10px;
   background-color: transparent;
-  background-image: url("../images/icons/cross-icon.svg");
+  background-image: url("/images/icons/thin-cross-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   filter: var(--text-error-filter);
 }
 
@@ -2066,7 +2102,10 @@ fieldset {
   top: 50%;
   width: 14px;
   height: 15px;
-  background-image: url("../images/icons/coins-minus-icon.png");
+  background-image: url("/images/icons/coins-minus-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   transform: translateY(-50%);
   filter: var(--text-error-filter);
 }
@@ -2086,14 +2125,20 @@ fieldset {
   width: 10px;
   height: 15px;
   background-color: transparent;
-  background-image: url("../images/icons/locked-lock-icon.svg");
+  background-image: url("/images/icons/locked-lock-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .coef--disabled .coef__block::after {
   width: 7px;
   height: 12px;
   background-color: transparent;
-  background-image: url("../images/icons/hourglass-icon.svg");
+  background-image: url("/images/icons/hourglass-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   filter: var(--inactive-filter);
 }
 
@@ -2113,7 +2158,7 @@ fieldset {
   z-index: 1;
   width: 8px;
   height: 15px;
-  background-image: url("../images/icons/coins-stack-icon.svg");
+  background-image: url("/images/icons/coins-stack-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   transform: translateY(-50%);
@@ -2141,7 +2186,7 @@ fieldset {
   top: 50%;
   width: 8px;
   height: 6px;
-  background-image: url("../images/icons/arrow-icon.svg");
+  background-image: url("/images/icons/arrow-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   transform: translateY(-50%) scaleY(1);
@@ -2353,7 +2398,7 @@ fieldset {
   right: 0;
   width: 8px;
   height: 8px;
-  background-image: url("../images/icons/cross-icon.svg");
+  background-image: url("/images/icons/thin-cross-icon.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2421,7 +2466,7 @@ fieldset {
   left: 0;
   width: 18px;
   height: 18px;
-  background-image: url("../images/icons/coins-icon.svg");
+  background-image: url("/images/icons/coins-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -2527,7 +2572,7 @@ fieldset {
   right: 11px;
   width: 8px;
   height: 15px;
-  background-image: url("../images/icons/coins-stack-icon.svg");
+  background-image: url("/images/icons/coins-stack-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -2577,7 +2622,7 @@ fieldset {
   right: 8px;
   width: 8px;
   height: 8px;
-  background-image: url("../images/icons/all-items-icon.png");
+  background-image: url("/images/icons/all-items-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -2686,7 +2731,7 @@ fieldset {
   left: 0;
   width: 13px;
   height: 10px;
-  background-image: url("../images/icons/mail-icon.svg");
+  background-image: url("/images/icons/mail-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -2744,7 +2789,7 @@ fieldset {
   left: 0;
   width: 13px;
   height: 11px;
-  background-image: url("../images/icons/info-icon.svg");
+  background-image: url("/images/icons/info-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

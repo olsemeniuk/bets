@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13.688" height="15" viewBox="0 0 13.688 15">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        fill: #fff;
+        filter: url(#filter-2);
+      }
+
+      .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #1a7302;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#c8c8c8"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="16" y="404" width="8" height="15" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#1a7302"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Группа_98" data-name="Группа 98" class="cls-1">
+    <path id="coins_2536_копия" data-name="coins 2536 копия" class="cls-2" d="M19.077,404.009c2.207-.074,4.092.409,4.615,1.9A2.116,2.116,0,0,1,24,407.38a7.41,7.41,0,0,1-1.538,1.759c-1.78,1.037-5.389.551-6-1.173-0.654-.642-0.376-1.523-0.154-2.345,0.438-.269.675-0.769,1.077-1.026ZM16,408.992c0.754,0.259,1.272.916,2,1.173,2.611,0.92,4.3-.583,6-1.173v0.733a7.092,7.092,0,0,1-1.538,1.759c-1.834,1.028-5.433.412-6-1.173A1.853,1.853,0,0,1,16,408.992Zm0,2.2c1.279,0.819,3.053,2.1,5.385,1.465,1.015-.274,1.7-1.009,2.615-1.319v0.587a2.618,2.618,0,0,0-.462,1.025,13.276,13.276,0,0,1-1.385,1.026C19.4,415.257,16.068,413.651,16,411.191Zm0,2.345c1.323,0.827,3.3,2.122,5.846,1.319,0.829-.262,1.36-0.9,2.154-1.173v0.587c-0.727.915-1.073,1.769-2.308,2.2C18.886,417.442,16.055,415.846,16,413.536Zm0,2.345c3.025,1.9,4.984,1.861,8,0v0.733a1.671,1.671,0,0,0-.308.732A9.78,9.78,0,0,1,22,418.665c-2.157.857-5.119-.009-5.692-1.612A1.665,1.665,0,0,1,16,415.881Z" transform="translate(-10.313 -404)"/>
+    <path id="_-" data-name="-" class="cls-3" d="M10.322,411.235H14.26v1.736H10.322v-1.736Z" transform="translate(-10.313 -404)"/>
+  </g>
+</svg>
