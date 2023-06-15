@@ -1,6 +1,6 @@
 // helping functions
 const helpers = {
-  delegate: function (parent, selector, eventName, handler) {
+  delegate: function(parent, selector, eventName, handler) {
     parent.addEventListener(eventName, event => {
       const { target } = event;
       const element = target.closest(selector);
@@ -11,7 +11,7 @@ const helpers = {
     });
   },
 
-  getHeight: function (element) {
+  getHeight: function(element) {
     const elementHeight = element.getBoundingClientRect().height;
     let marginTop = getComputedStyle(element).getPropertyValue('margin-top');
     let marginBottom = getComputedStyle(element).getPropertyValue('margin-bottom');
@@ -41,6 +41,7 @@ const userBetInner = userBet.querySelector('.user-bet__inner');
 const userBetBody = userBet.querySelector('.user-bet__body');
 const cancelBetButton = userBet.querySelector('.user-bet__cancel-button');
 const userBetTotalSum = userBet.querySelector('.user-bet__total-sum');
+
 // teams bet elements
 const teamsBet = document.querySelector('.teams-bet');
 const teamsBetList = teamsBet.querySelector('.teams-bet__coefficients');
@@ -92,7 +93,7 @@ countUserBetItems();
 stashSortButton.addEventListener('click', sortOnClick);
 
 // height correction after stash filter & sort
-delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', function () {
+delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', function() {
   setTimeout(() => {
     correctShowMoreHeight(stashBody);
   }, 300);
