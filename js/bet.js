@@ -13,10 +13,8 @@ const helpers = {
 
   getHeight: function (element) {
     const elementHeight = element.getBoundingClientRect().height;
-    let marginTop = getComputedStyle(element).getPropertyValue('margin-top');
-    let marginBottom = getComputedStyle(element).getPropertyValue('margin-bottom');
-    marginTop = Number(marginTop.slice(0, marginTop.indexOf('p')));
-    marginBottom = Number(marginBottom.slice(0, marginBottom.indexOf('p')));
+    let marginTop = parseInt(getComputedStyle(element).getPropertyValue('margin-top'));
+    let marginBottom = parseInt(getComputedStyle(element).getPropertyValue('margin-bottom'));
     return elementHeight + marginTop + marginBottom;
   }
 }
@@ -166,29 +164,55 @@ betcoinHeightFix();
 const betsItem = document.querySelectorAll('.bets-item');
 betsItem.forEach(item => countBetsItemItemsPrice(item))
 
-customScroll.getScrollElement().addEventListener('scroll', showHideShadowsOnScroll);
+customScroll.getScrollElement().addEventListener('scroll', () => {
+  handleVerticalShadows(lastBetsList, customScroll)
+});
 
-showHideShadows();
+addVerticalBottomShadow(lastBetsList, lastBets)
 disableSubmitButton();
 mobileTabsActiveBg();
 
 
+window.addEventListener('resize', () => {
+  const repeatCorrections = setInterval(() => {
+    correctShowMoreHeightOnResize(stashBody);
+    correctShowMoreHeightOnResize(userBetBody);
+  }, 250);
+
+  setTimeout(() => {
+    clearInterval(repeatCorrections);
+  }, 500);
+
+  mobileTabsActiveBg();
+  mobileTabsBgSize();
+  correctBetCoefsHeightOnResize();
+});
+
+
 // functions
 // change height
-function toggleHeight(wrapper, inner, minHeight = 0) {
+function toggleHeight(wrapper, inner, minHeight = 0, transitionTime = 500) {
   const wrapperHeight = getHeight(wrapper);
   const innerHeight = getHeight(inner);
 
   if (wrapperHeight <= minHeight + 10) {
     wrapper.style.height = `${innerHeight}px`;
+    setTimeout(() => {
+      wrapper.style.height = `100%`;
+    }, transitionTime);
   } else {
-    wrapper.style.height = `${minHeight}px`;
+    wrapper.style.transition = 'none';
+    wrapper.style.height = `${innerHeight}px`;
+    setTimeout(() => {
+      wrapper.style.transition = `all ${transitionTime}ms ease-in-out`;
+      wrapper.style.height = `${minHeight}px`;
+    });
   }
   return wrapperHeight;
 }
 
-function toggleFullHeight(wrapper, inner, button) {
-  const currentHeight = toggleHeight(wrapper, inner);
+function toggleFullHeight(wrapper, inner, button, transitionTime = 500) {
+  const currentHeight = toggleHeight(wrapper, inner, 0, transitionTime);
 
   if (currentHeight === 0) {
     button.classList.add('open-button--active');
@@ -201,7 +225,7 @@ function toggleBetItemsHeight() {
   const parentItem = this.closest('.bets-item');
   const wrapper = parentItem.querySelector('.bets-item__content');
   const inner = parentItem.querySelector('.bets-item__items');
-  toggleFullHeight(wrapper, inner, this)
+  toggleFullHeight(wrapper, inner, this, 300)
 }
 
 function checkRowHeight(rowItems) {
@@ -216,14 +240,35 @@ function checkRowHeight(rowItems) {
   return Number(rowHeight);
 }
 
+function countMinShowMoreHight(block) {
+  const inner = block.querySelector('.show-more__inner');
+  const item = block.querySelectorAll('.show-more__item');
+
+  const rowHeight = checkRowHeight(item);
+
+  const innerPaddingTop = parseInt(window.getComputedStyle(inner).getPropertyValue('padding-top'));
+  const innerPaddingBottom = parseInt(window.getComputedStyle(inner).getPropertyValue('padding-bottom'));
+
+  if ((!isNaN(innerPaddingBottom) && innerPaddingBottom > 0) &&
+    (!isNaN(innerPaddingTop) && innerPaddingTop > 0)) {
+    return rowHeight + innerPaddingBottom + innerPaddingTop + (rowHeight / 100 * 25);
+  } else if (!isNaN(innerPaddingBottom) && innerPaddingBottom > 0) {
+    return rowHeight + innerPaddingBottom + (rowHeight / 100 * 25);
+  } else if (!isNaN(innerPaddingTop) && innerPaddingTop > 0) {
+    return rowHeight + innerPaddingTop + (rowHeight / 100 * 25);
+  } else {
+    return rowHeight + (rowHeight / 100 * 25);
+  }
+}
+
 function hideSecondRowItems(block) {
   const wrapper = block.querySelector('.show-more__wrapper');
   const insideItems = block.querySelectorAll('.show-more__item');
-  const rowHeight = checkRowHeight(insideItems);
+  const rowHeight = countMinShowMoreHight(block);
   const wrapperHeight = getHeight(wrapper);
 
   if (wrapperHeight > rowHeight * 2) {
-    wrapper.style.height = `${rowHeight + (rowHeight / 100 * 40 + 15)}px`;
+    wrapper.style.height = `${rowHeight}px`;
     block.classList.add('show-more--active');
   }
 }
@@ -232,10 +277,9 @@ function toggleShowMoreBlockHeight(block) {
   const wrapper = block.querySelector('.show-more__wrapper');
   const inner = block.querySelector('.show-more__inner');
   const button = block.querySelector('.show-more__button');
-  const insideItems = block.querySelectorAll('.show-more__item');
-  const rowHeight = checkRowHeight(insideItems);
+  const rowHeight = countMinShowMoreHight(block);
 
-  toggleHeight(wrapper, inner, rowHeight + (rowHeight / 100 * 40 + 15));
+  toggleHeight(wrapper, inner, rowHeight);
 
   const isOpened = block.classList.contains('show-more--opened');
   if (!isOpened) {
@@ -250,13 +294,17 @@ function toggleShowMoreBlockHeight(block) {
 function correctShowMoreHeight(block) {
   const wrapper = block.querySelector('.show-more__wrapper');
   const inner = block.querySelector('.show-more__inner');
-  const item = block.querySelectorAll('.show-more__item');
   const button = block.querySelector('.show-more__button');
-  const rowHeight = checkRowHeight(item);
+  const items = block.querySelectorAll('.show-more__item')
+  const rowHeight = countMinShowMoreHight(block);
   const innerHeight = getHeight(inner);
 
   wrapper.style.height = `${innerHeight}px`;
-  if (innerHeight < rowHeight * 2 || rowHeight === 0) {
+  setTimeout(() => {
+    wrapper.style.height = '100%';
+  }, 500);
+
+  if (innerHeight <= rowHeight || items.length === 0) {
     block.classList.remove('show-more--active');
     block.classList.remove('show-more--opened');
     button.textContent = 'Show more';
@@ -269,10 +317,25 @@ function correctShowMoreHeight(block) {
 
 function betCoefsHeightToggle() {
   const wrapper = document.querySelector('.teams-bet__coefficients-wrapper');
+  const minHeight = getCoefsMinHeight();
+  if (minHeight === 0) return;
+  const currentHeight = toggleHeight(wrapper, teamsBetList, minHeight, 300);
+  if (currentHeight > minHeight) {
+    teamsBet.classList.remove('teams-bet--opened');
+  } else {
+    teamsBet.classList.add('teams-bet--opened');
+  }
+  checkBetCoefsHeight(currentHeight, minHeight);
+  window.addEventListener('resize', () => {
+    checkBetCoefsHeight(currentHeight, minHeight);
+  });
+}
+
+function getCoefsMinHeight() {
   let minHeight = 0;
   if (teamsBetRows.length <= 5) {
     teamsBet.classList.add('teams-bet--small');
-    return;
+    return 0;
   }
   teamsBetRows.forEach((item, index) => {
     const height = getHeight(item);
@@ -280,12 +343,20 @@ function betCoefsHeightToggle() {
       minHeight += height;
     }
   });
-  const currentHeight = toggleHeight(wrapper, teamsBetList, minHeight);
-  checkBetCoefsHeight(currentHeight, minHeight);
 
-  window.addEventListener('resize', () => {
-    checkBetCoefsHeight(currentHeight, minHeight);
-  });
+  return minHeight;
+}
+
+function correctBetCoefsHeightOnResize() {
+  const minHeight = getCoefsMinHeight();
+  const isOpened = teamsBet.classList.contains('teams-bet--opened');
+  if (minHeight === 0) return;
+  const wrapper = document.querySelector('.teams-bet__coefficients-wrapper');
+  if (isOpened) {
+    wrapper.style.height = '100%';
+    return;
+  }
+  wrapper.style.height = `${minHeight}px`;
 }
 
 function checkBetCoefsHeight(currentHeight, minHeight) {
@@ -328,8 +399,37 @@ function showHideUserBet() {
 function toggleTeamsDetails() {
   const details = document.querySelector('.details');
   const inner = details.querySelector('.details__inner');
-  toggleFullHeight(details, inner, this);
+  toggleFullHeight(details, inner, this, 300);
 }
+
+function correctShowMoreHeightOnResize(block) {
+  const wrapper = block.querySelector('.show-more__wrapper');
+  const inner = block.querySelector('.show-more__inner');
+  const button = block.querySelector('.show-more__button');
+  const item = block.querySelectorAll('.show-more__item');
+
+  const rowHeight = countMinShowMoreHight(block);
+  const innerHeight = getHeight(inner);
+  const isOpened = block.classList.contains('show-more--opened');
+
+  if (innerHeight <= rowHeight || item.length === 0) {
+    block.classList.remove('show-more--active');
+    block.classList.remove('show-more--opened');
+    wrapper.style.height = '100%';
+
+  } else {
+    block.classList.add('show-more--active');
+    if (isOpened) {
+      wrapper.style.height = '100%';
+      button.textContent = 'Show less';
+    } else {
+      wrapper.style.height = `${rowHeight}px`;
+      block.classList.remove('show-more--opened');
+      button.textContent = 'Show more';
+    }
+  }
+}
+
 
 
 // count items and price
@@ -363,6 +463,11 @@ function countUserBetItems() {
   const itemsPrice = Number(betItemsTotalInfo[1]);
   const finalSum = (betcoinsAmount + itemsPrice).toFixed(2);
   userBetTotalSum.textContent = `${betItemsTotalInfo[0]} (${finalSum}$)`;
+
+  if (betItemsTotalInfo[0] === 0 && finalSum > 0) {
+    userBetTotalSum.textContent = `1 (${finalSum}$)`;
+  }
+
   disableSubmitButton();
   betInfoTextRefresh(finalSum);
 }
@@ -685,32 +790,29 @@ function sortOnClick() {
   }
 }
 
-function showHideShadows() {
-  const scrollBar = document.querySelector('.simplebar-track.simplebar-vertical');
-  if (scrollBar.style.visibility === 'hidden') {
-    lastBets.classList.add('last-bets--no-top-shadow');
-    lastBets.classList.add('last-bets--no-bottom-shadow');
-  } else {
-    lastBets.classList.remove('last-bets--no-top-shadow');
-    lastBets.classList.remove('last-bets--no-bottom-shadow');
-  }
-}
-
-function showHideShadowsOnScroll() {
-  const scroll = customScroll.getScrollElement()
+function handleVerticalShadows(block, scrollBar) {
+  const scroll = scrollBar.getScrollElement();
   const distanceToTop = scroll.scrollTop;
   const distanceToBottom = scroll.scrollHeight - scroll.scrollTop - scroll.clientHeight;
 
-  if (distanceToTop < 10) {
-    lastBets.classList.add('last-bets--no-top-shadow');
+  if (distanceToTop > 5) {
+    block.classList.add('vertical-shadow--top');
   } else {
-    lastBets.classList.remove('last-bets--no-top-shadow');
+    block.classList.remove('vertical-shadow--top');
   }
 
-  if (distanceToBottom < 10) {
-    lastBets.classList.add('last-bets--no-bottom-shadow');
+  if (distanceToBottom < 5) {
+    block.classList.remove('vertical-shadow--bottom');
   } else {
-    lastBets.classList.remove('last-bets--no-bottom-shadow');
+    block.classList.add('vertical-shadow--bottom');
+  }
+}
+
+function addVerticalBottomShadow(block, parent) {
+  if (block.offsetHeight < parent.scrollHeight) {
+    block.classList.add('vertical-shadow--bottom');
+  } else {
+    block.classList.remove('vertical-shadow--bottom');
   }
 }
 

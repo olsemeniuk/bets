@@ -262,7 +262,7 @@ fieldset {
   background-color: transparent;
   border: none;
   border-radius: var(--border-radius-normal);
-  transition: all 0.3s;
+  transition: all 0.1s;
 }
 
 /* button important */
@@ -278,7 +278,6 @@ fieldset {
 
 .button--secondary:hover {
   background-color: var(--important-color);
-  box-shadow: 0 0 5px 0 var(--important-color);
 }
 
 /* button end */
@@ -764,7 +763,7 @@ fieldset {
   left: 35px;
   width: 40px;
   height: 33px;
-  background-image: url("/images/icons/coins-icon.svg");
+  background-image: url("/images/icons/big-coins-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -814,6 +813,8 @@ fieldset {
 
 .show-more__inner {
   min-height: 70px;
+  margin-right: -20px;
+  padding: 15px 45px;
 }
 
 .show-more__button {
@@ -1130,36 +1131,31 @@ fieldset {
   flex-shrink: 0;
   width: 390px;
   padding: 0;
+  overflow: hidden;
 }
 
-.last-bets::after,
-.last-bets::before {
+.vertical-shadow {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.vertical-shadow--top::before,
+.vertical-shadow--bottom::after {
   content: "";
   position: absolute;
   right: 0;
   left: 0;
-  z-index: 5;
+  z-index: 10;
   width: 100%;
-  height: 35px;
-  border-radius: 0 0 var(--border-radius-normal) var(--border-radius-normal);
-  transition: all 0.3s;
+  box-shadow: 0 0 20px 35px var(--main-bg-color);
 }
 
-.last-bets::after {
-  bottom: -1px;
-  left: 0;
-  box-shadow: inset 0px -35px 11px -10px var(--main-bg-color);
+.vertical-shadow--top::before {
+  top: 0;
 }
 
-.last-bets::before {
-  top: 50px;
-  box-shadow: inset 0px 35px 11px -10px var(--main-bg-color);
-}
-
-.last-bets--no-top-shadow::before,
-.last-bets--no-bottom-shadow::after {
-  opacity: 0;
-  z-index: -1;
+.vertical-shadow--bottom::after {
+  bottom: 0;
 }
 
 /* page content end */
@@ -1416,6 +1412,10 @@ fieldset {
   height: 7px;
 }
 
+.bets-item__user-link:hover {
+  background-color: var(--main-text-color);
+}
+
 .bets-item__type {
   margin-left: auto;
 }
@@ -1449,8 +1449,8 @@ fieldset {
   position: absolute;
   left: 0;
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: center;
+  background-size: contain;
 }
 
 .bets-item__betcoins {
@@ -1458,10 +1458,10 @@ fieldset {
 }
 
 .bets-item__betcoins::before {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   top: 50%;
-  background-image: url("/images/icons/coins-icon.svg");
+  background-image: url("/images/icons/betcoin-icon.svg");
   transform: translateY(-50%);
   filter: var(--pale-attention-filter);
 }
@@ -1494,7 +1494,7 @@ fieldset {
 .bets-item__content {
   height: 0;
   overflow: hidden;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .bets-item__items {
@@ -1551,7 +1551,8 @@ fieldset {
 
 .streams__tabs-button {
   position: relative;
-  padding: 6px 10px;
+  min-width: 37px;
+  padding: 6px;
   text-transform: uppercase;
   background-color: transparent;
   border: none;
@@ -1570,15 +1571,10 @@ fieldset {
 
 .streams__tabs-button--active {
   z-index: 1;
+  font-weight: 700;
   color: var(--important-color);
   background-color: var(--contrast-color);
   background-size: 100%;
-  text-shadow: 0.1px 0.1px 0.3px var(--important-color),
-    0.2px 0.2px 0.3px var(--important-color),
-    0.3px 0.3px 0.3px var(--important-color),
-    -0.1px -0.1px 0.3px var(--important-color),
-    -0.2px -0.2px 0.3px var(--important-color),
-    -0.3px -0.3px 0.3px var(--important-color);
 }
 
 .streams__tabs-button::after,
@@ -1866,23 +1862,12 @@ fieldset {
   filter: var(--important-filer);
 }
 
-.teams-bet__row--chosen .teams-bet__row-title:not(.live) span {
-  color: var(--important-color);
-  text-shadow: 0.1px 0.1px 0.3px var(--important-color),
-    0.2px 0.2px 0.3px var(--important-color),
-    0.3px 0.3px 0.3px var(--important-color),
-    -0.1px -0.1px 0.3px var(--important-color),
-    -0.2px -0.2px 0.3px var(--important-color),
-    -0.3px -0.3px 0.3px var(--important-color);
+.teams-bet__row--chosen .teams-bet__row-title span {
+  font-weight: 700;
 }
 
-.teams-bet__row--chosen .teams-bet__row-title.live {
-  text-shadow: 0.1px 0.1px 0.3px var(--text-error-color),
-    0.2px 0.2px 0.3px var(--text-error-color),
-    0.3px 0.3px 0.3px var(--text-error-color),
-    -0.1px -0.1px 0.3px var(--text-error-color),
-    -0.2px -0.2px 0.3px var(--text-error-color),
-    -0.3px -0.3px 0.3px var(--text-error-color);
+.teams-bet__row--chosen .teams-bet__row-title:not(.live) span {
+  color: var(--important-color);
 }
 
 .teams-bet__row--chosen .teams-bet__row-title span.icon::before {
@@ -2157,7 +2142,7 @@ fieldset {
   font-size: 12px;
   text-align: center;
   transform: translateX(-50%);
-  transition: all 0.3s;
+  transition: all 0.1s;
 }
 
 .teams-bet__show-more::before,
@@ -2229,7 +2214,7 @@ fieldset {
 /* teams details start */
 .details {
   margin-bottom: 0;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .details {
@@ -2329,6 +2314,7 @@ fieldset {
 .permissions__item {
   position: relative;
   padding-left: 38px;
+  cursor: pointer;
 }
 
 .permissions__item+.permissions__item {
@@ -2351,10 +2337,18 @@ fieldset {
 }
 
 .user-bet {
-  margin: 0 -20px 20px -20px;
+  margin: 0 -20px 0 -20px;
   padding: 0 20px;
   overflow: hidden;
   transition: all 0.3s;
+}
+
+.user-bet__body {
+  padding-top: 20px;
+}
+
+.user-bet__content {
+  padding-bottom: 20px;
 }
 
 .user-bet__info {
@@ -2402,21 +2396,6 @@ fieldset {
 .user-bet__inner {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -20px;
-  padding: 35px 45px 15px;
-}
-
-.user-bet__inner .game-item {
-  width: calc(20% - 20px);
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-
-.user-bet__betcoin {
-  width: calc(40% - 20px);
-  margin-right: 20px;
-  margin-bottom: 20px;
-  padding: 10px 0 10px 105px;
 }
 
 
@@ -2441,12 +2420,12 @@ fieldset {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 18px;
-  height: 18px;
-  background-image: url("/images/icons/coins-icon.svg");
+  width: 19px;
+  height: 19px;
+  background-image: url("/images/icons/betcoin-icon.svg");
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: center;
+  background-size: contain;
   transform: translateY(-50%);
   filter: var(--pale-attention-filter);
 }
@@ -2535,18 +2514,23 @@ fieldset {
 /* betcoin range end */
 
 .bet-form__submit {
-  position: relative;
   margin-left: auto;
-  padding-right: 26px;
+  text-align: center;
   background-color: var(--attention-color);
   box-shadow: 0 0 7px 2px var(--pale-attention-color-30);
 }
 
-.bet-form__submit::before {
+.bet-form__submit-text {
+  position: relative;
+  padding-right: 15px;
+  font-weight: 700;
+}
+
+.bet-form__submit-text::before {
   content: "";
   position: absolute;
   top: 50%;
-  right: 11px;
+  right: 0;
   width: 8px;
   height: 15px;
   background-image: url("/images/icons/coins-stack-icon.svg");
@@ -2568,7 +2552,7 @@ fieldset {
   cursor: default;
 }
 
-.bet-form__submit:disabled::before {
+.bet-form__submit:disabled .bet-form__submit-text::before {
   filter: var(--main-text-filter);
 }
 
@@ -2587,7 +2571,7 @@ fieldset {
 
 .stash__all-in {
   position: relative;
-  padding: 2px 20px 3px 9px;
+  padding: 3px 20px 2px 9px;
   background-color: transparent;
   border: 1px solid var(--accent-color);
   border-radius: var(--border-radius-normal);
@@ -2596,7 +2580,7 @@ fieldset {
 .stash__all-in::after {
   content: "";
   position: absolute;
-  top: 7px;
+  top: 8px;
   right: 8px;
   width: 8px;
   height: 8px;
@@ -2608,7 +2592,7 @@ fieldset {
 
 .stash__all-in:hover {
   color: var(--important-color);
-  border-color: var(--important-color);
+  border-color: var(--secondary-color);
 }
 
 .stash__all-in:hover::after {
@@ -2630,17 +2614,23 @@ fieldset {
 }
 
 .stash__items {
-  margin-right: -20px;
-  padding: 15px 45px;
   font-size: 0;
   line-height: 0;
 }
 
-.stash__items .game-item {
-  display: inline-block;
+.show-more__item {
   width: calc(20% - 20px);
   margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.user-bet__betcoin {
+  width: calc(40% - 20px);
+  padding: 10px 0 10px 105px;
+}
+
+.stash__items .game-item {
+  display: inline-block;
   line-height: 18px;
 }
 
@@ -2850,12 +2840,14 @@ fieldset {
   left: 15px;
   bottom: 15px;
 }
+
 /* footer end */
 
 /* mobile tabs start */
 .mobile-tabs {
   display: none;
 }
+
 /* mobile tabs end */
 
 
@@ -2916,11 +2908,7 @@ fieldset {
     -webkit-line-clamp: 2;
   }
 
-  .user-bet__inner {
-    padding: 35px 20px 15px;
-  }
-
-  .stash__items {
+  .show-more__inner {
     padding: 15px 20px;
   }
 
@@ -2938,10 +2926,6 @@ fieldset {
 
   .teams-bet__team--second {
     padding-right: 10px;
-  }
-
-  .user-bet__inner .game-item {
-    width: calc(20% - 20px);
   }
 
   .user-bet__betcoin {
@@ -3004,11 +2988,7 @@ fieldset {
 
 
 @media only screen and (max-width: 1100px) {
-  .stash__items .game-item {
-    width: calc(25% - 20px);
-  }
-
-  .user-bet__inner .game-item {
+  .show-more__item {
     width: calc(25% - 20px);
   }
 
@@ -3119,21 +3099,21 @@ fieldset {
     right: 5px;
   }
 
-  .stash__items .game-item,
-  .user-bet__inner .game-item {
+  .show-more__item {
     width: calc(25% - 10px);
     margin-right: 10px;
     margin-bottom: 10px;
   }
 
-  .user-bet__betcoin {
-    width: calc(50% - 10px);
-    margin-right: 10px;
-    margin-bottom: 10px;
+  .user-bet__body {
+    padding-top: 10px;
   }
 
-  .stash__items,
-  .user-bet__inner {
+  .user-bet__betcoin {
+    width: calc(50% - 10px);
+  }
+
+  .show-more__inner {
     margin-right: -10px;
   }
 }
@@ -3179,8 +3159,7 @@ fieldset {
     flex: 1;
   }
 
-  .stash__items .game-item,
-  .user-bet__inner .game-item {
+  .show-more__item {
     width: calc(100% / 3 - 20px);
     margin-right: 20px;
     margin-bottom: 20px;
@@ -3188,13 +3167,14 @@ fieldset {
 
   .user-bet__betcoin {
     width: calc(100% / 3 * 2 - 20px);
-    margin-right: 20px;
-    margin-bottom: 20px;
   }
 
-  .stash__items,
-  .user-bet__inner {
+  .show-more__inner {
     margin-right: -20px;
+  }
+
+  .user-bet__body {
+    padding-top: 20px;
   }
 }
 
@@ -3271,17 +3251,15 @@ fieldset {
   }
 
   .user-bet__body {
-    padding: 5px;
+    padding-top: 10px;
   }
 
-  .user-bet__inner,
-  .bets-item__items,
-  .stash__items {
+  .show-more__inner,
+  .bets-item__items {
     margin-right: -10px;
   }
 
-  .stash__items .game-item,
-  .user-bet__inner .game-item,
+  .show-more__item,
   .bets-item__items .game-item {
     width: calc(20% - 10px);
     margin-right: 10px;
@@ -3290,8 +3268,6 @@ fieldset {
 
   .user-bet__betcoin {
     width: calc(40% - 10px);
-    margin-right: 10px;
-    margin-bottom: 10px;
   }
 
   .bets-item__items .game-item__info {
@@ -3420,8 +3396,7 @@ fieldset {
 
 @media only screen and (max-width: 600px) {
 
-  .stash__items .game-item,
-  .user-bet__inner .game-item,
+  .show-more__item,
   .bets-item__items .game-item {
     width: calc(25% - 10px);
   }
@@ -3577,6 +3552,10 @@ fieldset {
     padding: 0;
   }
 
+  .user-bet__body {
+    padding-top: 0;
+  }
+
   .betcoin-range {
     width: 100%;
   }
@@ -3584,6 +3563,9 @@ fieldset {
   .bet-form__submit {
     margin-left: 0;
     margin-bottom: 20px;
+    padding: 11px 15px;
+    min-width: 140px;
+    text-align: center;
   }
 
   .teams-bet__team.teams-bet__team--second {
@@ -3603,8 +3585,7 @@ fieldset {
     font-size: 14px;
   }
 
-  .user-bet__inner .game-item,
-  .stash__items .game-item,
+  .show-more__item,
   .bets-item__items .game-item {
     width: calc(100% / 3 - 10px);
     margin-right: 10px;
@@ -3629,8 +3610,9 @@ fieldset {
     line-height: 15px;
   }
 
-  .stash__items {
+  .show-more__inner {
     margin-right: -10px;
+    padding: 20px 25px 10px;
   }
 
   .footer__inner {
