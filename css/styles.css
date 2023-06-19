@@ -2646,9 +2646,11 @@ fieldset {
 }
 
 .stash__placeholder {
+  display: none;
   width: 100%;
   height: 100%;
   margin: auto;
+  padding-right: 20px;
   font-size: 16px;
   line-height: 20px;
   text-align: center;
@@ -2660,8 +2662,8 @@ fieldset {
   color: var(--inactive-color);
 }
 
-.show-more--active .stash__placeholder {
-  display: none;
+.stash__placeholder--active {
+  display: block;
 }
 
 .stash__items {
@@ -3233,6 +3235,10 @@ fieldset {
   .show-more__inner {
     margin-right: -10px;
   }
+
+  .stash__placeholder {
+    padding-right: 10px;
+  }
 }
 
 
@@ -3295,6 +3301,10 @@ fieldset {
 
   .show-more__inner {
     margin-right: -20px;
+  }
+
+  .stash__placeholder {
+    padding-right: 20px;
   }
 
   .user-bet__body {
@@ -3381,6 +3391,10 @@ fieldset {
   .show-more__inner,
   .bets-item__items {
     margin-right: -10px;
+  }
+
+  .stash__placeholder {
+    padding-right: 10px;
   }
 
   .show-more__item,

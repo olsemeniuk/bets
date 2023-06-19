@@ -176,15 +176,7 @@ mobileTabsActiveBg();
 
 
 window.addEventListener('resize', () => {
-  const repeatCorrections = setInterval(() => {
-    correctShowMoreHeight(stashBody);
-    correctShowMoreHeight(userBetBody);
-  }, 250);
-
-  setTimeout(() => {
-    clearInterval(repeatCorrections);
-  }, 500);
-
+  refreshShowMore();
   mobileTabsActiveBg();
   mobileTabsBgSize();
   correctBetCoefsHeightOnResize();
@@ -394,6 +386,16 @@ function correctShowMoreHeight(block) {
   const isOpened = block.classList.contains('show-more--opened');
 
   const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+
+  const isStash = block.classList.contains('stash__body')
+  if (isStash) {
+    const stashPlaceholder = stashBody.querySelector('.stash__placeholder');
+    if (visibleItems.length === 0) {
+      stashPlaceholder.classList.add('stash__placeholder--active')
+    } else {
+      stashPlaceholder.classList.remove('stash__placeholder--active')
+    }
+  }
 
   if (innerHeight <= rowHeight || visibleItems.length === 0) {
     block.classList.remove('show-more--active');
@@ -608,9 +610,18 @@ function refreshBlocksAfterItemBet() {
   countStashItems();
   countUserBetItems();
   betcoinHeightFix();
+  refreshShowMore();
+  stashMixer.forceRefresh();
+}
+
+function refreshShowMore() {
   correctShowMoreHeight(stashBody);
   correctShowMoreHeight(userBetBody);
-  stashMixer.forceRefresh();
+
+  setTimeout(() => {
+    correctShowMoreHeight(stashBody);
+    correctShowMoreHeight(userBetBody);
+  });
 }
 
 // coefs
