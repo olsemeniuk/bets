@@ -72,18 +72,18 @@
           <div class="user__menu">
             <ul class="user__resources">
               <li class="user__resources-item">
-                <a class="user__resources-link user__resources-link--betcoins" href="#">$15.03</a>
+                <a class="user__resources-link user__resources-link--betcoins" href="#" title="Your payments">$15.03</a>
               </li>
               <li class="user__resources-item">
-                <a class="user__resources-link user__resources-link--steam" href="#">$12.24</a>
+                <a class="user__resources-link user__resources-link--steam" href="#" title="Your items">$12.24</a>
               </li>
             </ul>
             <div class="user__options">
-              <a class="user__profile" href="#">
+              <a class="user__profile" href="#" title="Your profile">
                 <b class="user__profile-name">[Im]mortal</b>
                 profile
               </a>
-              <button class="user__logout-button" type="button">
+              <button class="user__logout-button" type="button" title="Logout">
                 <span class="visually-hidden">Logout profile</span>
               </button>
             </div>
@@ -474,7 +474,6 @@
                 </p>
               </fieldset>
 
-
               <!-- user bet -->
               <fieldset class="user-bet">
                 <legend class="visually-hidden">Placed bet</legend>
@@ -559,863 +558,896 @@
                   </div>
                 </div>
               </fieldset>
-
-              <!-- stash -->
-              <fieldset class="bet-block stash">
-                <legend class="visually-hidden">Stash</legend>
-                <div class="bet-block__header">
-                  <span class="stash__title">Your stash</span>
-                  <button class="stash__all-in" type="button">All in</button>
-                  <p class="total">
-                    Total:
-                    <b class="total__sum stash__total-sum"></b>
-                  </p>
-                </div>
-                <div class="bet-block__body stash__body show-more">
-                  <div class="stash__filter-block">
-
-                    <!-- rarity filter -->
-                    <div class="dropdown arrow-dropdown" id="stash_rarity_dropdown">
-                      <button class="dropdown__button arrow-dropdown__button" type="button">
-                        <span class="dropdown__text-wrapper arrow-dropdown__text-wrapper">
-                          Rarity:
-                          <span class="dropdown__text arrow-dropdown__text"></span>
-                        </span>
-                      </button>
-                      <div class="dropdown__list-wrapper">
-                        <ul class="dropdown__list arrow-dropdown__list">
-                          <li class="dropdown__item">
-                            <button
-                              class="dropdown__list-button arrow-dropdown__list-button"
-                              type="button"
-                              data-filter="all">
-                              All
-                            </button>
-                          </li>
-                          <li class="dropdown__item">
-                            <button
-                              class="dropdown__list-button arrow-dropdown__list-button"
-                              type="button"
-                              data-filter="[data-rarity='common']">
-                              Common
-                            </button>
-                          </li>
-                          <li class="dropdown__item">
-                            <button
-                              class="dropdown__list-button arrow-dropdown__list-button"
-                              type="button"
-                              data-filter="[data-rarity='legendary']">
-                              Legendary
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <!-- price sort -->
-                    <button class="sort stash__sort" type="button">Sort by price</button>
-                  </div>
-                  <!-- stash items -->
-                  <div class="show-more__wrapper stash__items-wrapper">
-                    <div class="stash__items show-more__inner">
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$0.41</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
-                        <div class="game-item__inner">
-                          <div class="game-item__content">
-                            <b class="game-item__info game-item__price">$1.21</b>
-                            <img
-                              class="game-item__img"
-                              width="105"
-                              height="70"
-                              src="/images/temp/game-item-image.jpg"
-                              srcset="/images/x2/game-item-image-2x.jpg 2x,
-                                      /images/x3/game-item-image-3x.jpg 3x"
-                              sizes="(max-width: 480px) calc(100vw / 3 - 50px),
-                                     (max-width: 600px) calc(100vw / 4 - 70px),
-                                     (max-width: 768px) calc(100vw / 5 - 70px),
-                                     (max-width: 850px) calc((60vw - 100px) / 3),
-                                     (max-width: 992px) calc((60vw - 90px) / 4),
-                                     (max-width: 1100px) calc((100vw - 495px) / 4),
-                                     (max-width: 1200px) calc((100vw - 495px) / 5),
-                                     106px"
-                              alt="">
-                            <p class="game-item__info game-item__title">Inscribed Bralorem</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="button button--secondary show-more__button" type="button">Show more</button>
-                </div>
-              </fieldset>
             </form>
+
+            <!-- stash -->
+            <fieldset class="bet-block stash">
+              <legend class="visually-hidden">Stash</legend>
+              <div class="bet-block__header">
+                <span class="stash__title">Your stash</span>
+                <button class="stash__all-in" type="button">All in</button>
+                <p class="total">
+                  Total:
+                  <b class="total__sum stash__total-sum"></b>
+                </p>
+              </div>
+              <div class="bet-block__body stash__body show-more">
+                <div class="stash__filter-block">
+
+                  <!-- rarity filter -->
+                  <div class="dropdown arrow-dropdown" id="stash_rarity_dropdown">
+                    <button class="dropdown__button arrow-dropdown__button" type="button">
+                      <span class="dropdown__text-wrapper arrow-dropdown__text-wrapper">
+                        Rarity:
+                        <span class="dropdown__text arrow-dropdown__text"></span>
+                      </span>
+                    </button>
+                    <div class="dropdown__list-wrapper">
+                      <ul class="dropdown__list arrow-dropdown__list">
+                        <li class="dropdown__item">
+                          <button
+                            class="dropdown__list-button arrow-dropdown__list-button"
+                            type="button"
+                            data-filter="all">
+                            All
+                          </button>
+                        </li>
+                        <li class="dropdown__item">
+                          <button
+                            class="dropdown__list-button arrow-dropdown__list-button"
+                            type="button"
+                            data-filter="[data-rarity='common']">
+                            Common
+                          </button>
+                        </li>
+                        <li class="dropdown__item">
+                          <button
+                            class="dropdown__list-button arrow-dropdown__list-button"
+                            type="button"
+                            data-filter="[data-rarity='legendary']">
+                            Legendary
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- price sort -->
+                  <button class="sort stash__sort" type="button">Sort by price</button>
+                </div>
+                <!-- stash items -->
+                <div class="show-more__wrapper stash__items-wrapper">
+                  <div class="stash__items show-more__inner">
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem1">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem2">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem3">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem4">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem5">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem6">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem7">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem8">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem9">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem10">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem11">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem12">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem13">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem14">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem15">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem16">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem17">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem18">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem19">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem20">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem21">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem22">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem23">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem24">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem25">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem26">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem27">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem28">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem29">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem30">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="0.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem31">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="legendary" data-price="0.41">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$0.41</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem32">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mix game-item show-more__item" data-rarity="common" data-price="1.21">
+                      <div class="game-item__inner">
+                        <label class="game-item__content">
+                          <b class="game-item__info game-item__price">$1.21</b>
+                          <img
+                            class="game-item__img"
+                            width="105"
+                            height="70"
+                            src="/images/temp/game-item-image.jpg"
+                            srcset="/images/x2/game-item-image-2x.jpg 2x,
+                                    /images/x3/game-item-image-3x.jpg 3x"
+                            sizes="(max-width: 480px) calc(100vw / 3 - 50px),
+                                   (max-width: 600px) calc(100vw / 4 - 70px),
+                                   (max-width: 768px) calc(100vw / 5 - 70px),
+                                   (max-width: 850px) calc((60vw - 100px) / 3),
+                                   (max-width: 992px) calc((60vw - 90px) / 4),
+                                   (max-width: 1100px) calc((100vw - 495px) / 4),
+                                   (max-width: 1200px) calc((100vw - 495px) / 5),
+                                   106px"
+                            alt="">
+                          <span class="game-item__info game-item__title">Inscribed Bralorem</span>
+                          <input class="game-item__checkbox" type="checkbox" name="gameItem33">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="button button--secondary show-more__button" type="button">Show more</button>
+              </div>
+            </fieldset>
           </article>
           <div class="mobile-tabs">
             <div class="mobile-tabs__buttons">
@@ -1604,7 +1636,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1626,7 +1658,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1648,7 +1680,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1778,7 +1810,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1800,7 +1832,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1822,7 +1854,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1844,7 +1876,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1866,7 +1898,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1888,7 +1920,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1910,7 +1942,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1932,7 +1964,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -1954,7 +1986,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2084,7 +2116,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2106,7 +2138,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2128,7 +2160,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2208,7 +2240,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2230,7 +2262,7 @@
                                (max-width: 1200px) 90px,
                                95px"
                         alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2252,7 +2284,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2382,7 +2414,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2404,7 +2436,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2426,7 +2458,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2448,7 +2480,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2470,7 +2502,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2492,7 +2524,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2514,7 +2546,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2536,7 +2568,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>
@@ -2558,7 +2590,7 @@
                                  (max-width: 1200px) 90px,
                                  95px"
                           alt="">
-                        <p class="game-item__info game-item__title">Inscribed Bralorem</p>
+                        <span class="game-item__info game-item__title">Inscribed Bralorem</span>
                       </div>
                     </div>
                   </div>

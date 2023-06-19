@@ -418,8 +418,6 @@ function correctShowMoreHeight(block) {
   }
 }
 
-
-
 // count items and price
 function countItemsAndPrice(items) {
   items = Array.from(items).filter(item => {
@@ -535,10 +533,14 @@ function changeBetcoinSum(value) {
 
 // bet item
 function changeGameItemPlace({ target }, placeForItem) {
-  const clickedItem = target.closest('.game-item');
-  if (userBet.style.display === 'none' || !clickedItem) return;
+  let checkedItem = '';
+  if (target.classList.contains('game-item__checkbox')) {
+    checkedItem = target.closest('.game-item');
+  }
 
-  const itemToBet = clickedItem;
+  if (userBet.style.display === 'none' || !checkedItem) return;
+
+  const itemToBet = checkedItem;
   itemToBet.remove();
   placeForItem.append(itemToBet);
   refreshBlocksAfterItemBet()
@@ -630,6 +632,9 @@ function tabs(allButtons, allContent, button, activeButtonClass, activeContentCl
   allButtons.forEach(item => {
     item.classList.remove(activeButtonClass);
     button.classList.add(activeButtonClass);
+    if (item.classList.contains('mobile-tabs__button')) {
+      addVerticalBottomShadow(lastBetsList, lastBets);
+    }
   });
 
   allContent.forEach(item => {
@@ -751,8 +756,10 @@ function betcoinHeightFix() {
   const userBetBetcoin = userBetInner.querySelector('.betcoin');
   if (!gameItem) {
     userBetBetcoin.style.minHeight = '70px';
+    userBetInner.style.justifyContent = 'center';
   } else {
     userBetBetcoin.style.minHeight = 'auto';
+    userBetInner.style.justifyContent = 'flex-start';
   }
 }
 
@@ -797,11 +804,27 @@ function handleVerticalShadows(block, scrollBar) {
 }
 
 function addVerticalBottomShadow(block, parent) {
-  if (block.offsetHeight < parent.scrollHeight) {
-    block.classList.add('vertical-shadow--bottom');
+  if (block.classList.contains('bets-list')) {
+    let listHeight = 0;
+    const listItems = block.querySelectorAll('.bets-item');
+    setTimeout(() => {
+      listItems.forEach(item => {
+        listHeight += getHeight(item);
+      });
+      addShadow(listHeight > parent.scrollHeight);
+    }, 300);
   } else {
-    block.classList.remove('vertical-shadow--bottom');
+    addShadow(block.offsetHeight < parent.scrollHeight)
   }
+
+  function addShadow(condition) {
+    if (condition) {
+      block.classList.add('vertical-shadow--bottom');
+    } else {
+      block.classList.remove('vertical-shadow--bottom');
+    }
+  }
+
 }
 
 function disableSubmitButton() {

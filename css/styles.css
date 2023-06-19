@@ -310,6 +310,7 @@ fieldset {
       var(--main-text-color) 18px calc(100% - 18px),
       var(--black-color) calc(100% - 18px) 100%);
   border-radius: var(--border-radius-normal);
+  cursor: pointer;
 }
 
 .game-item__info {
@@ -321,6 +322,10 @@ fieldset {
   margin: 0;
   padding: 0 10px;
   background-color: var(--contrast-color-90);
+}
+
+.game-item__checkbox {
+  display: none;
 }
 
 .game-item__price {
@@ -343,6 +348,7 @@ fieldset {
 
 .game-item__title {
   bottom: 0;
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1365,11 +1371,15 @@ fieldset {
 
 .bets-item__user-link {
   position: relative;
+  max-width: 100px;
   margin-right: 3px;
   padding: 0 15px 0 18px;
+  overflow: hidden;
   font-weight: 700;
   color: var(--black-color);
   text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   background-color: var(--important-color);
   border-radius: var(--border-radius-small);
 }
@@ -1420,7 +1430,11 @@ fieldset {
 }
 
 .bets-item__type {
+  max-width: 150px;
   margin-left: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .bets-item__body {
@@ -1484,13 +1498,17 @@ fieldset {
 .bets-item__team {
   width: 50%;
   margin-left: auto;
+  overflow: hidden;
   font-weight: 700;
   font-size: 12px;
   text-align: right;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .bets-item__team-logo {
   vertical-align: middle;
+  max-width: 20px;
   margin-right: 3px;
 }
 
@@ -2581,7 +2599,11 @@ fieldset {
 
 .stash__all-in {
   position: relative;
+  max-width: 100px;
+  overflow: hidden;
   padding: 3px 20px 2px 9px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background-color: transparent;
   border: 1px solid var(--accent-color);
   border-radius: var(--border-radius-normal);
