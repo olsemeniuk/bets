@@ -770,7 +770,7 @@ fieldset {
   left: 35px;
   width: 40px;
   height: 33px;
-  background-image: url("../images/icons/coins-icon.svg");
+  background-image: url("../images/icons/big-coins-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1482,7 +1482,7 @@ fieldset {
   width: 19px;
   height: 19px;
   top: 50%;
-  background-image: url("../images/icons/coins-icon.svg");
+  background-image: url("../images/icons/betcoin-icon.svg");
   transform: translateY(-50%);
   filter: var(--pale-attention-filter);
 }
