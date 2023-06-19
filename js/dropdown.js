@@ -197,7 +197,7 @@ class ArrowDropdown extends Dropdown {
 
   arrowToggle() {
     const isOpened = this.target.classList.contains('dropdown--open-top') ||
-                     this.target.classList.contains('dropdown--open-bottom');
+      this.target.classList.contains('dropdown--open-bottom');
 
     if (isOpened) {
       this.target.classList.add('arrow-dropdown--open');

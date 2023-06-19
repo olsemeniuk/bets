@@ -175,8 +175,8 @@ mobileTabsActiveBg();
 
 window.addEventListener('resize', () => {
   const repeatCorrections = setInterval(() => {
-    correctShowMoreHeightOnResize(stashBody);
-    correctShowMoreHeightOnResize(userBetBody);
+    correctShowMoreHeight(stashBody);
+    correctShowMoreHeight(userBetBody);
   }, 250);
 
   setTimeout(() => {
@@ -186,6 +186,7 @@ window.addEventListener('resize', () => {
   mobileTabsActiveBg();
   mobileTabsBgSize();
   correctBetCoefsHeightOnResize();
+  addVerticalBottomShadow(lastBetsList, lastBets);
 });
 
 
@@ -245,25 +246,26 @@ function countMinShowMoreHight(block) {
   const item = block.querySelectorAll('.show-more__item');
 
   const rowHeight = checkRowHeight(item);
+  const isMobile = checkIfIsMobile();
+  const percentToShowNextRow = isMobile ? 35 : 25;
 
   const innerPaddingTop = parseInt(window.getComputedStyle(inner).getPropertyValue('padding-top'));
   const innerPaddingBottom = parseInt(window.getComputedStyle(inner).getPropertyValue('padding-bottom'));
 
   if ((!isNaN(innerPaddingBottom) && innerPaddingBottom > 0) &&
     (!isNaN(innerPaddingTop) && innerPaddingTop > 0)) {
-    return rowHeight + innerPaddingBottom + innerPaddingTop + (rowHeight / 100 * 25);
+    return rowHeight + innerPaddingBottom + innerPaddingTop + (rowHeight / 100 * percentToShowNextRow);
   } else if (!isNaN(innerPaddingBottom) && innerPaddingBottom > 0) {
-    return rowHeight + innerPaddingBottom + (rowHeight / 100 * 25);
+    return rowHeight + innerPaddingBottom + (rowHeight / 100 * percentToShowNextRow);
   } else if (!isNaN(innerPaddingTop) && innerPaddingTop > 0) {
-    return rowHeight + innerPaddingTop + (rowHeight / 100 * 25);
+    return rowHeight + innerPaddingTop + (rowHeight / 100 * percentToShowNextRow);
   } else {
-    return rowHeight + (rowHeight / 100 * 25);
+    return rowHeight + (rowHeight / 100 * percentToShowNextRow);
   }
 }
 
 function hideSecondRowItems(block) {
   const wrapper = block.querySelector('.show-more__wrapper');
-  const insideItems = block.querySelectorAll('.show-more__item');
   const rowHeight = countMinShowMoreHight(block);
   const wrapperHeight = getHeight(wrapper);
 
@@ -288,30 +290,6 @@ function toggleShowMoreBlockHeight(block) {
   } else {
     block.classList.remove('show-more--opened');
     if (button) button.textContent = 'Show more';
-  }
-}
-
-function correctShowMoreHeight(block) {
-  const wrapper = block.querySelector('.show-more__wrapper');
-  const inner = block.querySelector('.show-more__inner');
-  const button = block.querySelector('.show-more__button');
-  const items = block.querySelectorAll('.show-more__item')
-  const rowHeight = countMinShowMoreHight(block);
-  const innerHeight = getHeight(inner);
-
-  wrapper.style.height = `${innerHeight}px`;
-  setTimeout(() => {
-    wrapper.style.height = '100%';
-  }, 500);
-
-  if (innerHeight <= rowHeight || items.length === 0) {
-    block.classList.remove('show-more--active');
-    block.classList.remove('show-more--opened');
-    button.textContent = 'Show more';
-  } else {
-    block.classList.add('show-more--active');
-    block.classList.add('show-more--opened');
-    button.textContent = 'Show less';
   }
 }
 
@@ -402,7 +380,7 @@ function toggleTeamsDetails() {
   toggleFullHeight(details, inner, this, 300);
 }
 
-function correctShowMoreHeightOnResize(block) {
+function correctShowMoreHeight(block) {
   const wrapper = block.querySelector('.show-more__wrapper');
   const inner = block.querySelector('.show-more__inner');
   const button = block.querySelector('.show-more__button');
@@ -416,17 +394,27 @@ function correctShowMoreHeightOnResize(block) {
     block.classList.remove('show-more--active');
     block.classList.remove('show-more--opened');
     wrapper.style.height = '100%';
+    refreshTransition();
 
   } else {
     block.classList.add('show-more--active');
     if (isOpened) {
       wrapper.style.height = '100%';
+      refreshTransition();
       button.textContent = 'Show less';
     } else {
       wrapper.style.height = `${rowHeight}px`;
       block.classList.remove('show-more--opened');
       button.textContent = 'Show more';
+      refreshTransition();
     }
+  }
+
+  function refreshTransition() {
+    wrapper.style.transition = 'none';
+    setTimeout(() => {
+      wrapper.style.transition = 'all 0.5s ease-in-out';
+    }, 500);
   }
 }
 
@@ -663,7 +651,7 @@ function mobileTabs() {
   tabs(allButtons, allContent, this, activeButtonClass, activeContentClass);
 
   mobileTabsActiveBg();
-  mobileTabsBgSize()
+  mobileTabsBgSize();
 }
 
 function mobileTabsActiveBg() {
