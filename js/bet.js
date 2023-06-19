@@ -82,9 +82,14 @@ const stashMixer = mixitup(stashItemsParent, {
 
 
 // functions calls & events
-// count items in stash and user bet
-countStashItems();
-countUserBetItems();
+document.addEventListener('DOMContentLoaded', () => {
+  correctShowMoreHeight(stashBody);
+  countStashItems();
+  countUserBetItems();
+  betCoefsHeightToggle();
+  changeStashMinHeight();
+  disableItemCheckbox();
+});
 
 // sort stash game items
 stashSortButton.addEventListener('click', sortOnClick);
@@ -92,10 +97,8 @@ stashSortButton.addEventListener('click', sortOnClick);
 // height correction after stash filter & sort
 delegate(rarityFilterDropdown, '.arrow-dropdown__list-button', 'click', function () {
   setTimeout(() => {
-    correctShowMoreHeight(stashBody);
-  }, 300);
-  setTimeout(() => {
     countStashItems();
+    correctShowMoreHeight(stashBody);
   }, 350);
 });
 
@@ -116,7 +119,6 @@ betcoinRange.addEventListener('input', slideBetcoinsAmount);
 
 // show/hide more bet coefficients
 showMoreCoefsButton.addEventListener('click', betCoefsHeightToggle);
-betCoefsHeightToggle();
 
 teamsBet.addEventListener('click', () => {
   changeBetInfoText();
@@ -372,6 +374,7 @@ function showHideUserBet() {
     userBet.style.display = 'none';
     userBet.style.height = '0'
   }
+  disableItemCheckbox();
 }
 
 function toggleTeamsDetails() {
@@ -384,37 +387,51 @@ function correctShowMoreHeight(block) {
   const wrapper = block.querySelector('.show-more__wrapper');
   const inner = block.querySelector('.show-more__inner');
   const button = block.querySelector('.show-more__button');
-  const item = block.querySelectorAll('.show-more__item');
+  const items = block.querySelectorAll('.show-more__item');
 
   const rowHeight = countMinShowMoreHight(block);
   const innerHeight = getHeight(inner);
   const isOpened = block.classList.contains('show-more--opened');
 
-  if (innerHeight <= rowHeight || item.length === 0) {
+  const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+
+  if (innerHeight <= rowHeight || visibleItems.length === 0) {
     block.classList.remove('show-more--active');
     block.classList.remove('show-more--opened');
     wrapper.style.height = '100%';
-    refreshTransition();
+    refreshShowMoreTransition(wrapper);
 
   } else {
     block.classList.add('show-more--active');
     if (isOpened) {
       wrapper.style.height = '100%';
-      refreshTransition();
+      refreshShowMoreTransition(wrapper);
       button.textContent = 'Show less';
     } else {
       wrapper.style.height = `${rowHeight}px`;
       block.classList.remove('show-more--opened');
       button.textContent = 'Show more';
-      refreshTransition();
+      refreshShowMoreTransition(wrapper);
     }
   }
+  changeStashMinHeight();
+}
 
-  function refreshTransition() {
-    wrapper.style.transition = 'none';
-    setTimeout(() => {
-      wrapper.style.transition = 'all 0.5s ease-in-out';
-    }, 500);
+function refreshShowMoreTransition(wrapper) {
+  wrapper.style.transition = 'none';
+  setTimeout(() => {
+    wrapper.style.transition = 'all 0.5s ease-in-out';
+  }, 500);
+}
+
+function changeStashMinHeight() {
+  const items = stashItemsParent.querySelectorAll('.game-item');
+  const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+
+  if (visibleItems.length === 0) {
+    stashItemsParent.style.minHeight = '125px';
+  } else {
+    stashItemsParent.style.minHeight = '70px';
   }
 }
 
@@ -532,6 +549,17 @@ function changeBetcoinSum(value) {
 }
 
 // bet item
+function disableItemCheckbox() {
+  stashGameItems.forEach(item => {
+    const checkbox = item.querySelector('.game-item__checkbox');
+    if (userBet.style.display === 'none') {
+      checkbox.disabled = true;
+    } else {
+      checkbox.disabled = false;
+    }
+  });
+}
+
 function changeGameItemPlace({ target }, placeForItem) {
   let checkedItem = '';
   if (target.classList.contains('game-item__checkbox')) {
@@ -824,7 +852,6 @@ function addVerticalBottomShadow(block, parent) {
       block.classList.remove('vertical-shadow--bottom');
     }
   }
-
 }
 
 function disableSubmitButton() {
